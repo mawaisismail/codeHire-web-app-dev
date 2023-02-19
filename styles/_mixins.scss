@@ -1,0 +1,147 @@
+@import "/styles/variables";
+
+@mixin flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin signUp($width: 18rem, $height: 4rem, $color: $base-color) {
+  width: $width;
+  height: $height;
+  max-width: 18.75rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: $white;
+  background-color: $color;
+  margin: 1rem 0 0 0;
+  border: unset;
+  cursor: pointer;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px 0 rgba(10, 41, 77, 0.16);
+  &:hover {
+    transform: scale(1.02);
+    text-decoration: none;
+  }
+}
+
+@mixin galleryImage($width, $height) {
+  max-width: $width;
+  height: $height;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+@mixin gallery($gap, $height, $span, $fr) {
+  height: $height;
+  display: grid;
+  box-sizing: content-box;
+  grid-gap: $gap;
+  grid-template-columns: repeat($span, $fr);
+}
+
+@mixin close($color: red, $fontColor: white) {
+  background-color: $color;
+  color: $fontColor;
+  font-size: 4rem;
+  padding: 1rem 1.3rem;
+}
+
+@mixin button($width: auto, $height: auto) {
+  font-size: 1rem;
+  font-weight: 700;
+  height: $height;
+  min-width: $width;
+  letter-spacing: 1px;
+  color: $white;
+  cursor: pointer;
+  background-color: $message;
+  border-radius: 4rem;
+  margin: 0.5rem 1rem;
+  outline: none;
+  border: 2px solid $message;
+
+  &:hover {
+    transform: scale(1.02);
+    text-decoration: none;
+  }
+}
+
+@mixin ellipsis($width: 100px) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: $width;
+}
+
+@mixin lineClamp($line: 4) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin textFont(
+  $size,
+  $weight: normal,
+  $color: $base-color-main,
+  $lineHeight: normal
+) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+
+@mixin globalButton($background, $border, $width: auto, $height: auto) {
+  cursor: pointer;
+  background-color: $background;
+  border-radius: 4rem;
+  outline: none;
+  border: 2px solid $border;
+  height: $height;
+  width: $width;
+}
+
+@mixin modals {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.6);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 99999999;
+}
+
+@mixin myPageRightContainer {
+  width: 100%;
+  margin: 0 0 2rem 2rem;
+  box-shadow: rgb(10 41 77 / 8%) 0 0 10px;
+  padding: 20px;
+  height: max-content;
+  @media (max-width: 1099px) {
+    margin: 0 0 2rem 0;
+  }
+}
+
+@mixin profileImage($width: 80px, $height: 80px, $radius: 50%) {
+  background: gray;
+  min-width: $width;
+  min-height: $height;
+  border-radius: $radius;
+  cursor: pointer;
+  background-size: cover;
+}
+
+@mixin disabledButton {
+  background: $gray-main;
+  border: 1px solid $gray-main;
+  color: $white;
+  svg {
+    color: $white;
+    border: none;
+  }
+}
