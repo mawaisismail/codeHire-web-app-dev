@@ -6,8 +6,8 @@ export const Client = () => {
         Browse Our <span>5,000+</span> Latest Jobs
       </p>
       <p className={styles.p2}>
-        Post a job to tell us about you project. we'll quickly match you with
-        the right freelancers.
+        Post a job to tell us about you project. well quickly match you with the
+        right freelancers.
       </p>
       <button className={styles.button1}>Started Now</button>
     </div>
