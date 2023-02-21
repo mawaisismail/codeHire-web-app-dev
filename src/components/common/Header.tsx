@@ -4,7 +4,7 @@ const navLinks = ["Home", "Contact", "About"];
 export const Header = () => {
   return (
     <div className={styles.main}>
-      <div>CODE.H</div>
+      <div>CODE'll.H'</div>
       <div className={styles.links}>
         {navLinks.map((item, index) => (
           <p key={`${item}-${index}`}>{item}</p>
