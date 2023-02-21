@@ -1,4 +1,4 @@
-import styles from "./browser_job.module.scss";
+import styles from "./browserJob.module.scss";
 import { FaArrowRight } from "react-icons/fa";
 import { firstData, SecondData } from "./Data";
 export const BrowserJob = () => {
