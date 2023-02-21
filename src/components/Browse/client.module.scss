@@ -1,0 +1,23 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main{
+  text-align: center;
+  .p1 {
+    color: #15a6f5;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  .p2 {
+    color: #707070;
+  }
+  span{
+    color: #ffd802;
+  }
+  .button1{
+    background-color: #15a6f5;
+    color: #ffffff;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border-color: transparent;
+  }
+}
