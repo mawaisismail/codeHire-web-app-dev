@@ -9,7 +9,7 @@ export const Client = () => {
         Post a job to tell us about you project. we'll quickly match you with
         the right freelancers.
       </p>
-      <button className={styles.button1}>Started Now 🚀</button>
+      <button className={styles.button1}>Started Now</button>
     </div>
   );
 };
