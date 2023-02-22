@@ -1,0 +1,72 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.Container {
+  margin: 80px 0;
+  position: relative;
+  .title {
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    h3 {
+      font-size: 30px;
+      line-height: 1.375;
+      color: #495057;
+      margin: 0 0 8px;
+    }
+    p {
+      font-size: 15px;
+      color: #74788d;
+      margin-bottom: 4rem;
+    }
+  }
+  .sub_container {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin: 0 3rem;
+    .box {
+      width: 400px;
+      padding: 3rem 1.5rem;
+      margin: 0.5rem;
+      div {
+        background-color: rgba(118, 109, 244, 0.15);
+        display: inline;
+        border-radius: 7px;
+        padding: 1.3rem 1.5rem;
+        .icons {
+          fill: #ffffff;
+        }
+      }
+      h5 {
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-top: 2.5rem;
+        color: #495057;
+      }
+      p {
+        font-size: 15px;
+        color: #74788d;
+        margin: 0 0 16px;
+      }
+    }
+  }
+  div {
+    text-align: center;
+    justify-content: center;
+    button {
+      margin: 1.5rem 0;
+      background-color: #766df4;
+      padding: 15px 30px;
+      font-size: 15px;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      .arrow {
+        font-size: 10px;
+        margin-left: 0.6rem;
+      }
+    }
+  }
+}
