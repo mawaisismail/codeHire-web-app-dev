@@ -1,0 +1,43 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main{
+  align-items: center;
+  width: 58%;
+  @include mixins.flex(space-between, normal);
+  //@media (max-width: 1100px) {
+  //  flex-direction: column;
+  //  margin: 1rem 0;
+  //}
+  .content {
+    margin: 0 20rem;
+    text-indent: 0;
+    //span{
+    //  color: white;
+    //  background-color: #387BCF;
+    //
+    //}
+    p:first-child{
+      color: #000000;
+      font-size: 1.25vw;
+      font-weight: bolder;
+    }
+    p:nth-child(3){
+      color: #387BCF;
+      font-weight: bolder;
+    }
+    p:nth-child(5){
+      color: #000000;
+      font-weight: bolder;
+    }p:nth-child(7){
+      color: #000000;
+      font-weight: bolder;
+    }
+    p{
+      color: #656565;
+    }
+  }
+  img{
+    background-image: url("/static/images/process1.png");
+
+  }
+}
