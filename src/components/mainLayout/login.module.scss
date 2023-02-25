@@ -1,0 +1,54 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main {
+  .heading {
+    @include mixins.textFont(1.5rem, 700);
+    padding: 1rem;
+    border-bottom: 2px solid $Step-color-main;
+  }
+
+  form {
+    .input_main {
+      position: relative;
+      margin: 2.5rem 0;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        @include mixins.textFont(1rem, 700);
+      }
+
+      input {
+        margin: 5px 0;
+        padding: 1rem;
+        outline: none;
+        border: 1px solid $base-heading;
+      }
+
+      .error {
+        position: absolute;
+        color: $warning;
+        bottom: -25px;
+      }
+
+      svg {
+        position: absolute;
+        cursor: pointer;
+        top: 40px;
+        right: 10px;
+      }
+    }
+
+    .btn {
+      @include mixins.flex;
+
+      button {
+        @include mixins.globalButton($signup-main, $signup-main);
+        @include mixins.textFont(1rem, 700, $white);
+        margin: 1rem;
+        padding: 0.7rem 1rem;
+      }
+    }
+  }
+}
