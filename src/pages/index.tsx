@@ -1,7 +1,8 @@
 import { Header } from "@/components/common/Header";
 import { MainLayout } from "@/components/mainLayout/MainLayout";
 import { GlobalProvider } from "../../utils/context/GlobalProvider";
-import { Client } from "@/components/Browse/Client";
+import { Signup } from "@/components/signUp/signUp";
+import { Login } from "@/components/mainLayout/Login";
 
 const Pages = () => {
   return (
@@ -9,7 +10,8 @@ const Pages = () => {
       <GlobalProvider>
         <MainLayout>
           <Header />
-          <Client />
+          <Signup />
+          <Login />
         </MainLayout>
       </GlobalProvider>
     </div>
