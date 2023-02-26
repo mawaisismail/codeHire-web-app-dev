@@ -1,7 +1,9 @@
 @use "/styles/mixins";
 @import "/styles/variables";
-.main{
+.main {
   text-align: center;
+  background-color: rgba(118, 109, 244, 0.1);
+  padding: 5rem 0;
   .p1 {
     color: #15a6f5;
     font-weight: bolder;
@@ -10,10 +12,10 @@
   .p2 {
     color: #707070;
   }
-  span{
+  span {
     color: #ffd802;
   }
-  .button1{
+  .button1 {
     background-color: #15a6f5;
     color: #ffffff;
     padding: 10px 10px;

@@ -1,0 +1,84 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.HeroContainer {
+  background-color: rgba(118, 109, 244, 0.1);
+  height: 90vh;
+  display: flex;
+  .HeroContent {
+    width: 50vw;
+    padding: 7rem 0 0 3rem;
+    p:nth-child(1) {
+      font-size: 14px;
+      font-weight: 600;
+      color: #495057;
+    }
+    p:nth-child(2) {
+      margin-top: -0.3rem;
+      margin-bottom: -0.3rem;
+      font-size: 50px;
+      font-weight: 600;
+      max-width: 550px;
+      line-height: 3.6rem;
+
+      span {
+        color: #766df4;
+      }
+    }
+    p:nth-child(3) {
+      font-size: 1.3rem;
+      font-weight: 300;
+      line-height: 30px;
+    }
+    .HeroSearch {
+      border-radius: 6px;
+      margin-right: 25px;
+      margin-top: 50px;
+      background-color: white;
+      display: flex;
+      margin-bottom: 4rem;
+      justify-content: center;
+      text-align: center;
+      .HeroName {
+        border-right: 1px solid lightgrey;
+        padding: 1.5rem 0 0 0.2rem;
+        width: 25vw;
+        .HeroNameFa {
+          margin-right: 10px;
+          color: #766df4;
+        }
+        .HeroNameInput {
+          border: none;
+          outline: none;
+        }
+      }
+      .HeroLocation {
+        padding: 1.5rem;
+        width: 20vw;
+        border-right: 1px solid lightgrey;
+        .HeroLocationFa {
+          margin-right: 10px;
+          color: #766df4;
+        }
+      }
+      .HeroFindJob {
+        border-radius: 0 7px 7px 0;
+        background-color: #766df4;
+        width: 20vw;
+        padding: 1.5rem;
+        color: white;
+        .HeroFindJobFa {
+          margin-right: 10px;
+          color: white;
+        }
+      }
+    }
+  }
+  .HeroLogo {
+    width: 50vw;
+    background: url("/static/images/work2.png") no-repeat center center/contain;
+    min-width: 630px;
+    height: 480px;
+    max-height: 550px;
+    min-height: 340px;
+  }
+}

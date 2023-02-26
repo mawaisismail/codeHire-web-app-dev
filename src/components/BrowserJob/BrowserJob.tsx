@@ -4,30 +4,30 @@ import { firstData, SecondData } from "./BrowserData";
 
 export const BrowserJob = () => {
   return (
-    <div className={styles.Container}>
-      <div className={styles.title}>
+    <div className={styles.CategoriesContainer}>
+      <div className={styles.CategoriesTitle}>
         <h3>Browser Jobs Categories </h3>
         <p>
           Post a job to tell us about your project. We will quickly match you
           with the right freelancers.
         </p>
       </div>
-      <div className={styles.sub_container}>
+      <div className={styles.CategoriesSubContainer}>
         {firstData.map((data) => {
           return (
-            <div key={data.id} className={styles.box}>
-              <div className={styles.icons}>{data.icons}</div>
+            <div key={data.id} className={styles.CategoriesBox}>
+              <div className={styles.CategoriesIcons}>{data.icons}</div>
               <h5>{data.title}</h5>
               <p>{data.content}</p>
             </div>
           );
         })}
       </div>
-      <div className={styles.sub_container}>
+      <div className={styles.CategoriesSubContainer}>
         {SecondData.map((data) => {
           return (
-            <div key={data.id} className={styles.box}>
-              <div className={styles.icons}>{data.icons}</div>
+            <div key={data.id} className={styles.CategoriesBox}>
+              <div className={styles.CategoriesIcons}>{data.icons}</div>
               <h5>{data.title}</h5>
               <p>{data.content}</p>
             </div>

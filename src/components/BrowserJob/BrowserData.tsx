@@ -1,27 +1,35 @@
-import { FaBell } from "react-icons/fa";
+import {
+  FaLayerGroup,
+  FaShoppingBag,
+  FaUser,
+  FaCity,
+  FaTelegram,
+  FaTelegramPlane,
+  FaDeskpro,
+} from "react-icons/fa";
 
 export const firstData = [
   {
     id: 0,
-    icons: <FaBell />,
+    icons: <FaLayerGroup />,
     title: "IT & Software",
     content: "2024 Jobs",
   },
   {
     id: 1,
-    icons: <FaBell />,
+    icons: <FaTelegram />,
     title: "Technology",
     content: "1250 Jobs",
   },
   {
     id: 2,
-    icons: <FaBell />,
+    icons: <FaShoppingBag />,
     title: "Government",
     content: "802 Jobs",
   },
   {
     id: 3,
-    icons: <FaBell />,
+    icons: <FaUser />,
     title: "Accounting / Finance",
     content: "577 Jobs",
   },
@@ -29,25 +37,25 @@ export const firstData = [
 export const SecondData = [
   {
     id: 4,
-    icons: <FaBell />,
+    icons: <FaCity />,
     title: "Construction / Facilities",
     content: "285 Jobs",
   },
   {
     id: 5,
-    icons: <FaBell />,
+    icons: <FaTelegramPlane />,
     title: "Tele-communications",
     content: "495 Jobs",
   },
   {
     id: 6,
-    icons: <FaBell />,
+    icons: <FaDeskpro />,
     title: "Design & Multimedia",
     content: "1045 Jobs",
   },
   {
     id: 7,
-    icons: <FaBell />,
+    icons: <FaUser />,
     title: "Human Resource",
     content: "1516 Job",
   },
