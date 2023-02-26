@@ -1,0 +1,61 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  .heading {
+    margin: 1rem;
+    @include mixins.textFont(1.1rem, 700, $text-heading-color);
+  }
+  .about {
+    padding: 2rem 0;
+    @include mixins.flex;
+    flex-direction: column;
+    border-bottom: 1px solid $border-light;
+    border-radius: 0.4rem;
+    .profileImage {
+      @include mixins.profileImage;
+    }
+    .profession {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      span:first-child {
+        @include mixins.textFont(1.1rem, 700, $text-heading-color);
+      }
+      span:last-child {
+        color: $text-main-color;
+      }
+    }
+    .rating {
+      @include mixins.flex;
+      svg {
+        color: $rating-star;
+        margin: 0 3px;
+      }
+    }
+  }
+  .documents {
+    border-bottom: 1px solid $border-light;
+    margin: 10px;
+  }
+  .contact {
+    margin: 10px;
+
+    .main_content {
+      display: flex;
+      padding: 0 2rem;
+
+      .headings {
+        p {
+          @include mixins.textFont(1rem, 500, $text-heading-color);
+        }
+      }
+
+      .heading_data {
+        margin: 0 0 0 50px;
+        p {
+          color: $text-main-color;
+        }
+      }
+    }
+  }
+}
