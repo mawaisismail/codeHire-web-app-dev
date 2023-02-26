@@ -9,8 +9,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const MainLayout: FC<IMainLayout> = ({ children }) => {
   return (
     <>
-      <Header />
-      <div className={inter.className}>{children}</div>
+      <div className={inter.className}>
+        <Header />
+        {children}
+      </div>
     </>
   );
 };
