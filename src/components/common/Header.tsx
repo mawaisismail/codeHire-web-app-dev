@@ -17,7 +17,10 @@ export const Header = () => {
         <div className={styles.bell}>
           <FaBell />
         </div>
-        <div className={styles.cover_image} />
+        <div
+          onClick={() => push(routes.user.profile)}
+          className={styles.cover_image}
+        />
         <p>Hi, Awais</p>
       </div>
       <div>

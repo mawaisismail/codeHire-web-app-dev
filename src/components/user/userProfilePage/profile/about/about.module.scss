@@ -1,0 +1,10 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  .heading {
+    @include mixins.textFont(1.1rem, 700, $text-heading-color);
+  }
+  p {
+    @include mixins.textFont(1rem);
+  }
+}

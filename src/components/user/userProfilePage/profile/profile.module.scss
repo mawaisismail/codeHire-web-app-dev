@@ -1,0 +1,29 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  margin: 2rem 0;
+  @include mixins.flex(space-between, normal);
+  @media (max-width: 1099px) {
+    flex-direction: column;
+  }
+  .main_container {
+    width: 28%;
+    @media (max-width: 1099px) {
+      width: 100%;
+    }
+    height: max-content;
+    border: 1px solid $border-light;
+  }
+  .main_container_2 {
+    padding: 2rem 0;
+    border: 1px solid $border-light;
+    width: 65%;
+    > div {
+      padding: 0 2rem;
+    }
+    @media (max-width: 1099px) {
+      width: 100%;
+      margin: 2rem 0;
+    }
+  }
+}
