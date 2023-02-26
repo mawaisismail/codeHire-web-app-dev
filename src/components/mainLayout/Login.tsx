@@ -3,6 +3,11 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Container } from "@mui/material";
 import { firebaseSignIn } from "../../../constants/utils/firebase";
+import { useLazyQuery } from "@apollo/client";
+import { GET_USER_BY_UID } from "../../../constants/graphQL/user";
+import { useRouter } from "next/router";
+import { routes } from "../../../constants/routes";
+import { User } from "firebase/auth";
 
 export interface emailSignUp {
   email: string;
@@ -24,14 +29,29 @@ export const signUpValidationSchema = Yup.object({
     .max(22, "Length Exceed"),
 });
 
-const fbSignIn = async ({ password, email }: emailSignUp) => {
-  const user = await firebaseSignIn(email, password);
-  if (user) {
-    console.log("user", user);
-  }
+const fbSignIn = async ({
+  password,
+  email,
+}: emailSignUp): Promise<User | void> => {
+  return await firebaseSignIn(email, password);
 };
 
 export const Login = () => {
+  const { push } = useRouter();
+  const [getUserById] = useLazyQuery(GET_USER_BY_UID, {
+    fetchPolicy: "network-only",
+  });
+
+  const getUserFun = async (uid: string) => {
+    await getUserById({
+      variables: {
+        uid,
+      },
+    }).then(() => {
+      push(routes.user.home);
+    });
+  };
+
   return (
     <Container maxWidth="sm">
       <div className={styles.main}>
@@ -40,8 +60,10 @@ export const Login = () => {
           initialValues={SignUpInitialValues}
           validationSchema={signUpValidationSchema}
           onSubmit={async (values) => {
-            fbSignIn(values);
-            console.log(values);
+            const user = await fbSignIn(values);
+            if (user) {
+              await getUserFun(user.uid);
+            }
           }}
         >
           <Form>
@@ -56,7 +78,7 @@ export const Login = () => {
             </div>
             <div className={styles.input_main}>
               <label>PASSWORD</label>
-              <Field name="password" />
+              <Field name="password" type="password" />
               <ErrorMessage
                 name="password"
                 className={styles.error}

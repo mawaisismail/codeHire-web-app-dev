@@ -4,6 +4,10 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { Container } from "@mui/material";
 import { firebaseSignUp } from "../../../constants/utils/firebase";
+import { UserType } from "../../../constants/interfaces/userType";
+import { useMutation } from "@apollo/client";
+import { CREATE_USER } from "../../../constants/graphQL/user";
+import { useRouter } from "next/router";
 
 export interface emailSignUp {
   email: string;
@@ -31,20 +35,30 @@ export const signUpValidationSchema = Yup.object({
 });
 
 export const Signup = () => {
+  const { push } = useRouter();
   const [newPassword, setNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [createUser, createUserData] = useMutation(CREATE_USER, {
+    fetchPolicy: "network-only",
+  });
 
   const firebaseSignup = async (email: string, password: string) => {
     const user = await firebaseSignUp(email, password);
     if (user) {
-      const data = {
+      const userInputType = {
         uid: user.uid,
         email: user.email,
         profileImageURL: user.photoURL,
         userName: user.displayName,
-        target: "",
+        userType: UserType.USER,
       };
-      console.log(data);
+      await createUser({
+        variables: {
+          userInputType,
+        },
+      }).then((e) => {
+        push("/");
+      });
     }
   };
 

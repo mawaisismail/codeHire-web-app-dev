@@ -38,7 +38,10 @@ export const firebaseSignUp = async (email: string, password: string) => {
   return user;
 };
 
-export const firebaseSignIn = async (email: string, password: string) => {
+export const firebaseSignIn = async (
+  email: string,
+  password: string
+): Promise<User | void> => {
   return await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       return userCredential.user;

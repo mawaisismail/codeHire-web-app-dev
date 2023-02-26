@@ -1,24 +1,10 @@
 import styles from "./header.module.scss";
 import { FaBell } from "react-icons/fa";
-import { useLazyQuery } from "@apollo/client";
-import { GET_JOB } from "../../../constants/graphQL/job";
+import { useRouter } from "next/router";
+import { routes } from "../../../constants/routes";
 const navLinks = ["Home", "Contact", "About"];
 export const Header = () => {
-  const [getJobs, getJobData] = useLazyQuery(GET_JOB, {
-    fetchPolicy: "network-only",
-  });
-
-  const getJobsFun = () => {
-    getJobs({
-      variables: {},
-    })
-      .then(({ data }) => {
-        console.log(data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  const { push } = useRouter();
   return (
     <div className={styles.main}>
       <div>CODE.H</div>
@@ -35,7 +21,8 @@ export const Header = () => {
         <p>Hi, Awais</p>
       </div>
       <div>
-        <button onClick={getJobsFun}>Run Query</button>
+        <button onClick={() => push(routes.user.signUp)}>Sign Up</button>
+        <button onClick={() => push(routes.user.login)}>Login</button>
       </div>
     </div>
   );
