@@ -11,12 +11,12 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [{ isMobile }, dispatch] = useContext(GlobalContext);
   const { push } = useRouter();
-  const isMobileScreen = (): boolean => {
+  const isMobileScreen = () => {
     if (typeof window !== "undefined") return Boolean(window.innerWidth < 1100);
-    return false;
   };
 
   useEffect(() => {
+    // @ts-ignore
     dispatch(setIsMobile(isMobileScreen()));
   }, [dispatch]);
 
