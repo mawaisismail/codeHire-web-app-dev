@@ -1,7 +1,7 @@
 @use "/styles/mixins";
 @import "/styles/variables";
 .main_container {
-  border: 1px solid #766df4;
+  border: 1.3px solid #766df4;
   border-radius: 10px;
   margin: 2rem 5rem;
   background-color: white;
@@ -22,7 +22,10 @@
     justify-content: space-between;
     .logo {
       margin-left: 3rem;
-      @include mixins.profileImage;
+      background: url("../../../static/images/card1.png") no-repeat center
+        center/contain;
+      min-width: 30px;
+      height: 80px;
       img {
         border-radius: 10px;
         height: 100%;
