@@ -1,5 +1,6 @@
 import styles from "./HeroSection.module.scss";
 import { FaUser, FaSearch, FaLocationArrow } from "react-icons/fa";
+
 export const HeroSection = () => {
   return (
     <div className={styles.HeroContainer}>
