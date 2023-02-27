@@ -1,0 +1,12 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  .heading {
+    margin: 1rem 0;
+    @include mixins.textFont(1rem, 700, $text-heading-color);
+  }
+  p {
+    word-spacing: 2px;
+    @include mixins.textFont(1rem);
+  }
+}

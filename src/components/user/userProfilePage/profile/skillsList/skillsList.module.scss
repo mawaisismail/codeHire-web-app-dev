@@ -1,0 +1,28 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  .heading {
+    margin: 1rem 0;
+    @include mixins.textFont(1rem, 700, $text-heading-color);
+  }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+
+    .blue_label {
+      margin: 5px;
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      background-color: rgba(31, 134, 239, 0.15) !important;
+      color: #1f86ef !important;
+    }
+
+    .green_label {
+      margin: 5px;
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      background-color: rgba(4, 133, 101, 0.15) !important;
+      color: #048565 !important;
+    }
+  }
+}
