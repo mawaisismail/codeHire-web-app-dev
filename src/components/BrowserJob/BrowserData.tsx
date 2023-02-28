@@ -30,7 +30,7 @@ export const firstData = [
   {
     id: 3,
     icons: <FaUser />,
-    title: "Accounting / Finance",
+    title: "Accounting",
     content: "577 Jobs",
   },
 ];
@@ -44,7 +44,7 @@ export const SecondData = [
   {
     id: 5,
     icons: <FaTelegramPlane />,
-    title: "Tele-communications",
+    title: "Tele-communiation",
     content: "495 Jobs",
   },
   {
@@ -56,7 +56,7 @@ export const SecondData = [
   {
     id: 7,
     icons: <FaUser />,
-    title: "Human Resource",
+    title: "Human -- Resource",
     content: "1516 Job",
   },
 ];
