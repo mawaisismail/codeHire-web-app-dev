@@ -26,7 +26,9 @@ export const JobWork = () => {
             );
           })}
         </div>
-        <div className={styles.JobWorkLogo}></div>
+        <div className={styles.JobWorkLogo}>
+          <p className={styles.img}></p>
+        </div>
       </div>
     </div>
   );
