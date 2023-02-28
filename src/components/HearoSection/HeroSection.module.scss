@@ -113,4 +113,9 @@
       }
     }
   }
+  @media (max-width: 320px) {
+    .HeroContent {
+      margin-left: -0.3rem;
+    }
+  }
 }
