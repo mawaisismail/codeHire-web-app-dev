@@ -1,4 +1,3 @@
-// import { Client } from "@/components/Browse/Client";
 // import { NavComp } from "@/components/Nav_Com/NavComp";
 // import { Card } from "@/components/Card/Card";
 // import { Subscribe } from "@/components/Subscribe/Subscribe";
@@ -6,6 +5,7 @@
 import { HeroSection } from "@/components/HearoSection/HeroSection";
 import { BrowserJob } from "@/components/BrowserJob/BrowserJob";
 import { JobWork } from "@/components/JobWork/JobWork";
+import { Client } from "@/components/Browse/Client";
 
 const Pages = () => {
   return (
@@ -14,7 +14,7 @@ const Pages = () => {
       <BrowserJob />
       {/*<NavComp />*/}
       <JobWork />
-      {/*<Client />*/}
+      <Client />
       {/*<Card />*/}
       {/*<Subscribe />*/}
       {/*<Footer />*/}
