@@ -19,9 +19,10 @@ export const NavComp = () => {
           UrgentTime,
           Experience,
           Notes,
+          id,
         }) => {
           return (
-            <>
+            <div key={id}>
               <div className={styles.upper}>
                 <div className={styles.logo}>
                   <div className={styles.img}></div>
@@ -57,7 +58,7 @@ export const NavComp = () => {
                   Apply Now <FaAngleDoubleRight className={styles.arrow} />
                 </p>
               </div>
-            </>
+            </div>
           );
         }
       )}

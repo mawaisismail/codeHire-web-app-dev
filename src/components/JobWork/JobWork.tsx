@@ -14,15 +14,15 @@ export const JobWork = () => {
           </div>
           {JobWorkData.map((data) => {
             return (
-              <>
-                <div className={styles.JobWorkList} key={data.id}>
+              <div key={data.id}>
+                <div className={styles.JobWorkList}>
                   <h2>
                     <span>{data.id}</span>
                     {data.heading}
                   </h2>
                   <p>{data.subheading}</p>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>
