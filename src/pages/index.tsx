@@ -7,11 +7,14 @@ import { BrowserJob } from "@/components/BrowserJob/BrowserJob";
 import { JobWork } from "@/components/JobWork/JobWork";
 import { Client } from "@/components/Browse/Client";
 import { Slide } from "@/components/Slide/Slide";
+import { JobNav } from "@/components/JobNavbar/JobNav";
+
 const Pages = () => {
   return (
     <div>
       <HeroSection />
       <BrowserJob />
+      <JobNav />
       <NavComp />
       <JobWork />
       <Client />
