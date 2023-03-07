@@ -1,26 +1,68 @@
 @use "/styles/mixins";
 @import "/styles/variables";
-
 .container {
-  max-width: 1300px;
-  border-radius: 1rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  max-width: 900px;
   nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    text-align: center;
-
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     p {
       color: #766df4;
-      font-size: 1rem;
-      padding: 1rem 2rem;
-      border-radius: 0.4rem;
-      box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+      border-radius: 8px;
+      margin: 0;
+      padding: 10px;
+      font-size: 16px;
       &:hover {
         color: white;
         background-color: #766df4;
       }
     }
+
+    @media only screen and (max-width: 768px) {
+      max-width: 550px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 0.7rem;
+      justify-content: space-around;
+
+      p {
+        margin: 0;
+        padding: 0.3rem;
+        text-align: center;
+        font-size: 0.7em;
+      }
+      p:hover {
+        background-color: #766df4;
+        margin: 0;
+        padding: 0.3rem;
+        text-align: center;
+        font-size: 0.7em;
+      }
+    }
   }
 }
+
+//.container {
+//  max-width: 1300px;
+//  border-radius: 1rem;
+//  box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
+//    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+//  nav {
+//    display: flex;
+//    justify-content: space-between;
+//    text-align: center;
+//
+//    p {
+//      color: #766df4;
+//      font-size: 1rem;
+//      padding: 1rem 2rem;
+//      border-radius: 0.4rem;
+//      box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+//      &:hover {
+//        color: white;
+//        background-color: #766df4;
+//      }
+//    }
+//  }
+//}
