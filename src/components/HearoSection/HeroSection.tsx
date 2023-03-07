@@ -44,7 +44,7 @@ export const HeroSection: React.FC<Props> = () => {
             <p className={style.description}>
               Find jobs, create trackable resumes and enrich your applications.
               Carefully crafted after analyzing the needs of different
-              industries.
+              industries after.
             </p>
             <form className={style.searchForm}>
               <div className={style.formGroup}>
