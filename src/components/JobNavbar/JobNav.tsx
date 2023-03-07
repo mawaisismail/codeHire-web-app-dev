@@ -5,11 +5,11 @@ export const JobNav = () => {
   return (
     <Container className={styles.container}>
       <nav>
-        <p>Recent Job</p>
-        <p>Featured Job</p>
+        <p>Recent-Job</p>
+        <p>Featured-Job</p>
         <p>Freelancer</p>
-        <p>Part Time</p>
-        <p>Full Time</p>
+        <p>Part-Time</p>
+        <p>Full-Time</p>
       </nav>
     </Container>
   );
