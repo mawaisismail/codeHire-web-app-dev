@@ -22,7 +22,7 @@ export const UserCard = () => {
         <p>Freelancers</p>
       </div>
       <p>
-        Some quick example text to build on the card title and bulk the card's
+        Some quick example text to build on the card title and bulk the cards
         content Moltin gives you platform.
       </p>
       <div className={styles.button_wrapper}>
