@@ -36,7 +36,6 @@
 @mixin globalButton($background, $border, $width: auto, $height: auto) {
   cursor: pointer;
   background-color: $background;
-  border-radius: 4rem;
   outline: none;
   border: 2px solid $border;
   height: $height;
@@ -63,4 +62,13 @@
   border-radius: $radius;
   cursor: pointer;
   background-size: cover;
+}
+
+@mixin Label($backgroundColor: rgba(31, 134, 239, 0.15), $color: $blue-label) {
+  margin: 5px;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  background-color: $backgroundColor !important;
+  color: $color !important;
+  width: max-content;
 }
