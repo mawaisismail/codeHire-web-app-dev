@@ -1,5 +1,5 @@
 import styles from "./documensts.module.scss";
-import { SlDoc } from "react-icons/sl";
+import { SlDoc } from "react-icons/Sl";
 import { TfiImport } from "react-icons/tfi";
 
 export const Documents = () => {

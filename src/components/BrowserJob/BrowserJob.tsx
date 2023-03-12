@@ -1,5 +1,5 @@
 import styles from "./BrowserJob.module.scss";
-import { FaArrowRight } from "react-icons/fa";
+import { SlArrowRight } from "react-icons/Sl";
 import { firstData, SecondData } from "./BrowserData";
 
 export const BrowserJob = () => {
@@ -36,7 +36,7 @@ export const BrowserJob = () => {
       </div>
       <div>
         <button>
-          Browse All Categories <FaArrowRight className={styles.arrow} />
+          Browse All Categories <SlArrowRight className={styles.arrow} />
         </button>
       </div>
     </div>

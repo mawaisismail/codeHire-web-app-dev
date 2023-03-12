@@ -1,24 +1,19 @@
 import styles from "./UserJob.module.scss";
 import { Container } from "@mui/material";
-import {
-  FaShoppingBag,
-  FaLocationArrow,
-  FaAddressBook,
-  FaFilter,
-} from "react-icons/fa";
+import { SlBag, SlLocationPin, SlBookOpen, SlFire } from "react-icons/Sl";
 export const UserJob = () => {
   return (
     <Container maxWidth="lg" className={styles.Container}>
       <div className={styles.row_one}>
         <div>
           <span>
-            <FaShoppingBag />
+            <SlBag />
           </span>
           <input placeholder="Job Company name.." className={styles.block} />
         </div>
         <div>
           <span>
-            <FaLocationArrow />
+            <SlLocationPin />
           </span>
           <select className={styles.block}>
             <option>Afghanistan</option>
@@ -29,7 +24,7 @@ export const UserJob = () => {
         </div>
         <div>
           <span>
-            <FaAddressBook />
+            <SlBookOpen />
           </span>
           <select className={styles.block}>
             <option>Accounting</option>
@@ -40,7 +35,7 @@ export const UserJob = () => {
         </div>
         <div className={styles.btn}>
           <span>
-            <FaFilter />
+            <SlFire />
           </span>
           <button>Filter</button>
         </div>
@@ -60,19 +55,19 @@ export const UserJob = () => {
           <p>
             <span>Magento Developer </span>(0-2 Yrs Exp.)
             <span>
-              <FaShoppingBag />
+              <SlBag />
             </span>
           </p>
           <p>
             Jobcy Technology Pvt.ltd
             <span>
-              <FaLocationArrow />
+              <SlLocationPin />
             </span>
             California
           </p>
           <p>
             <span>
-              <FaShoppingBag />
+              <SlBag />
             </span>
             $250 - $800/month
           </p>

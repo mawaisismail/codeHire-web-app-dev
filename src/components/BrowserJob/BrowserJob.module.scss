@@ -25,7 +25,7 @@
     margin: 2em 0;
     .CategoriesBox {
       width: 400px;
-      padding: 3rem 1.5rem;
+      padding: 3rem 0;
       margin: 0.5rem;
       .CategoriesIcons {
         background-color: rgba(118, 109, 244, 0.15);
@@ -35,14 +35,21 @@
         color: #766df4;
         font-size: 1.8em;
       }
+      h5 {
+        margin-top: 2rem;
+      }
       @media (max-width: 425px) {
+        h5 {
+          margin-top: 1.3rem;
+        }
         padding: 0;
         margin: 0;
         .CategoriesIcons {
           font-size: 1em;
           padding: 0.6rem 1.5rem;
         }
-        h5 ,p{
+        h5,
+        p {
           font-size: 0.8em;
         }
       }
@@ -53,7 +60,8 @@
           font-size: 0.8em;
           padding: 0.6rem 1.2rem;
         }
-        h5 ,p{
+        h5,
+        p {
           font-size: 0.8em;
         }
       }
@@ -65,7 +73,8 @@
           padding: 0.5rem 1rem;
           margin-bottom: 1rem;
         }
-        h5 ,p{
+        h5,
+        p {
           font-size: 0.6em;
         }
       }

@@ -1,73 +1,73 @@
-@use "/styles/mixins";
-@import "/styles/variables";
-.main_container {
-  border: 1.3px solid #766df4;
-  border-radius: 10px;
-  margin: 2rem 5rem;
-  background-color: white;
-  .arrow {
-    color: #766df4;
-  }
-  .business {
-    p:nth-child(1) {
-      font-size: 1.1rem;
-      font-weight: 600;
+.nav {
+  margin: 1.4rem 0;
+  border: 1px solid #766df4;
+  border-radius: 5px;
+  .row_third {
+    max-width: 800px;
+    display: grid;
+    @media (min-width: 768px) {
+      height: 160px;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      .logo {
+        padding: 1rem 0;
+        p {
+          background-size: cover;
+        }
+      }
     }
-    p:nth-child(2) {
-      margin-top: -0.5rem;
-    }
-  }
-  .upper {
-    display: flex;
-    justify-content: space-between;
     .logo {
-      margin-left: 3rem;
-      background: url("../../../static/images/card1.png") no-repeat center
-        center/contain;
-      min-width: 30px;
-      height: 80px;
-      img {
-        border-radius: 10px;
+      margin: 0 auto;
+      height: 110px;
+      width: 80px;
+      p {
+        margin-top: 2rem;
         height: 100%;
         width: 100%;
+        background-image: url("../../../public/Image/card1.png");
+        background-repeat: no-repeat;
       }
     }
-    div {
-      padding: 1rem;
-    }
-    .btn {
-      padding: 2rem;
-      button {
-        margin: 0 0.2rem;
-        border: none;
-        border-radius: 5px;
-        padding: 0.4rem;
-        outline: none;
+    .content {
+      margin: 0 auto;
+      line-height: 20px;
+      p:nth-child(1) {
+        span:nth-child(1) {
+          font-weight: bold;
+          color: black !important;
+        }
       }
-      button:nth-child(1) {
-        background-color: rgba(218, 55, 70, 0.15) !important;
-        color: rgb(218, 55, 70) !important;
-      }
-      button:nth-child(2) {
-        background-color: rgba(95, 208, 243, 0.15) !important;
-        color: rgb(95, 208, 243) !important;
-      }
-      button:nth-child(3) {
-        background-color: rgba(247, 204, 83, 0.15) !important;
-        color: rgb(247, 204, 83) !important;
+      p {
+        display: flex;
+        span {
+          color: #766df4;
+          margin: 0 5px;
+        }
+        button {
+          border: none;
+          outline: none;
+          padding: 0.7rem;
+          border-radius: 5px;
+        }
+        .full {
+          background-color: rgba(218, 55, 70, 0.15) !important;
+          color: rgb(218, 55, 70) !important;
+        }
+        .urgent {
+          background-color: rgba(95, 208, 243, 0.15) !important;
+          color: rgb(95, 208, 243) !important;
+          margin: 0 auto;
+        }
+        .private {
+          background-color: rgba(247, 204, 83, 0.15) !important;
+          color: rgb(247, 204, 83) !important;
+        }
       }
     }
   }
-  .down {
-    padding: 0 2rem;
-    background-color: rgba(211, 211, 211, 0.38);
+  .footer {
+    margin-top: 1rem;
+    background-color: rgba(135, 206, 250, 0.32);
     display: flex;
-    justify-content: space-between;
-    p {
-      margin: 0.6rem 1rem;
-      span {
-        color: rgba(0, 0, 0, 0.57);
-      }
-    }
+    justify-content: space-around;
   }
 }
