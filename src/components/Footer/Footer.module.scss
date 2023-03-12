@@ -1,42 +1,27 @@
 @use "/styles/mixins";
 @import "/styles/variables";
-.main_container {
-  background: #2e3538;
-  .content {
-    background: #2e3538;
-    padding: 3rem 4rem;
-    display: flex;
-    div:nth-child(1) {
-      width: 30%;
-      margin-right: 2rem;
-      p {
-        font-weight: 500;
-        font-size: 1.3rem;
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .brandTitle {
-        font-size: 16px;
-        color: #ffffff80;
-      }
-      .logo {
-        display: flex;
-      }
-    }
-    div {
-      width: 15%;
-      margin-right: 2rem;
-      p {
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.85);
-      }
+.Footer{
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(1px, 1fr);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  .upper{
+    display: grid;
+    gap: 30px;
+    justify-content: center;
+    text-align: center;
+    grid-template-rows: minmax(1px, 1fr);
+    padding: 1rem 0;
+    @media (min-width: 768px) {
+      display: flex;
+      text-align: left;
+      justify-content: space-between;
     }
   }
-  .sub_content {
-    background: #2e3538;
-    //color: #495057;
-    padding: 0.5rem;
-    color: #ffffff80;
-    text-align: center;
+  .lower{
+    padding: 1rem 0;
     justify-content: center;
+    text-align: center;
   }
 }

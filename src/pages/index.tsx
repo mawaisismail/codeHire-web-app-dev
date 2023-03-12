@@ -8,6 +8,7 @@ import { JobWork } from "@/components/JobWork/JobWork";
 import { Client } from "@/components/Browse/Client";
 import { Slide } from "@/components/Slide/Slide";
 import { Subscribe } from "@/components/Subscribe/Subscribe";
+import { Footer } from "@/components/Footer/Footer";
 
 const Pages = () => {
   return (
@@ -22,6 +23,7 @@ const Pages = () => {
       <UserJob />
       <Slide />
       <Subscribe />
+      <Footer />
     </div>
   );
 };

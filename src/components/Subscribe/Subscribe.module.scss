@@ -4,7 +4,8 @@
 .container {
   display: grid;
   width: 100%;
-  margin: 4rem auto;
+  margin: 4rem auto 0 auto;
+  background-color: rgba(0, 0, 0, 0.75);
   .logo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
@@ -12,6 +13,7 @@
     p:nth-child(1) {
       background: url("../../../public/Image/Sub1.png") no-repeat center
         center/contain;
+      color: white;
     }
     p:nth-child(2) {
       background: url("../../../public/Image/Sub2.png") no-repeat center
@@ -35,7 +37,6 @@
     }
   }
   .content {
-    background-color: rgba(0, 0, 0, 0.75);
     color: white;
     padding: 2rem 1rem;
     display: grid;
