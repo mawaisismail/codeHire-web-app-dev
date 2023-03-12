@@ -1,6 +1,34 @@
 @use "/styles/mixins";
 @import "/styles/variables";
 
-.slideContainer{
-  background-color: lightcoral;
+.Slide {
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(118, 109, 244, 0.1);
+  padding: 0 5rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  border-radius: 30px;
+  .content {
+    margin: 3rem auto;
+    .logo {
+      margin: 0 auto;
+      background: url("../../../public/Image/card1.png") no-repeat center
+        center/contain;
+      min-width: 30px;
+      height: 60px;
+      img {
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    p {
+      padding: 0.8rem 1rem;
+      span {
+        padding: 0.5rem;
+        color: #766df4;
+      }
+    }
+  }
 }

@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SliderData } from "./SliderData";
-
+import { SlBag, SlBookOpen } from "react-icons/sl";
 export const Slide = () => {
   let settings = {
     dots: true,
@@ -42,15 +42,27 @@ export const Slide = () => {
     ],
   };
   return (
-    <Container className={styles.Slide}>
+    <Container maxWidth="md" className={styles.Slide}>
       <Slider {...settings}>
-        {SliderData.map(({ id, image, heading, subTittle, tittle }) => {
+        {SliderData.map(({ id, heading, subTittle, tittle }) => {
           return (
-            <div key={id}>
-              <p>{image}</p>
+            <div key={id} className={styles.content}>
+              <div className={styles.logo}>
+                <p className={styles.img}></p>
+              </div>
               <p>{heading}</p>
-              <p>{subTittle}</p>
-              <p>{tittle}</p>
+              <p>
+                <span>
+                  <SlBookOpen />
+                </span>
+                {subTittle}
+              </p>
+              <p>
+                <span>
+                  <SlBag />
+                </span>{" "}
+                {tittle}
+              </p>
             </div>
           );
         })}
