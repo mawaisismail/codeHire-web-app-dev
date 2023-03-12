@@ -45,7 +45,8 @@
     width: 60vw;
     .img {
       margin: 0 auto;
-      background: url("/static/images/workjob.png") no-repeat right/contain;
+      background: url("../../../static/images/workjob.png") no-repeat
+        right/contain;
       height: 80%;
       width: 80%;
     }
