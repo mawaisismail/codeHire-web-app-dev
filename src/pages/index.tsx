@@ -3,14 +3,17 @@ import { BrowserJob } from "@/components/BrowserJob/BrowserJob";
 import { JobNav } from "@/components/JobNavbar/JobNav";
 import { UserJob } from "@/components/UserJob/UserJob";
 import { GGetInTouch } from "@/components/common/getInTouch/g-getInTouch";
+
+import { NavComp } from "@/components/Nav_Com/NavComp";
 const Pages = () => {
   return (
     <div>
       <HeroSection />
       <GGetInTouch />
       <BrowserJob />
-      <UserJob />
       <JobNav />
+      <NavComp />
+      <UserJob />
     </div>
   );
 };

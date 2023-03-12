@@ -53,60 +53,82 @@
     }
   }
   .row_third {
-    max-width: 400px;
-    margin-top: 10px;
+    max-width: 100%;
     border-radius: 5px;
     display: grid;
     border: 1px solid #766df4;
-    .logo {
-      margin: 0 auto;
-      height: 90px;
-      width: 90px;
-      p {
-        height: 100%;
-        width: 100%;
-        background-image: url("../../../public/Image/card1.png");
-        background-repeat: no-repeat;
+    margin: 1rem auto;
+    .mainContent {
+      display: grid;
+      grid-template-columns: 1fr 3.5fr;
+      @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr;
       }
-    }
-    .content {
-      margin: 0 auto;
-      p:nth-child(1) {
-        span:nth-child(1) {
-          font-weight: bold;
-          color: black !important;
+      .logo {
+        background: url("../../../public/Image/card1.png") no-repeat center
+          center/contain;
+        min-width: 30px;
+        margin: 2rem;
+        height: 60px;
+        img {
+          border-radius: 10px;
+          height: 100%;
+          width: 100%;
         }
       }
-      p {
+      .content {
         display: flex;
-        span {
-          color: #766df4;
-          margin: 0 5px;
+        flex-wrap: wrap;
+        .subContent {
+          margin: 1rem auto 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          @media (max-width: 768px) {
+            display: grid;
+            margin: 0 auto;
+            line-height: 30px;
+            grid-template-columns: repeat(1, 1fr);
+          }
         }
-        button {
-          border: none;
-          outline: none;
-          padding: 0.7rem;
-          border-radius: 5px;
+        p:nth-child(1) {
+          span:nth-child(1) {
+            font-weight: bold;
+            color: black !important;
+          }
         }
-        .full {
-          background-color: rgba(218, 55, 70, 0.15) !important;
-          color: rgb(218, 55, 70) !important;
-        }
-        .urgent {
-          background-color: rgba(95, 208, 243, 0.15) !important;
-          color: rgb(95, 208, 243) !important;
-          margin: 0 auto;
-        }
-        .private {
-          background-color: rgba(247, 204, 83, 0.15) !important;
-          color: rgb(247, 204, 83) !important;
+        p {
+          span {
+            color: #766df4;
+            margin: 0 5px;
+          }
+          button {
+            border: none;
+            outline: none;
+            margin: 0 1rem;
+            padding: 0.7rem 1rem;
+            border-radius: 5px;
+          }
+          .full {
+            background-color: rgba(218, 55, 70, 0.15) !important;
+            color: rgb(218, 55, 70) !important;
+          }
+          .urgent {
+            background-color: rgba(95, 208, 243, 0.15) !important;
+            color: rgb(95, 208, 243) !important;
+            margin: 1rem;
+          }
+          .private {
+            background-color: rgba(247, 204, 83, 0.15) !important;
+            color: rgb(247, 204, 83) !important;
+          }
         }
       }
     }
     .footer {
       background-color: rgba(135, 206, 250, 0.32);
       display: flex;
+      padding: 1rem 0;
       justify-content: space-around;
     }
   }
