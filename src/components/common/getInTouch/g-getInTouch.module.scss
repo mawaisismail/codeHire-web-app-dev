@@ -66,6 +66,10 @@
       height: 450px;
       cursor: pointer;
       background-size: cover;
+      @media (max-width: 425px) {
+        background: none;
+        height: 0;
+      }
     }
     @media (max-width: 1100px) {
       margin: 2rem 0;

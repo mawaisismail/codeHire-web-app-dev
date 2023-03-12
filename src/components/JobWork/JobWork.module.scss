@@ -10,7 +10,7 @@
     font-weight: 600;
     padding: 0 0 0 1rem;
     .JobWorkHeading {
-      padding: 2rem 0 0.5rem 0;
+      padding: 2rem 0 3rem 0;
       h2 {
         color: #495057;
         font-weight: 500;
@@ -18,7 +18,7 @@
       }
       p {
         color: #74788d;
-        margin-top: -1rem;
+        margin-top: 1rem;
       }
     }
     .JobWorkList {
@@ -44,9 +44,10 @@
   .JobWorkLogo {
     width: 60vw;
     .img {
+      margin: 0 auto;
       background: url("/static/images/workjob.png") no-repeat right/contain;
       height: 80%;
-      width: 100%;
+      width: 80%;
     }
   }
   @media (max-width: 1024px) {
@@ -81,19 +82,20 @@
   @media (max-width: 425px) {
     .JobWorkContent {
       width: 90vw;
-      padding: 0;
+      padding: 0 1rem;
       .JobWorkList {
         margin-left: -1rem;
-        p{
+        p {
           padding-right: 1rem;
-        }}
+        }
+      }
     }
   }
   @media (max-width: 320px) {
     .JobWorkContent {
       .JobWorkList {
         margin-left: -1rem;
-        p{
+        p {
           padding-right: 1rem;
         }
       }
