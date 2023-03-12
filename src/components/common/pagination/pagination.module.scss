@@ -1,0 +1,44 @@
+@use "/styles/mixins";
+@import "styles/variables";
+.main {
+  @include mixins.flex(center, normal);
+
+  .pagination {
+    display: flex;
+    list-style: none;
+    margin: 1rem 0;
+
+    a {
+      cursor: pointer;
+      @include mixins.flex();
+      @include mixins.textFont(1.5rem, 700, $base-color);
+      margin: 0 0.5rem;
+      height: 50px;
+      width: 50px;
+    }
+
+    .page {
+      .pageLink {
+        border: 2px solid $base-color;
+        border-radius: 50%;
+      }
+    }
+
+    .next {
+      a {
+        background: url("/static/images/pagination_next.svg") center no-repeat;
+      }
+    }
+
+    .previous {
+      a {
+        background: url("/static/images/pagination_prev.svg") center no-repeat;
+      }
+    }
+
+    .active_link {
+      color: $white !important;
+      background: $base-color;
+    }
+  }
+}

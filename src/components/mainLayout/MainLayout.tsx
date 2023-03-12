@@ -5,11 +5,10 @@ import { Header } from "@/components/common/Header";
 interface IMainLayout {
   children: ReactNode;
 }
-const inter = Inter({ subsets: ["latin"] });
 export const MainLayout: FC<IMainLayout> = ({ children }) => {
   return (
     <>
-      <div className={inter.className}>
+      <div>
         <Header />
         {children}
       </div>
