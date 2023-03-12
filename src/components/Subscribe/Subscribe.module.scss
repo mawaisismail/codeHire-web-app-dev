@@ -10,22 +10,28 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
     height: 40px;
     p:nth-child(1) {
-      background: url("/static/images/Sub1.png") no-repeat center center/contain;
+      background: url("../../../public/Image/Sub1.png") no-repeat center
+        center/contain;
     }
     p:nth-child(2) {
-      background: url("/static/images/Sub2.png") no-repeat center center/contain;
+      background: url("../../../public/Image/Sub2.png") no-repeat center
+        center/contain;
     }
     p:nth-child(3) {
-      background: url("/static/images/Sub3.png") no-repeat center center/contain;
+      background: url("../../../public/Image/Sub3.png") no-repeat center
+        center/contain;
     }
     p:nth-child(4) {
-      background: url("/static/images/Sub4.png") no-repeat center center/contain;
+      background: url("../../../public/Image/Sub4.png") no-repeat center
+        center/contain;
     }
     p:nth-child(5) {
-      background: url("/static/images/Sub5.png") no-repeat center center/contain;
+      background: url("../../../public/Image/Sub5.png") no-repeat center
+        center/contain;
     }
     p:nth-child(6) {
-      background: url("/static/images/Sub6.png") no-repeat center center/contain;
+      background: url("../../../public/Image/Sub6.png") no-repeat center
+        center/contain;
     }
   }
   .content {
@@ -37,7 +43,7 @@
     margin: 1rem auto 0 auto;
     gap: 30px;
     @media (min-width: 768px) {
-      grid-template-columns: repeat(auto-fit, minmax(1px , 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
     }
     div {
       p {
