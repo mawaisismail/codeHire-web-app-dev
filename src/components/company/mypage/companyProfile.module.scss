@@ -1,0 +1,29 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  margin: 7rem 0;
+  @include mixins.flex(space-between, normal);
+  @media (max-width: 1099px) {
+    flex-direction: column;
+    margin: 2rem 0;
+  }
+  .section_1 {
+    width: 33%;
+    @media (max-width: 1099px) {
+      width: 100%;
+    }
+  }
+  .section_2 {
+    width: 64%;
+    @media (max-width: 1099px) {
+      width: 100%;
+    }
+    .heading {
+      margin: 1rem 0;
+      @include mixins.textFont(1.1rem, 700, $text-heading-color);
+    }
+    p {
+      @include mixins.textFont(1rem);
+    }
+  }
+}

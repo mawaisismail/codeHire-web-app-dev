@@ -1,0 +1,90 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+  border: 1px solid $border-light;
+  .heading {
+    margin: 1rem;
+    @include mixins.textFont(1.1rem, 700, $text-heading-color);
+  }
+  .about {
+    padding: 2rem 0;
+    @include mixins.flex;
+    flex-direction: column;
+    border-bottom: 1px solid $border-light;
+    border-radius: 0.4rem;
+    .profileImage {
+      @include mixins.profileImage;
+    }
+    .profession {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      span {
+        margin: 0.5rem 0;
+      }
+      span:first-child {
+        @include mixins.textFont(1.1rem, 700, $text-heading-color);
+      }
+      span:last-child {
+        color: $text-main-color;
+      }
+    }
+    .rating {
+      margin: 0.5rem 0;
+      @include mixins.flex;
+      svg {
+        color: $rating-star;
+        margin: 0 3px;
+      }
+    }
+  }
+  .contact {
+    margin: 10px;
+    padding: 0 0 1rem 0;
+    border-bottom: 1px solid $border-light;
+    .main_content {
+      @include mixins.flex(space-between);
+      padding: 0 2rem;
+      .headings {
+        p {
+          margin: 1rem 0;
+          @include mixins.textFont(1rem, 500, $text-heading-color);
+        }
+      }
+
+      .heading_data {
+        p {
+          margin: 1rem 0;
+          color: $text-main-color;
+        }
+      }
+    }
+    .button_contact {
+      @include mixins.globalButton($button-red, $button-red, 100%, 45px);
+      border-radius: 0.4rem;
+      @include mixins.textFont(1rem, 700, $white);
+    }
+  }
+
+  .office_time {
+    margin: 10px;
+    .main_content {
+      @include mixins.flex(space-between);
+      padding: 0 2rem;
+
+      .headings {
+        p {
+          margin: 1rem 0;
+          @include mixins.textFont(1rem, 500, $text-heading-color);
+        }
+      }
+
+      .heading_data {
+        p {
+          margin: 1rem 0;
+          color: $text-main-color;
+        }
+      }
+    }
+  }
+}
