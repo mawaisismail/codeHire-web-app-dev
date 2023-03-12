@@ -6,6 +6,7 @@ import { GGetInTouch } from "@/components/common/getInTouch/g-getInTouch";
 import { NavComp } from "@/components/Nav_Com/NavComp";
 import { JobWork } from "@/components/JobWork/JobWork";
 import { Client } from "@/components/Browse/Client";
+import { Slide } from "@/components/Slide/Slide";
 const Pages = () => {
   return (
     <div>
@@ -14,9 +15,10 @@ const Pages = () => {
       <BrowserJob />
       <JobNav />
       <NavComp />
-      <UserJob />
       <JobWork />
       <Client />
+      <UserJob />
+      <Slide />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 .Container {
   .row_one {
+    margin: 2rem 0 0 0;
     display: grid;
     @media (min-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
