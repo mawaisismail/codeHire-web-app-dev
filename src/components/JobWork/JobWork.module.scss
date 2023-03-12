@@ -3,7 +3,7 @@
 
 .JobWorkMain {
   margin: 0 2rem;
-  height: 100vh;
+  height: 85vh;
   @include mixins.flex(space-between, normal);
   .JobWorkContent {
     width: 50%;
@@ -45,7 +45,8 @@
     width: 60vw;
     .img {
       margin: 0 auto;
-      background: url("/static/images/workjob.png") no-repeat right/contain;
+      background: url("../../../static/images/workjob.png") no-repeat
+        right/contain;
       height: 80%;
       width: 80%;
     }
@@ -82,7 +83,7 @@
   @media (max-width: 425px) {
     .JobWorkContent {
       width: 90vw;
-      padding: 0 1rem;
+      padding: 1rem;
       .JobWorkList {
         margin-left: -1rem;
         p {
