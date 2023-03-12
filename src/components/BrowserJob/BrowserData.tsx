@@ -7,7 +7,7 @@ import {
   SlCompass,
   SlMicrophone,
   SlTrophy,
-} from "react-icons/Sl";
+} from "react-icons/sl";
 
 export const firstData = [
   {

@@ -1,6 +1,6 @@
 import styles from "./UserJob.module.scss";
 import { Container } from "@mui/material";
-import { SlBag, SlLocationPin, SlBookOpen, SlFire } from "react-icons/Sl";
+import { SlBag, SlLocationPin, SlBookOpen, SlFire } from "react-icons/sl";
 export const UserJob = () => {
   return (
     <Container maxWidth="lg" className={styles.Container}>

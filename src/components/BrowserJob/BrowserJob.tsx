@@ -1,5 +1,5 @@
 import styles from "./BrowserJob.module.scss";
-import { SlArrowRight } from "react-icons/Sl";
+import { SlArrowRight } from "react-icons/sl";
 import { firstData, SecondData } from "./BrowserData";
 
 export const BrowserJob = () => {
@@ -8,8 +8,8 @@ export const BrowserJob = () => {
       <div className={styles.CategoriesTitle}>
         <h3>Browser Jobs Categories </h3>
         <p>
-          Post a job to tell us about your project. We will quickly match you
-          with the right freelancers.
+          Post a job to tell us about your project. We will quickly match
+          youBrow with the right freelancers.
         </p>
       </div>
       <div className={styles.CategoriesSubContainer}>

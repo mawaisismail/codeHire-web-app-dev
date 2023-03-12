@@ -1,5 +1,5 @@
 import styles from "./NavComp.module.scss";
-import { SlBag, SlLocationPin } from "react-icons/Sl";
+import { SlBag, SlLocationPin } from "react-icons/sl";
 import { Container } from "@mui/material";
 
 export const NavComp = () => {
