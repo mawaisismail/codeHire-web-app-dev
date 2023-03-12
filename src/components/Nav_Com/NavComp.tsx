@@ -1,67 +1,51 @@
-import styles from "./NavComp.module.scss";
-import { NavData } from "./NavData";
-import {
-  FaLocationArrow,
-  FaDollarSign,
-  FaAngleDoubleRight,
-} from "react-icons/fa";
+import styles from "../UserJob/UserJob.module.scss";
+import { Container } from "@mui/material";
+import { SlBag, SlLocationPin } from "react-icons/sl";
 export const NavComp = () => {
   return (
-    <div className={styles.main_container}>
-      {NavData.map(
-        ({
-          heading,
-          subHeading,
-          Location,
-          dollar,
-          parTime,
-          Private,
-          UrgentTime,
-          Experience,
-          Notes,
-          id,
-        }) => {
-          return (
-            <div key={id}>
-              <div className={styles.upper}>
-                <div className={styles.logo}>
-                  <div className={styles.img}></div>
-                </div>
-                <div className={styles.business}>
-                  <p>{heading}</p>
-                  <p>{subHeading}</p>
-                </div>
-                <div>
-                  <p>
-                    <FaLocationArrow className={styles.arrow} /> {Location}
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <FaDollarSign className={styles.arrow} /> {dollar}
-                  </p>
-                </div>
-                <div className={styles.btn}>
-                  <button>{parTime}</button>
-                  <button>{Private}</button>
-                  <button>{UrgentTime}</button>
-                </div>
-              </div>
-              <div className={styles.down}>
-                <p>
-                  Experience: <span>{Experience}</span>
-                </p>
-                <p>
-                  Notes: <span>{Notes}</span>
-                </p>
-                <p>
-                  Apply Now <FaAngleDoubleRight className={styles.arrow} />
-                </p>
-              </div>
+    <Container maxWidth="lg" className={styles.Container}>
+      <div className={styles.row_third}>
+        <div className={styles.mainContent}>
+          <div className={styles.logo}>
+            <p></p>
+          </div>
+
+          <div className={styles.content}>
+            <div className={styles.subContent}>
+              <p>
+                <span>Magento Developer </span>(0-2 Yrs Exp.)
+                <span>
+                  <SlBag />
+                </span>
+              </p>
+              <p>
+                Jobcy Technology Pvt.ltd
+                <span>
+                  <SlLocationPin />
+                </span>
+                California
+              </p>
+              <p>
+                <span>
+                  <SlBag />
+                </span>
+                $250 - $800/month
+              </p>
             </div>
-          );
-        }
-      )}
-    </div>
+            <p>
+              <button className={styles.full}>Full Time</button>
+              <button className={styles.urgent}>Urgent</button>
+              <button className={styles.private}>Private</button>
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.footer}>
+          <p>Experience</p>
+          <p>UI, designer, developer</p>
+          <p>Apply Now</p>
+        </div>
+      </div>
+    </Container>
   );
 };
