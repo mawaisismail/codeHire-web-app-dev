@@ -3,7 +3,7 @@
 
 .JobWorkMain {
   margin: 0 2rem;
-  height: 100vh;
+  height: 85vh;
   @include mixins.flex(space-between, normal);
   .JobWorkContent {
     width: 50%;
@@ -82,7 +82,7 @@
   @media (max-width: 425px) {
     .JobWorkContent {
       width: 90vw;
-      padding: 0 1rem;
+      padding: 1rem;
       .JobWorkList {
         margin-left: -1rem;
         p {
