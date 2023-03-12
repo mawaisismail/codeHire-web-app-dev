@@ -1,0 +1,9 @@
+@use "/styles/mixins";
+@import "styles/variables";
+.main {
+  margin: 1rem 0.5rem;
+  span {
+    @include mixins.textFont(1.5rem, 700, $base-color);
+    margin: 0 0.5rem;
+  }
+}

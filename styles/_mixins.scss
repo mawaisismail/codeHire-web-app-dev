@@ -55,7 +55,7 @@
 }
 
 @mixin profileImage($width: 80px, $height: 80px, $radius: 50%) {
-  background: url(/static/images/default_profile_img.svg) no-repeat center
+  background: url("../static/images/default_profile_img.svg") no-repeat center
     center;
   width: $width;
   height: $height;
