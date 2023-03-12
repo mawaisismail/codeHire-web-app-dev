@@ -1,0 +1,113 @@
+.Container {
+  .row_one {
+    display: grid;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3px;
+    }
+    div {
+      display: flex;
+      border: 1px solid #766df4;
+      margin: 5px 0;
+      border-radius: 5px;
+      padding: 1rem;
+      span {
+        color: #766df4;
+        padding-right: 5px;
+      }
+      .block {
+        outline: none;
+        border: none;
+        width: 100%;
+      }
+    }
+    .btn {
+      background-color: #766df4 !important;
+      justify-content: center;
+      span {
+        color: white;
+      }
+      button {
+        color: white;
+        outline: none;
+        border: none;
+        background: transparent;
+      }
+    }
+  }
+  .row_second {
+    display: flex;
+    flex-direction: column;
+    span {
+      padding: 1rem 1rem 1rem 0;
+    }
+    div {
+      border: 1px solid #766df4;
+      padding: 1rem;
+      border-radius: 5px;
+      input {
+        outline: none;
+        border: none;
+        width: 100%;
+      }
+    }
+  }
+  .row_third {
+    max-width: 400px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: grid;
+    border: 1px solid #766df4;
+    .logo {
+      margin: 0 auto;
+      height: 90px;
+      width: 90px;
+      p {
+        height: 100%;
+        width: 100%;
+        background-image: url("../../../public/Image/card1.png");
+        background-repeat: no-repeat;
+      }
+    }
+    .content {
+      margin: 0 auto;
+      p:nth-child(1) {
+        span:nth-child(1) {
+          font-weight: bold;
+          color: black !important;
+        }
+      }
+      p {
+        display: flex;
+        span {
+          color: #766df4;
+          margin: 0 5px;
+        }
+        button {
+          border: none;
+          outline: none;
+          padding: 0.7rem;
+          border-radius: 5px;
+        }
+        .full {
+          background-color: rgba(218, 55, 70, 0.15) !important;
+          color: rgb(218, 55, 70) !important;
+        }
+        .urgent {
+          background-color: rgba(95, 208, 243, 0.15) !important;
+          color: rgb(95, 208, 243) !important;
+          margin: 0 auto;
+        }
+        .private {
+          background-color: rgba(247, 204, 83, 0.15) !important;
+          color: rgb(247, 204, 83) !important;
+        }
+      }
+    }
+    .footer {
+      background-color: rgba(135, 206, 250, 0.32);
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
