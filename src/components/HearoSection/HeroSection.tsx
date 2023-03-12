@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./HeroSection.module.scss";
+import { Container } from "@mui/material";
 interface Location {
   id: number;
   name: string;
@@ -32,52 +33,54 @@ export const HeroSection: React.FC<Props> = () => {
   };
 
   return (
-    <section className={style.heroSection}>
-      <div className={style.container}>
-        <div className={style.row}>
-          <div className={style.colMd6}>
-            <h3 className={style.subTitle}>WE HAVE 150,000+ LIVE JOBS</h3>
-            <h1 className={style.title}>
-              Find your dream jobs with <span>Jobcy</span>
-            </h1>
-            <p className={style.description}>
-              Find jobs, create trackable resumes and enrich your applications.
-              Carefully crafted after analyzing the needs of different
-              industries.
-            </p>
-            <form className={style.searchForm}>
-              <div className={style.formGroup}>
-                <input
-                  type="text"
-                  className={style.formControl}
-                  placeholder="Search for jobs"
-                />
+    <Container maxWidth="xl">
+      <section className={style.heroSection}>
+        <div className={style.container}>
+          <div className={style.row}>
+            <div className={style.colMd6}>
+              <h3 className={style.subTitle}>WE HAVE 150,000+ LIVE JOBS</h3>
+              <h1 className={style.title}>
+                Find your dream jobs with <span>Jobcy</span>
+              </h1>
+              <p className={style.description}>
+                Find jobs, create trackable resumes and enrich your
+                applications. Carefully crafted after analyzing the needs of
+                different industries.
+              </p>
+              <form className={style.searchForm}>
+                <div className={style.formGroup}>
+                  <input
+                    type="text"
+                    className={style.formControl}
+                    placeholder="Search for jobs"
+                  />
+                </div>
+                <div className={style.formGroup}>
+                  <select
+                    className={style.formControl}
+                    value={selectedLocation.id}
+                    onChange={handleLocationChange}
+                  >
+                    {locations.map((location) => (
+                      <option key={location.id} value={location.id}>
+                        {location.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <button className={style.btnPrimary} type="submit">
+                  Search
+                </button>
+              </form>
+            </div>
+            <div className={style.colMd66}>
+              <div className={style.logo}>
+                <p className={style.img}></p>
               </div>
-              <div className={style.formGroup}>
-                <select
-                  className={style.formControl}
-                  value={selectedLocation.id}
-                  onChange={handleLocationChange}
-                >
-                  {locations.map((location) => (
-                    <option key={location.id} value={location.id}>
-                      {location.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button className={style.btnPrimary} type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-          <div className={style.colMd66}>
-            <div className={style.logo}>
-              <p className={style.img}></p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Container>
   );
 };
