@@ -1,15 +1,14 @@
 @use "/styles/mixins";
 @import "/styles/variables";
-.SubscribeContainer {
-  .SubscribeLogo {
-    padding: 1rem;
-    display: flex;
-    margin: 0 4rem;
-    p {
-      margin: 0 2rem;
-      min-width: 130px;
-      height: 100px;
-    }
+
+.container {
+  display: grid;
+  width: 100%;
+  margin: 4rem auto;
+  .logo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
+    height: 40px;
     p:nth-child(1) {
       background: url("/static/images/Sub1.png") no-repeat center center/contain;
     }
@@ -29,39 +28,25 @@
       background: url("/static/images/Sub6.png") no-repeat center center/contain;
     }
   }
-  .Subscribe {
-    background-color: #343C3F;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 6rem;
-    .SubscribeContent {
-      padding: 3rem 3rem 3rem 0;
-      p:nth-child(1) {
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: 500;
-        font-size: 1.7rem;
-        line-height: 1px;
-      }
-      p:nth-child(2) {
-        color: #ffffff80;
-        font-weight: 500;
-        font-size: 1.1rem;
-      }
+  .content {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 2rem 1rem;
+    display: grid;
+    width: 100%;
+    margin: 1rem auto 0 auto;
+    gap: 30px;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(1px , 1fr));
     }
-    .SubscribeSearch {
-      padding: 4rem 0 5rem 8rem;
-      .SubscribeInput {
-        outline: none;
-        border: 1px solid lightgray;
-        border-radius: 6px 0 0 6px;
-        background: none;
-        padding: 16px 250px 15px 10px;
+    div {
+      p {
+        padding: 0.5rem 0;
       }
-      .SubscribeButton {
-        color: white;
-        border-radius: 0 6px 6px 0;
-        padding: 1rem 2rem;
-        background-color: #766df4;
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 5px;
       }
     }
   }

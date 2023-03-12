@@ -1,29 +1,25 @@
 import styles from "./Subscribe.module.scss";
+import { Container } from "@mui/material";
+
 export const Subscribe = () => {
   return (
-    <div className={styles.SubscribeContainer}>
-      <div className={styles.SubscribeLogo}>
-        <p></p>
+    <Container maxWidth="xl" className={styles.container}>
+      <div className={styles.logo}>
         <p></p>
         <p></p>
         <p></p>
         <p></p>
         <p></p>
       </div>
-
-      <div className={styles.Subscribe}>
-        <div className={styles.SubscribeContent}>
+      <div className={styles.content}>
+        <div>
           <p>Get New Jobs Notification!</p>
           <p>Subscribe & get all related jobs notification.</p>
         </div>
-        <div className={styles.SubscribeSearch}>
-          <input
-            placeholder="Enter your Email"
-            className={styles.SubscribeInput}
-          />
-          <button className={styles.SubscribeButton}>Subscribe</button>
+        <div>
+          <input type="text" placeholder="Search Here...." />
         </div>
       </div>
-    </div>
+    </Container>
   );
 };

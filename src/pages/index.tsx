@@ -7,6 +7,8 @@ import { NavComp } from "@/components/Nav_Com/NavComp";
 import { JobWork } from "@/components/JobWork/JobWork";
 import { Client } from "@/components/Browse/Client";
 import { Slide } from "@/components/Slide/Slide";
+import { Subscribe } from "@/components/Subscribe/Subscribe";
+
 const Pages = () => {
   return (
     <div>
@@ -19,6 +21,7 @@ const Pages = () => {
       <Client />
       <UserJob />
       <Slide />
+      <Subscribe />
     </div>
   );
 };
