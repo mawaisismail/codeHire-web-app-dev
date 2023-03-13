@@ -1,24 +1,15 @@
 import styles from "./header.module.scss";
 import { useRouter } from "next/router";
 import { routes } from "../../../constants/routes";
-import { setIsMobile } from "../../../utils/context/actions";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import Hamburger from "hamburger-react";
-import { GlobalContext } from "../../../utils/context/GlobalProvider";
 import { Container } from "@mui/material";
+import { useIsMobile } from "../../../hooks/isMobile";
 const navLinks = ["Home", "Contact", "About"];
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [{ isMobile }, dispatch] = useContext(GlobalContext);
   const { push } = useRouter();
-  const isMobileScreen = () => {
-    if (typeof window !== "undefined") return Boolean(window.innerWidth < 1100);
-  };
-
-  useEffect(() => {
-    // @ts-ignore
-    dispatch(setIsMobile(isMobileScreen()));
-  }, [dispatch]);
+  const isMobile = useIsMobile();
 
   return (
     <div className={styles.main}>
