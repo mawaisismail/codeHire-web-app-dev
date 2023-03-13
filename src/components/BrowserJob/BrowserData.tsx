@@ -33,30 +33,28 @@ export const firstData = [
     title: "Accounting",
     content: "577 Jobs",
   },
-];
-export const SecondData = [
   {
     id: 4,
     icons: <FaCity />,
-    title: "Construction / Facilities",
+    title: "Facilities",
     content: "285 Jobs",
   },
   {
     id: 5,
     icons: <FaTelegramPlane />,
-    title: "Tele-communiation",
+    title: "communication",
     content: "495 Jobs",
   },
   {
     id: 6,
     icons: <FaDeskpro />,
-    title: "Design & Multimedia",
+    title: "Design",
     content: "1045 Jobs",
   },
   {
     id: 7,
     icons: <FaUser />,
-    title: "Human -- Resource",
+    title: "HR",
     content: "1516 Job",
   },
 ];
