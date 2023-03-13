@@ -65,7 +65,7 @@
         center;
       height: 450px;
       cursor: pointer;
-      background-size: cover;
+      background-size: contain;
       @media (max-width: 425px) {
         background: none;
         height: 0;
