@@ -3,24 +3,21 @@
 .main {
   text-align: center;
   background-color: rgba(118, 109, 244, 0.1);
-  padding: 4rem 1rem;
-  line-height: 40px;
-  .p1 {
-    color: #15a6f5;
-    font-weight: bolder;
-    font-size: larger;
+  padding: 7rem 0;
+  .heading {
+    @include mixins.textFont(1.5rem, 700, $button-blue);
+    margin: 1.5rem 0;
   }
-  .p2 {
-    color: #707070;
+  .content {
+    @include mixins.textFont(1rem, 400);
   }
   span {
-    color: #ffd802;
+    color: $rating-star;
   }
-  .button1 {
-    background-color: #15a6f5;
-    color: #ffffff;
-    padding: 10px 10px;
-    border-radius: 5px;
-    border-color: transparent;
+  button {
+    @include mixins.globalButton($button-blue, $button-blue, 150px, 45px);
+    @include mixins.textFont(1rem, 500, $white);
+    border-radius: 1rem;
+    margin: 1.5rem 0;
   }
 }
