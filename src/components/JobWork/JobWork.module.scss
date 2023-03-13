@@ -3,10 +3,17 @@
 
 .JobWorkMain {
   margin: 0 2rem;
-  height: 85vh;
+  padding: 3rem 0;
   @include mixins.flex(space-between, normal);
+  @media (max-width: 1100px) {
+    margin: 0;
+    flex-direction: column;
+  }
   .JobWorkContent {
-    width: 50%;
+    width: 70%;
+    @media (max-width: 1100px) {
+      width: 100%;
+    }
     font-weight: 600;
     padding: 0 0 0 1rem;
     .JobWorkHeading {
@@ -22,12 +29,12 @@
       }
     }
     .JobWorkList {
-      margin: 1rem 0 2rem;
+      margin: 2rem 0;
       h2 {
-        font-size: 18px;
-        font-weight: 500;
-        color: #495057;
+        @include mixins.flex(normal, flex-start);
+        @include mixins.textFont(1.1rem, 500, $text-heading-color);
         span {
+          display: inline-block;
           background-color: #766df4;
           border-radius: 50px;
           padding: 0.3rem 0.7rem;
@@ -36,70 +43,20 @@
         }
       }
       p {
+        @include mixins.textFont(1rem, 400);
         color: #74788d;
         margin-left: 3rem;
       }
     }
   }
   .JobWorkLogo {
-    width: 60vw;
-    .img {
-      margin: 0 auto;
-      background: url("../../../static/images/workjob.png") no-repeat
-        right/contain;
-      height: 80%;
-      width: 80%;
-    }
-  }
-  @media (max-width: 1024px) {
-    margin: 0 1.5rem;
-    .JobWorkContent {
-      width: 55vw;
-      padding: 0;
-      .JobWorkHeading {
-        padding: 0 0 0.5rem 0;
-      }
-    }
-    .JobWorkLogo {
-      width: 60vw;
-    }
-  }
-  @media (max-width: 768px) {
-    display: flex;
-    height: auto;
-    padding: 0;
-    flex-direction: column;
-    .JobWorkContent {
-      flex-direction: column;
-      justify-content: center;
-      text-align: justify-all;
-      width: 90vw;
-    }
-    .JobWorkLogo {
-      height: 0;
-      width: 0;
-    }
-  }
-  @media (max-width: 425px) {
-    .JobWorkContent {
-      width: 90vw;
-      padding: 1rem;
-      .JobWorkList {
-        margin-left: -1rem;
-        p {
-          padding-right: 1rem;
-        }
-      }
-    }
-  }
-  @media (max-width: 320px) {
-    .JobWorkContent {
-      .JobWorkList {
-        margin-left: -1rem;
-        p {
-          padding-right: 1rem;
-        }
-      }
+    background: url("../../../static/images/workjob.png") no-repeat center
+      center;
+    background-size: contain;
+    height: 600px;
+    width: 100%;
+    @media (max-width: 1100px) {
+      height: 400px;
     }
   }
 }
