@@ -1,27 +1,8 @@
 @use "/styles/mixins";
 @import "/styles/variables";
-.Footer{
-  padding: 1rem 2rem;
-  display: grid;
-  grid-template-columns: minmax(1px, 1fr);
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  .upper{
-    display: grid;
-    gap: 30px;
-    justify-content: center;
-    text-align: center;
-    grid-template-rows: minmax(1px, 1fr);
-    padding: 1rem 0;
-    @media (min-width: 768px) {
-      display: flex;
-      text-align: left;
-      justify-content: space-between;
-    }
-  }
-  .lower{
-    padding: 1rem 0;
-    justify-content: center;
-    text-align: center;
-  }
+.main {
+  padding: 3rem 0;
+  background-color: $black;
+  text-align: center;
+  @include mixins.textFont(1rem, 700, $white);
 }
