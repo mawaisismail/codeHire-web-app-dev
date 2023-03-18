@@ -15,16 +15,10 @@ const Pages = () => {
   return (
     <div>
       <HeroSection />
-      <GGetInTouch />
-      <ProfileForm />
       <BrowserJob />
-      <JobNav />
-      <NavComp />
       <JobWork />
       <Client />
-      <UserJob />
-      <Slide />
-      <Subscribe />
+      <GGetInTouch />
       <Footer />
     </div>
   );
