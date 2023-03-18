@@ -9,12 +9,14 @@ import { Client } from "@/components/Browse/Client";
 import { Slide } from "@/components/Slide/Slide";
 import { Subscribe } from "@/components/Subscribe/Subscribe";
 import { Footer } from "@/components/Footer/Footer";
+import { ProfileForm } from "@/components/user/multistep/ProfileForm";
 
 const Pages = () => {
   return (
     <div>
       <HeroSection />
       <GGetInTouch />
+      <ProfileForm />
       <BrowserJob />
       <JobNav />
       <NavComp />
