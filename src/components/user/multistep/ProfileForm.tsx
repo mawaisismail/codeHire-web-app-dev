@@ -2,6 +2,29 @@ import { FC } from "react";
 import styles from "./profile.module.scss";
 import { Container } from "@mui/material";
 
+const jsFrameworks = [
+  "AngularJS",
+  "ReactJS",
+  "Vue.js",
+  "Ember.js",
+  "Backbone.js",
+  "Meteor.js",
+  "Knockout.js",
+  "Polymer.js",
+  "Aurelia.js",
+  "Svelte.js",
+  "JavaScript",
+  "TypeScript",
+  "CoffeeScript",
+  "Dart",
+  "Elm",
+  "PureScript",
+  "ReasonML",
+  "ClojureScript",
+  "Haxe",
+  "WebAssembly",
+];
+
 export const ProfileForm: FC = () => {
   return (
     <>
@@ -19,10 +42,6 @@ export const ProfileForm: FC = () => {
               </div>
             </div>
             <div className={styles.input_main}>
-              <div className={styles.input_wrapper}>
-                <p className={styles.label}>Account Type</p>
-                <input type="text" placeholder="IT-SOFTWARE" />
-              </div>
               <div className={styles.input_wrapper}>
                 <p className={styles.label}>Email</p>
                 <input type="text" placeholder="abcs@gmail.com  " />
@@ -66,6 +85,38 @@ export const ProfileForm: FC = () => {
                 <p className={styles.label}>Other</p>
                 <input type="text" placeholder="042-xxxxxxx" />
               </div>
+            </div>
+            <div className={styles.input_main}>
+              <div className={styles.input_wrapper}>
+                <p className={styles.label}>Date of Birth</p>
+                <input type="date" />
+              </div>
+              <div className={styles.input_wrapper}>
+                <p className={styles.label}>Gender</p>
+                <select name="gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div className={styles.input_main}>
+              <div className={styles.input_wrapper}>
+                <p className={styles.label}>Profession</p>
+                <input type="text" placeholder="Javascript Developer" />
+              </div>
+            </div>
+            <p className={styles.label}>Other Experience</p>
+            <div className={styles.checkbox_main}>
+              {jsFrameworks.map((name) => (
+                <div
+                  key={`profile-checkbox-${name}`}
+                  className={styles.checkbox_content}
+                >
+                  <input type="checkbox" name="otherOccupation" value={name} />
+                  <label htmlFor={`check-${name}`}>{name}</label>
+                </div>
+              ))}
             </div>
             <div className={styles.button_wrapper}>
               <button>Next</button>

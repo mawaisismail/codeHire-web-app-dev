@@ -10,11 +10,14 @@ import { Slide } from "@/components/Slide/Slide";
 import { Subscribe } from "@/components/Subscribe/Subscribe";
 import { Footer } from "@/components/Footer/Footer";
 import { ProfileForm } from "@/components/user/multistep/ProfileForm";
+import { EducationForm } from "@/components/user/multistep/education/EducationForm";
 
 const Pages = () => {
   return (
     <div>
       <HeroSection />
+      <ProfileForm />
+      {/*<EducationForm />*/}
       <BrowserJob />
       <JobWork />
       <Client />
