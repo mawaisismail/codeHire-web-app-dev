@@ -1,29 +1,7 @@
 import { FC } from "react";
 import styles from "./profile.module.scss";
 import { Container } from "@mui/material";
-
-const jsFrameworks = [
-  "AngularJS",
-  "ReactJS",
-  "Vue.js",
-  "Ember.js",
-  "Backbone.js",
-  "Meteor.js",
-  "Knockout.js",
-  "Polymer.js",
-  "Aurelia.js",
-  "Svelte.js",
-  "JavaScript",
-  "TypeScript",
-  "CoffeeScript",
-  "Dart",
-  "Elm",
-  "PureScript",
-  "ReasonML",
-  "ClojureScript",
-  "Haxe",
-  "WebAssembly",
-];
+import { jsFrameworks } from "../../../../constants/utils/signUp";
 
 export const ProfileForm: FC = () => {
   return (
