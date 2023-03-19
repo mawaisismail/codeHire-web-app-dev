@@ -1,11 +1,18 @@
 @use "/styles/mixins";
 @import "/styles/variables";
+
 .main {
   box-shadow: 0 3px 10px 0 rgb(49 64 71 / 8%);
   padding: 1rem;
 
   .main_content {
     @include mixins.flex(space-between);
+
+    .logo {
+      @include mixins.profileImage(100px);
+      background-image: url("../../../static/images/codeHire-logo.png");
+      background-size: contain;
+    }
 
     .links {
       @include mixins.flex(normal);

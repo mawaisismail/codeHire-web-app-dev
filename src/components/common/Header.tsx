@@ -5,6 +5,7 @@ import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { Container } from "@mui/material";
 import { useIsMobile } from "../../../hooks/isMobile";
+
 const navLinks = ["Home", "Contact", "About"];
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ export const Header = () => {
     <div className={styles.main}>
       <Container maxWidth="xl">
         <div className={styles.main_content}>
-          <div>CODE.H</div>
+          <div onClick={() => push(routes.user.home)} className={styles.logo} />
           {!isMobile && (
             <>
               <div className={styles.links}>
