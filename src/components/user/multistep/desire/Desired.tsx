@@ -26,22 +26,12 @@ export const Desired: FC = () => {
             </div>
             <div className={styles.input_main}>
               <div className={styles.input_wrapper}>
-                <p className={styles.label}>First Choice of Location </p>
-                <select name="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
+                <p className={styles.label}>First Choice of Location</p>
+                <input type="text" placeholder="Lahore" />
               </div>
-            </div>{" "}
-            <div className={styles.input_main}>
               <div className={styles.input_wrapper}>
-                <p className={styles.label}>Second Choice of Location </p>
-                <select name="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
+                <p className={styles.label}>First Choice of Location</p>
+                <input type="text" placeholder="Karachi" />
               </div>
             </div>
             <p>Working Style</p>
