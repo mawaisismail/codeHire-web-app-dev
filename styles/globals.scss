@@ -1,3 +1,9 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html,
 * {
   margin: 0;
@@ -10,4 +16,26 @@ html,
 @font-face {
   font-family: "Inter";
   src: url("/static/fonts/Inter-VariableFont_slnt,wght.ttf") format("opentype");
+}
+
+input[type="checkbox"] {
+  position: relative;
+  visibility: hidden;
+}
+input[type="checkbox"]::before {
+  content: "";
+  visibility: visible;
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  top: -1px;
+  left: -1px;
+  border: 1px solid $base-heading;
+}
+input[type="checkbox"]:checked::before {
+  background: url("../static/images/checkbox.svg") center no-repeat;
+  background-size: 14px 10px;
+}
+input[type="checkbox"]:checked + label {
+  color: $signup-main;
 }
