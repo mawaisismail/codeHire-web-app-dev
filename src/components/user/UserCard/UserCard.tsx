@@ -1,5 +1,6 @@
 import styles from "./UserCard.module.scss";
 import { FaStar } from "react-icons/fa";
+
 export const UserCard = () => {
   return (
     <div className={styles.main}>

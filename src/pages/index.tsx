@@ -4,6 +4,7 @@ import { GGetInTouch } from "@/components/common/getInTouch/g-getInTouch";
 import { JobWork } from "@/components/JobWork/JobWork";
 import { Client } from "@/components/Browse/Client";
 import { Footer } from "@/components/Footer/Footer";
+import { NewJobs } from "@/components/user/newJobs/newJobs";
 
 const Pages = () => {
   return (
@@ -12,6 +13,7 @@ const Pages = () => {
       <BrowserJob />
       <JobWork />
       <Client />
+      <NewJobs />
       <GGetInTouch />
       <Footer />
     </div>

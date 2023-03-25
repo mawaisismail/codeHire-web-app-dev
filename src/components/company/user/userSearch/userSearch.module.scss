@@ -1,14 +1,19 @@
 @use "/styles/mixins";
 @import "/styles/variables";
+
 .main_content {
   margin: 3rem 0;
+
   .main {
     margin: 1rem 0;
     @include mixins.flex(space-between, normal);
     flex-wrap: wrap;
+
     > div {
+      width: 350px;
       margin: 1rem 0;
     }
+
     @media (max-width: 1100px) {
       > div {
         width: 100%;
