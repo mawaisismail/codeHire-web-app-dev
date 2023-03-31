@@ -1,9 +1,9 @@
-import ForgotPassword from "@/components/ForgotPassword/ForgotPassword";
+import ForgetPassword from "@/components/forgetPassword/forgetPassword";
 
 
 const Index = () => {
     return (
-        <ForgotPassword/>
+        <ForgetPassword/>
     )
 };
 export default Index;

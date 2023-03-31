@@ -72,7 +72,29 @@
   width: max-content;
 }
 
-@mixin centerCards($height: 100vh, $width: 100%) {
-  height: $height;
+@mixin input(
+    $background-color: rgba(255, 255, 255,.2),
+    $border-radius,
+    $color:$black,
+    $font-size:14px,
+    $font-weight,
+    $padding,
+    $width:100%
+) {
+  background-color:$background-color;
+  border: none;
+  border-radius: $border-radius;
+  color: $black;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  outline: none;
+  padding: $padding;
   width: $width;
+}
+
+
+@mixin centerCards($height: 100vh, $width: 100%, $padding) {
+  min-height: $height;
+  width: $width;
+  padding:$padding;
 }
