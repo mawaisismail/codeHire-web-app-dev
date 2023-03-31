@@ -13,7 +13,7 @@ export const Header = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className={styles.main}>
+    <div className={styles.main} style={{display:"none"}}>
       <Container maxWidth="xl">
         <div className={styles.main_content}>
           <div onClick={() => push(routes.user.home)} className={styles.logo} />
@@ -44,6 +44,7 @@ export const Header = () => {
             </>
           )}
           {isMobile && <Hamburger toggled={isOpen} toggle={setIsOpen} />}
+
         </div>
       </Container>
     </div>
