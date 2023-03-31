@@ -13,7 +13,7 @@ export const Header = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className={styles.main} style={{display:"none"}}>
+    <div className={styles.main}>
       <Container maxWidth="xl">
         <div className={styles.main_content}>
           <div onClick={() => push(routes.user.home)} className={styles.logo} />
