@@ -4,7 +4,7 @@ import { routes } from "../../../constants/routes";
 import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { Container } from "@mui/material";
-import { useIsMobile } from "../../../hooks/isMobile";
+import { useIsMobile } from "../../../hooks/useIsMobile";
 
 const navLinks = ["Home", "Contact", "About"];
 export const Header = () => {

@@ -15,13 +15,11 @@ export const UserSearch = () => {
         <GSearch />
         <PaginationDetails pagination={100} coordinate={{ x: 10, y: 18 }} />
         <div className={styles.main}>
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((value, index) => (
+            <div key={index} className={styles.main_card}>
+              <UserCard />
+            </div>
+          ))}
         </div>
         <Pagination handlePagination={handlePagination} pagination={100} />
       </div>

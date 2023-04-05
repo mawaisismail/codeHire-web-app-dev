@@ -2,15 +2,16 @@
 @import "/styles/variables";
 
 .main {
-  width: 350px;
   padding: 1.5rem;
   border: 1px solid $border-light;
+
   p {
     margin: 1rem 0;
     @include mixins.textFont(1rem, 400);
   }
+
   .sec1 {
-    display: flex;
+    @include mixins.flex;
 
     .coverImages {
       @include mixins.profileImage;
@@ -20,6 +21,7 @@
     p {
       margin: 0.5rem 0;
     }
+
     .profile {
       @include mixins.textFont(1.1rem, 700, $black);
     }
@@ -32,6 +34,7 @@
 
   .rating {
     @include mixins.flex;
+
     svg {
       color: $rating-star;
       margin: 0 3px;
@@ -52,6 +55,7 @@
       border-right: 1px solid $border-light;
     }
   }
+
   .button_wrapper {
     button {
       @include mixins.globalButton($button-blue, $button-blue, 100%);

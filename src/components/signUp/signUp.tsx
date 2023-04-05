@@ -28,7 +28,11 @@ export const signUpValidationSchema = Yup.object({
   newPassword: Yup.string()
     .required("Password is required")
     .min(8, "Please enter Up to 8 character")
-    .max(22, "Length Exceed"),
+    .max(22, "Length Exceed")
+    .matches(
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/,
+      "Please Add one Special Character"
+    ),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("newPassword")], "Password Not match")
     .required("Please Enter Confirm Password"),
