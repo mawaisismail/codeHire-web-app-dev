@@ -44,7 +44,6 @@ export const Header = () => {
             </>
           )}
           {isMobile && <Hamburger toggled={isOpen} toggle={setIsOpen} />}
-
         </div>
       </Container>
     </div>
