@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "./forgetPassword.module.scss";
-import Image from "next/image";
 import { routes } from "../../../constants/routes";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -17,8 +16,8 @@ export const forgotPasswordInitialValues: forgetPassword = {
 
 export const forgotPasswordValidationSchema = Yup.object({
   email: Yup.string()
-    .email("Please Enter Valid Email")
-    .required("Email is Required"),
+    .email("Please enter valid email")
+    .required("Email is required"),
 });
 
 const ForgetPassword = () => {
@@ -28,19 +27,9 @@ const ForgetPassword = () => {
       <div className={styled.card}>
         <div className={styled.cardLeft}>
           <Link href="/">
-            <Image
-              width={100}
-              height={60}
-              src={"/static/images/codeHire-logo.png"}
-              alt="forget"
-            />
+           <div className={styled.cardLogo}/>
           </Link>
-          <Image
-            width={400}
-            height={400}
-            src={"/static/images/forget.png"}
-            alt="forget"
-          />
+          <div className={styled.cardImage}/>
         </div>
         <div className={styled.cardRight}>
           <div className={styled.cardContent}>
