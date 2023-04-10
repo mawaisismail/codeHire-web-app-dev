@@ -27,9 +27,9 @@ const ForgetPassword = () => {
       <div className={styled.card}>
         <div className={styled.cardLeft}>
           <Link href="/">
-           <div className={styled.cardLogo}/>
+            <div className={styled.cardLogo} />
           </Link>
-          <div className={styled.cardImage}/>
+          <div className={styled.cardImage} />
         </div>
         <div className={styled.cardRight}>
           <div className={styled.cardContent}>
