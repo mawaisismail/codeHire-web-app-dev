@@ -5,10 +5,12 @@ import { JobWork } from "@/components/JobWork/JobWork";
 import { Client } from "@/components/Browse/Client";
 import { Footer } from "@/components/Footer/Footer";
 import { NewJobs } from "@/components/user/newJobs/newJobs";
+import { ChatDash } from "@/components/ChatDash/ChatDash";
 
 const Pages = () => {
   return (
     <div>
+      <ChatDash />
       <HeroSection />
       <BrowserJob />
       <JobWork />
