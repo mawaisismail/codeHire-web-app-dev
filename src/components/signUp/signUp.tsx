@@ -1,7 +1,7 @@
 import styles from "./signUp.module.scss";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useState } from "react";
+import { Dispatch, FC, useState } from "react";
 import { firebaseSignUp } from "../../../constants/utils/firebase";
 import { UserType } from "../../../constants/interfaces/userType";
 import { useMutation } from "@apollo/client";
@@ -39,7 +39,11 @@ export const signUpValidationSchema = Yup.object({
     .required("Please enter confirm password"),
 });
 
-export const Signup = () => {
+interface ISignUp {
+  setCurrentStep: Dispatch<number>;
+}
+
+export const Signup: FC<ISignUp> = ({ setCurrentStep }) => {
   const { push } = useRouter();
   const [newPassword, setNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -48,6 +52,7 @@ export const Signup = () => {
   });
 
   const firebaseSignup = async (email: string, password: string) => {
+    setCurrentStep(1);
     const user = await firebaseSignUp(email, password);
     if (user) {
       const userInputType = {

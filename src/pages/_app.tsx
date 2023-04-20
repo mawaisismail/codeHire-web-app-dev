@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import "../../styles/globals.scss";
 import client from "../../utils/client";
-import { AppProps } from "next/app";
+import "react-toastify/dist/ReactToastify.css";
 import { MainLayout } from "@/components/mainLayout/MainLayout";
 import { GlobalProvider } from "../../utils/context/GlobalProvider";
 
@@ -9,8 +9,19 @@ import { GlobalProvider } from "../../utils/context/GlobalProvider";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/pagination";
+import { ToastContainer } from "react-toastify";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: any) {
+  if (Component.getLayout) {
+    return Component.getLayout(
+      <ApolloProvider client={client}>
+        <GlobalProvider>
+          <Component {...pageProps} />
+          <ToastContainer />
+        </GlobalProvider>
+      </ApolloProvider>
+    );
+  }
   return (
     <div>
       <ApolloProvider client={client}>
