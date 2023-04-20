@@ -1,6 +1,10 @@
-import { Signup } from "@/components/signUp/signUp";
+import { UserMultistep } from "@/components/user/multistep/multistep";
 
 const Index = () => {
-  return <Signup />;
+  return <UserMultistep />;
 };
 export default Index;
+
+Index.getLayout = function getLayout(page: JSX.Element) {
+  return <>{page}</>;
+};
