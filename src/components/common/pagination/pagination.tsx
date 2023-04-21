@@ -1,7 +1,7 @@
 import styles from "./pagination.module.scss";
 import ReactPaginate from "react-paginate";
-import { FC, useContext } from "react";
-import { GlobalContext } from "../../../../utils/context/GlobalProvider";
+import { FC } from "react";
+import { useIsMobile } from "../../../../hooks/useIsMobile";
 
 interface PaginationProps {
   handlePagination: (e: any) => void;
@@ -15,7 +15,7 @@ export const Pagination: FC<PaginationProps> = ({
   currentPage = 0,
 }) => {
   const totalPages = Math.ceil(pagination / 10);
-  const [{ isMobile }] = useContext(GlobalContext);
+  const isMobile = useIsMobile();
   return (
     <div className={styles.main}>
       <ReactPaginate
