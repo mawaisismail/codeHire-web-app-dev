@@ -9,6 +9,7 @@ import { CREATE_USER } from "../../../constants/graphQL/user";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { routes } from "../../../constants/routes";
+import { clientSetCookie } from "../../../constants/utils/cookies";
 
 export interface emailSignUp {
   email: string;
@@ -52,10 +53,9 @@ export const Signup: FC<ISignUp> = ({ setCurrentStep }) => {
   });
 
   const firebaseSignup = async (email: string, password: string) => {
-    setCurrentStep(1);
     const user = await firebaseSignUp(email, password);
     if (user) {
-      const userInputType = {
+      const info = {
         uid: user.uid,
         email: user.email,
         profileImageURL: user.photoURL,
@@ -64,10 +64,16 @@ export const Signup: FC<ISignUp> = ({ setCurrentStep }) => {
       };
       await createUser({
         variables: {
-          userInputType,
+          userInputType: {
+            userInfo: JSON.stringify(info),
+          },
         },
       }).then((e) => {
-        push("/");
+        clientSetCookie({
+          key: "baseUser",
+          data: e.data.createUser,
+        });
+        setCurrentStep(1);
       });
     }
   };
