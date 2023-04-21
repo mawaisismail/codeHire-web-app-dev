@@ -1,6 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Inter } from "@next/font/google";
-import { Header } from "@/components/common/Header";
+import { Header } from "@/components/mainLayout/header/Header";
 
 interface IMainLayout {
   children: ReactNode;

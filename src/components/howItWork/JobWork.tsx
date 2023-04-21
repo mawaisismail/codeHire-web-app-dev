@@ -1,7 +1,8 @@
 import styles from "./JobWork.module.scss";
-import { JobWorkData } from "@/components/JobWork/JobWorkData";
+import { JobWorkData } from "@/components/howItWork/JobWorkData";
 import { Container } from "@mui/material";
-export const JobWork = () => {
+
+export const HowItWork = () => {
   return (
     <Container maxWidth="xl">
       <div className={styles.JobWorkMain}>

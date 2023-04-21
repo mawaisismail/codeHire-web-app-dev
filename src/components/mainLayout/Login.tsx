@@ -8,6 +8,10 @@ import { useRouter } from "next/router";
 import { routes } from "../../../constants/routes";
 import { User } from "firebase/auth";
 import Link from "next/link";
+import { useContext } from "react";
+import { GlobalContext } from "../../../utils/context/GlobalProvider";
+import { setBaseUser } from "../../../utils/context/actions";
+import { toast } from "react-toastify";
 
 export interface emailSignUp {
   email: string;
@@ -37,7 +41,8 @@ const fbSignIn = async ({
 };
 
 export const Login = () => {
-  const { push } = useRouter();
+  const [{ baseUser }, dispatch] = useContext(GlobalContext);
+  const { push, asPath } = useRouter();
   const [getUserById] = useLazyQuery(GET_USER_BY_UID, {
     fetchPolicy: "network-only",
   });
@@ -47,9 +52,17 @@ export const Login = () => {
       variables: {
         uid,
       },
-    }).then(() => {
-      push(routes.user.home);
-    });
+    })
+      .then((e) => {
+        toast("Success");
+        dispatch(setBaseUser(e.data.getUserById));
+        push(
+          asPath.includes("company") ? routes.company.home : routes.user.home
+        );
+      })
+      .catch((error) => {
+        toast.error("something went wrong");
+      });
   };
 
   return (
@@ -106,14 +119,6 @@ export const Login = () => {
                   />
                 </div>
                 <div className={styles.checkWrapper}>
-                  <div className={styles.checkContainer}>
-                    <input
-                      id="remember"
-                      type="checkbox"
-                      className={styles.checkBox}
-                    />
-                    <label htmlFor="remember">Remember me</label>
-                  </div>
                   <Link href="/user/forgotpassword" className={styles.forget}>
                     Forgot Password?
                   </Link>
