@@ -1,6 +1,7 @@
 import styles from "./g-getInTouch.module.scss";
 import { Container } from "@mui/material";
-import { SlEnvolope, SlCursor, SlPhone } from "react-icons/sl";
+import { SlCursor, SlEnvolope, SlPhone } from "react-icons/sl";
+
 export const GGetInTouch = () => {
   return (
     <Container maxWidth="xl">

@@ -51,9 +51,6 @@ export const firebaseSignIn = async (
       return userCredential.user;
     })
     .catch((error: AuthError) => {
-      console.log(error);
-      console.log(error.message);
-      console.log(error.code);
       if (error.code === "auth/wrong-password") {
         toast.error("Wrong Password");
       }
@@ -79,7 +76,7 @@ export const fireBaseResetPassword = async (
       isEmailSent = true;
     })
     .catch((error: AuthError) => {
-      if (error.code === "auth/user-not-found") {
+      if (error.code === "auth/users-not-found") {
         toast.error("Email not Found");
       } else {
         toast.error("Error");

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "./forgetPassword.module.scss";
-import { routes } from "../../../constants/routes";
+import { routes } from "../../../../constants/routes";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { ErrorMessage, Field, Form, Formik } from "formik";

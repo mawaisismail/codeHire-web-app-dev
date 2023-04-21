@@ -1,8 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import style from "./HeroSection.module.scss";
 import { Container } from "@mui/material";
+import { GlobalContext } from "../../../utils/context/GlobalProvider";
 
 export const HeroSection: FC = () => {
+  const [{ baseUser }] = useContext(GlobalContext);
   return (
     <Container maxWidth="xl">
       <div className={style.container}>
@@ -15,25 +17,25 @@ export const HeroSection: FC = () => {
             Find jobs, create trackable resumes and enrich your applications.
             Carefully crafted after analyzing the needs of different industries.
           </p>
-          <form className={style.searchForm}>
-            <div className={style.formGroup}>
-              <input
-                type="text"
-                className={style.formControl}
-                placeholder="Search for jobs"
-              />
+          {baseUser?.uid && (
+            <div className={style.searchForm}>
+              <div className={style.formGroup}>
+                <input
+                  type="text"
+                  className={style.formControl}
+                  placeholder="Search for jobs"
+                />
+              </div>
+              <div className={style.formGroup}>
+                <input
+                  type="text"
+                  className={style.formControl}
+                  placeholder="Location ..."
+                />
+              </div>
+              <button className={style.btnPrimary}>Search</button>
             </div>
-            <div className={style.formGroup}>
-              <input
-                type="text"
-                className={style.formControl}
-                placeholder="Location ..."
-              />
-            </div>
-            <button className={style.btnPrimary} type="submit">
-              Search
-            </button>
-          </form>
+          )}
         </div>
         <div className={style.img}></div>
       </div>

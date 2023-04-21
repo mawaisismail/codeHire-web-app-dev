@@ -1,18 +1,57 @@
 import styles from "./header.module.scss";
 import { useRouter } from "next/router";
-import { routes } from "../../../constants/routes";
+import { routes } from "../../../../constants/routes";
 import { useContext, useEffect, useState } from "react";
 import Hamburger from "hamburger-react";
 import { Container } from "@mui/material";
-import { useIsMobile } from "../../../hooks/useIsMobile";
-import { GlobalContext } from "../../../utils/context/GlobalProvider";
+import { useIsMobile } from "../../../../hooks/useIsMobile";
+import { GlobalContext } from "../../../../utils/context/GlobalProvider";
 import { useLazyQuery } from "@apollo/client";
-import { GET_USER_BY_UID } from "../../../constants/graphQL/user";
-import { clearCookie, getClientCookie } from "../../../constants/utils/cookies";
-import { setBaseUser } from "../../../utils/context/actions";
-import { baseUserInitialValues } from "../../../utils/context/reducer";
+import { GET_USER_BY_UID } from "../../../../constants/graphQL/user";
+import {
+  clearCookie,
+  getClientCookie,
+} from "../../../../constants/utils/cookies";
+import { setBaseUser } from "../../../../utils/context/actions";
+import { baseUserInitialValues } from "../../../../utils/context/reducer";
+import Link from "next/link";
 
-const navLinks = ["Home", "Contact", "About"];
+const userNavLinks = [
+  {
+    name: "Home",
+    link: routes.user.home,
+  },
+  {
+    name: "Jobs",
+    link: routes.user.home,
+  },
+  {
+    name: "Chat",
+    link: routes.user.home,
+  },
+  {
+    name: "Profile",
+    link: routes.user.home,
+  },
+];
+const companyNavLinks = [
+  {
+    name: "Home",
+    link: routes.user.home,
+  },
+  {
+    name: "User",
+    link: routes.company.home,
+  },
+  {
+    name: "Chat",
+    link: routes.company.home,
+  },
+  {
+    name: "Profile",
+    link: routes.company.home,
+  },
+];
 export const Header = () => {
   const [{ baseUser }, dispatch] = useContext(GlobalContext);
   const cookies = getClientCookie("baseUser");
@@ -51,8 +90,10 @@ export const Header = () => {
           {!isMobile && (
             <>
               <div className={styles.links}>
-                {navLinks.map((item, index) => (
-                  <p key={`${item}-${index}`}>{item}</p>
+                {userNavLinks.map(({ link, name }, index) => (
+                  <Link href={link} passHref>
+                    <p key={`${name}-${index}`}>{name}</p>
+                  </Link>
                 ))}
               </div>
               {baseUser?.uid && (
