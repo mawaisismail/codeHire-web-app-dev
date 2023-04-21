@@ -29,21 +29,6 @@
 
       @include mixins.flex(normal);
 
-      .bell {
-        position: relative;
-      }
-
-      .bell::before {
-        top: -12px;
-        left: 6px;
-        content: "";
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: $warning;
-      }
-
       .cover_image {
         @include mixins.profileImage(50px, 50px);
       }
