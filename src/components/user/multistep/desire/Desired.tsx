@@ -8,7 +8,7 @@ import {
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER } from "../../../../../constants/graphQL/user";
+import { UPDATE_USER_INFO } from "../../../../../constants/graphQL/user";
 
 export const desireInitialValues = {
   desiredOccupation: [],
@@ -34,7 +34,7 @@ interface IDesired {
 }
 
 export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
-  const [createUser, createUserData] = useMutation(CREATE_USER, {
+  const [updateUser, updateUserData] = useMutation(UPDATE_USER_INFO, {
     fetchPolicy: "network-only",
   });
   return (
@@ -45,7 +45,7 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
             initialValues={desireInitialValues}
             validationSchema={desireValidationSchema}
             onSubmit={async (values) => {
-              await createUser({
+              await updateUser({
                 variables: {
                   userInputType: {
                     userInfo: JSON.stringify({
