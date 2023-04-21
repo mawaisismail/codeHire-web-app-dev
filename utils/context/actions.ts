@@ -1,14 +1,18 @@
+import { IBaseUser } from "./reducer";
+
 export enum ActionNames {
   SET_IS_MOBILE = "SET_IS_MOBILE",
+  SET_BASE_USER = "SET_BASE_USER",
 }
-export type ActionTypes = SetIsMobile;
-interface SetIsMobile {
-  payload: boolean;
-  type: ActionNames.SET_IS_MOBILE;
+export type ActionTypes = SetBaseUserAction;
+interface SetBaseUserAction {
+  payload: IBaseUser;
+  type: ActionNames.SET_BASE_USER;
 }
-export const setIsMobile = (isMobile: boolean): SetIsMobile => {
+
+export const setBaseUser = (baseUser: IBaseUser): SetBaseUserAction => {
   return {
-    payload: isMobile,
-    type: ActionNames.SET_IS_MOBILE,
+    type: ActionNames.SET_BASE_USER,
+    payload: baseUser,
   };
 };

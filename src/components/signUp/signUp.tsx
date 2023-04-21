@@ -1,7 +1,7 @@
 import styles from "./signUp.module.scss";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { Dispatch, FC, useState } from "react";
+import { Dispatch, FC, useContext, useState } from "react";
 import { firebaseSignUp } from "../../../constants/utils/firebase";
 import { UserType } from "../../../constants/interfaces/userType";
 import { useMutation } from "@apollo/client";
@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { routes } from "../../../constants/routes";
 import { clientSetCookie } from "../../../constants/utils/cookies";
+import { GlobalContext } from "../../../utils/context/GlobalProvider";
+import { setBaseUser } from "../../../utils/context/actions";
 
 export interface emailSignUp {
   email: string;
@@ -46,6 +48,7 @@ interface ISignUp {
 
 export const Signup: FC<ISignUp> = ({ setCurrentStep }) => {
   const { push } = useRouter();
+  const [{}, dispatch] = useContext(GlobalContext);
   const [newPassword, setNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [createUser, createUserData] = useMutation(CREATE_USER, {
@@ -73,6 +76,7 @@ export const Signup: FC<ISignUp> = ({ setCurrentStep }) => {
           key: "baseUser",
           data: e.data.createUser,
         });
+        dispatch(setBaseUser(e.data.createUser));
         setCurrentStep(1);
       });
     }
