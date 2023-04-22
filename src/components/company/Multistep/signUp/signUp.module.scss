@@ -1,0 +1,179 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.wrapper {
+  background-color: rgba(118, 109, 244, 0.1);
+  @include mixins.flex(center, center);
+  @include mixins.centerCards(100vh, 100%, 30px);
+
+  .card {
+    display: flex;
+    box-shadow: 0 5px 6px rgba(49, 64, 71, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: mixins.$blue-dark;
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+
+  .cardLeft {
+    @include mixins.flex(space-evenly, center);
+    flex-direction: column;
+    background-color: $white;
+    padding: 2rem;
+    flex: 1;
+    @media (max-width: 992px) {
+      width: 100vw;
+    }
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
+    .cardLogo {
+      @include mixins.profileImage(100px, 60px, 0);
+      background-image: url("../../../../../static/images/codeHire-logo.png");
+      background-size: contain;
+    }
+
+    .cardImage {
+      background-image: url("../../../../../static/images/sign-up.png");
+      background-size: contain;
+      min-width: 25rem;
+      min-height: 25rem;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  .cardRight {
+    @include mixins.flex(center, center);
+    flex: 1;
+    padding: 2.5rem;
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+
+    .cardContent {
+      width: 21rem;
+      @media (max-width: 992px) {
+        width: 100%;
+      }
+
+      .cardTitle {
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+        h2 {
+          @include mixins.textFont(18px, bold, mixins.$white, 40px);
+        }
+
+        p {
+          @include mixins.textFont(14px, 500, mixins.$white);
+        }
+      }
+
+      .formGroup {
+        margin-bottom: 2rem;
+
+        label {
+          @include mixins.textFont(14px, 400, mixins.$white);
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        input {
+          @include mixins.input(
+                          rgba(255, 255, 255, 0.2),
+                          0.25rem,
+                          $black,
+                          14px,
+                          500,
+                          12px,
+                          100%
+          );
+        }
+
+        ::placeholder {
+          color: $white;
+          opacity: 0.6;
+        }
+
+        .errorMessage {
+          position: absolute;
+          margin: 0.3rem 0;
+          @include mixins.textFont(0.8rem, 400, $white);
+        }
+      }
+
+      .checkWrapper {
+        @include mixins.flex(space-between, center);
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        .checkContainer {
+          @include mixins.flex("", center);
+          gap:6px;
+          input[type="checkbox"]::before {
+            background-color: $white;
+            border-radius: 4px;
+            height: 12px;
+            width: 12px;
+            cursor: pointer;
+          }
+          input[type="checkbox"]:checked::before {
+            background-size: 10px 10px;
+          }
+
+          label {
+            @include mixins.textFont(14px, 400, mixins.$white);
+            cursor: pointer;
+          }
+        }
+        .forget{
+          @include mixins.textFont(14px, 400, mixins.$white);
+          text-decoration: none;
+          @media (max-width: 400px) {
+            margin-top: 10px;
+          }
+        }
+      }
+      button {
+        @include mixins.input($white, 0.25rem, $black, 14px, 500, 12px, 100%);
+        transition: all 0.4s linear;
+        cursor: pointer;
+        &:hover{
+          transform: translateY(-6px);
+        }
+      }
+
+      .logIn {
+        margin-top: 2rem;
+        text-align: center;
+        @include mixins.textFont(14px, 500, mixins.$white);
+
+        p > a {
+          color: mixins.$white;
+          margin-left: 0.4rem;
+          text-decoration: none;
+          position: relative;
+          cursor: pointer;
+
+          &::before {
+            position: absolute;
+            bottom: -1px;
+            width: 100%;
+            background-color: mixins.$white;
+            left: 1px;
+            content: "";
+            height: 1px;
+            transition: all 0.3s linear;
+          }
+
+          &:hover::before {
+            width:0;
+          }
+        }
+      }
+    }
+  }
+}

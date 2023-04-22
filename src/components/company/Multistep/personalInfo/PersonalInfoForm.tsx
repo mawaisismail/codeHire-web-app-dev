@@ -3,26 +3,34 @@ import styles from "./PersonalInfoForm.module.scss";
 import { Container } from "@mui/material";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useMutation } from "@apollo/client";
+import { UPDATE_COMPANY_INFO } from "../../../../../constants/graphQL/company";
+import { toast } from "react-toastify";
 
 export const desireInitialValues = {
-  desiredOccupation: [],
-  firstChoiceOfWork: "",
-  secondChoiceOfWork: "",
-  employmentType: [],
-  annualSalary: "",
-  previousSalary: "",
+  name: "",
+  owner: "",
+  total_employee: "",
+  location: "",
+  website: "",
+  phone: "",
+  established: "",
 };
 
 export const desireValidationSchema = Yup.object({
-  desiredOccupation: Yup.array().min(1).required(),
-  firstChoiceOfWork: Yup.string().required(),
-  secondChoiceOfWork: Yup.string().required(),
-  employmentType: Yup.array().required(),
-  annualSalary: Yup.string().required(),
-  previousSalary: Yup.string().required(),
+  name: Yup.string().required("Name is Required"),
+  owner: Yup.string().required("Owner is Required"),
+  total_employee: Yup.string().required("This field Required"),
+  location: Yup.string().required("Location is Required"),
+  website: Yup.string().required("Website is Required"),
+  phone: Yup.number().required("Phone is Required"),
+  established: Yup.string().required("EST is Required"),
 });
 
 export const PersonalInfoForm: FC = () => {
+  const [updateCompany] = useMutation(UPDATE_COMPANY_INFO, {
+    fetchPolicy: "network-only",
+  });
   return (
     <>
       <Container maxWidth="sm">
@@ -31,7 +39,21 @@ export const PersonalInfoForm: FC = () => {
             initialValues={desireInitialValues}
             validationSchema={desireValidationSchema}
             onSubmit={async (values) => {
-              console.log(values);
+              await updateCompany({
+                variables: {
+                  createCompanyArgs: {
+                    companyInfo: JSON.stringify({
+                      ...values,
+                    }),
+                  },
+                },
+              })
+                .catch((e) => {
+                  console.log(e.error);
+                })
+                .then((e) => {
+                  toast("Success");
+                });
             }}
           >
             <Form>
@@ -57,8 +79,12 @@ export const PersonalInfoForm: FC = () => {
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Employees</p>
-                  <Field type="text" name="employee_no" placeholder="Awais" />
-                  <ErrorMessage name="employee_no" component="div" />
+                  <Field
+                    type="text"
+                    name="total_employee"
+                    placeholder="Awais"
+                  />
+                  <ErrorMessage name="total_employee" component="div" />
                 </div>
               </div>
               <div className={styles.input_main}>

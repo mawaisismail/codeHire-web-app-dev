@@ -114,10 +114,26 @@ export const Header = () => {
                   <button onClick={logout}>Logout</button>
                 ) : (
                   <>
-                    <button onClick={() => push(routes.user.signUp)}>
+                    <button
+                      onClick={() =>
+                        push(
+                          asPath.includes("company")
+                            ? routes.company.signUp
+                            : routes.user.signUp
+                        )
+                      }
+                    >
                       Sign Up
                     </button>
-                    <button onClick={() => push(routes.user.login)}>
+                    <button
+                      onClick={() =>
+                        push(
+                          asPath.includes("company")
+                            ? routes.company.login
+                            : routes.user.login
+                        )
+                      }
+                    >
                       Login
                     </button>
                   </>
