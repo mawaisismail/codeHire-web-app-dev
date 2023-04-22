@@ -10,6 +10,8 @@ export const routes = {
   company: {
     home: "/company",
     profile: "/company/profile",
+    jobCreate: "/company/job/create",
+    jobs: "/company/job",
     forgetPassword: "/company/forgotpassword",
     users: "/company/users",
     signUp: "/company/signup",
