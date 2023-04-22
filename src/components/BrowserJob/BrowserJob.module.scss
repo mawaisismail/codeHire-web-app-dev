@@ -52,6 +52,7 @@
       @include mixins.textFont(1rem, 400, $white);
       border-radius: 5px;
       .arrow {
+        display: inline-block;
         font-size: 10px;
         margin-left: 0.6rem;
       }

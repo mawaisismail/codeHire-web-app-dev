@@ -23,7 +23,7 @@ const userNavLinks = [
   },
   {
     name: "Jobs",
-    link: routes.user.home,
+    link: routes.user.jobs,
   },
   {
     name: "Chat",
@@ -31,17 +31,17 @@ const userNavLinks = [
   },
   {
     name: "Profile",
-    link: routes.user.home,
+    link: routes.user.profile,
   },
 ];
 const companyNavLinks = [
   {
     name: "Home",
-    link: routes.user.home,
+    link: routes.company.home,
   },
   {
     name: "User",
-    link: routes.company.home,
+    link: routes.company.users,
   },
   {
     name: "Chat",
@@ -49,14 +49,16 @@ const companyNavLinks = [
   },
   {
     name: "Profile",
-    link: routes.company.home,
+    link: routes.company.profile,
   },
 ];
+
+const navLinks = [userNavLinks, companyNavLinks];
 export const Header = () => {
   const [{ baseUser }, dispatch] = useContext(GlobalContext);
   const cookies = getClientCookie("baseUser");
   const [isOpen, setIsOpen] = useState(false);
-  const { push } = useRouter();
+  const { push, asPath } = useRouter();
   const isMobile = useIsMobile();
   const [getUserById] = useLazyQuery(GET_USER_BY_UID, {
     fetchPolicy: "network-only",
@@ -90,11 +92,13 @@ export const Header = () => {
           {!isMobile && (
             <>
               <div className={styles.links}>
-                {userNavLinks.map(({ link, name }, index) => (
-                  <Link href={link} passHref>
-                    <p key={`${name}-${index}`}>{name}</p>
-                  </Link>
-                ))}
+                {navLinks[asPath.includes("company") ? 1 : 0].map(
+                  ({ link, name }, index) => (
+                    <Link href={link} passHref>
+                      <p key={`${name}-${index}`}>{name}</p>
+                    </Link>
+                  )
+                )}
               </div>
               {baseUser?.uid && (
                 <div className={styles.main_notification}>

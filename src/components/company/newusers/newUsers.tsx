@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { Container } from "@mui/material";
-import styles from "./newJobs.module.scss";
+import styles from "./newUsers.module.scss";
 import { useIsMobile } from "../../../../hooks/useIsMobile";
 import { UserCard } from "@/components/user/UserCard/UserCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
