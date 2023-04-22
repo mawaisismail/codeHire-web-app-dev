@@ -2,13 +2,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { Container } from "@mui/material";
 import styles from "./newJobs.module.scss";
-import { useIsMobile } from "../../../../hooks/useIsMobile";
-import { UserCard } from "@/components/user/UserCard/UserCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { useIsMobile } from "../../../../../hooks/useIsMobile";
+import { JobCard } from "@/components/company/job/jobCard/jobCard";
 
 const swiperSetting = {
   slidesPerView: 1,
@@ -20,7 +20,7 @@ const swiperSetting = {
   },
 };
 
-export const NewUsers = () => {
+export const NewJobs = () => {
   const isMobile = useIsMobile();
   return (
     <div className={styles.main}>
@@ -44,7 +44,7 @@ export const NewUsers = () => {
           >
             {[1, 2, 3, 4, 5].map((index) => (
               <SwiperSlide key={`Recommended-Job-listing ${index} `}>
-                <UserCard />
+                <JobCard />
               </SwiperSlide>
             ))}
           </Swiper>

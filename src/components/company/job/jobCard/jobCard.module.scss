@@ -1,0 +1,61 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main {
+  width: 350px;
+  padding: 1.5rem;
+  border: 1px solid $border-light;
+
+  .time{
+    @include mixins.textFont(0.8rem, 400);
+  }
+
+  p {
+    margin: 1rem 0;
+    @include mixins.textFont(1rem, 400);
+  }
+
+  .sec1 {
+    .coverImages {
+      @include mixins.profileImage;
+      background: url("../../../../../static/images/Card2.png") no-repeat center;
+      margin: 0 1rem 0 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    .profile {
+      margin: 1rem 0 0.5rem 0;
+      @include mixins.textFont(1.1rem, 700, $black);
+    }
+
+    .amount {
+      @include mixins.textFont(0.9rem, 500);
+    }
+  }
+
+  .occupation {
+    display: flex;
+
+    .salary {
+      @include mixins.Label(rgba(4,133,101,.15),#048565);
+      @include mixins.textFont(0.8rem, 500);
+    }
+    .other {
+      @include mixins.Label;
+      @include mixins.textFont(0.8rem, 500);
+    }
+
+  }
+
+  .button_wrapper {
+    button {
+      @include mixins.globalButton($button-blue, $button-blue, 100%);
+      @include mixins.textFont(0.9rem, 700, $white);
+      margin: 0.4rem 0;
+      padding: 0.7rem 0.5rem;
+    }
+  }
+}
