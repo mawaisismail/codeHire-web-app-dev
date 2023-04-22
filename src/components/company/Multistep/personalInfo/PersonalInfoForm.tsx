@@ -6,6 +6,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import { UPDATE_COMPANY_INFO } from "../../../../../constants/graphQL/company";
 import { toast } from "react-toastify";
+import { routes } from "../../../../../constants/routes";
+import { useRouter } from "next/router";
 
 export const desireInitialValues = {
   name: "",
@@ -28,6 +30,7 @@ export const desireValidationSchema = Yup.object({
 });
 
 export const PersonalInfoForm: FC = () => {
+  const { push } = useRouter();
   const [updateCompany] = useMutation(UPDATE_COMPANY_INFO, {
     fetchPolicy: "network-only",
   });
@@ -52,6 +55,7 @@ export const PersonalInfoForm: FC = () => {
                   console.log(e.error);
                 })
                 .then((e) => {
+                  push(routes.company.home);
                   toast("Success");
                 });
             }}

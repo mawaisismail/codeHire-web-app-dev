@@ -98,3 +98,8 @@
   width: $width;
   padding:$padding;
 }
+
+@mixin Error($color:$warning){
+  margin: 0.5rem 0;
+  @include textFont(0.8rem,700,$color);
+}
