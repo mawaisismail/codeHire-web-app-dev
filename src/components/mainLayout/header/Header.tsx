@@ -44,6 +44,10 @@ const companyNavLinks = [
     link: routes.company.users,
   },
   {
+    name: "Job",
+    link: routes.company.jobs,
+  },
+  {
     name: "Chat",
     link: routes.company.home,
   },

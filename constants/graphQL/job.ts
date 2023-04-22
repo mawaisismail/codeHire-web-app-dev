@@ -9,6 +9,15 @@ export const GET_JOB = gql`
   }
 `;
 
+export const GET_COMPANY_JOB = gql`
+  query getCompanyJobs {
+    getCompanyJobs {
+      id
+      title
+    }
+  }
+`;
+
 export const CREATE_JOB = gql`
   mutation createJob($jobInput: JobInput!) {
     createJob(jobInput: $jobInput) {
