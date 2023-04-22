@@ -8,3 +8,12 @@ export const GET_JOB = gql`
     }
   }
 `;
+
+export const CREATE_JOB = gql`
+  mutation createJob($jobInput: JobInput!) {
+    createJob(jobInput: $jobInput) {
+      id
+      title
+    }
+  }
+`;
