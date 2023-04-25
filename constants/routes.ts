@@ -4,6 +4,7 @@ export const routes = {
     profile: "/user/profile",
     signUp: "/user/signup",
     jobs: "/user/jobs",
+    applyJob: "/user/jobs/apply",
     forgetPassword: "/user/forgotpassword",
     login: "/user/login",
   },
