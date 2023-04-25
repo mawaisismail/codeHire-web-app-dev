@@ -1,0 +1,35 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main {
+  margin: 2rem 0 0 0;
+  @include mixins.flex(normal);
+  .user_profile {
+    margin: 0 1rem 0 0;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: url(/static/images/default_profile_img.svg) no-repeat center;
+    background-size: cover;
+  }
+  .message {
+    position: relative;
+    @include mixins.textFont(14px, 400);
+    padding: 0.5rem;
+    margin: 0 10rem 0 0;
+    background: $gray;
+    @media (max-width: 1099px) {
+      margin: 0;
+    }
+    span {
+      @include mixins.textFont(10px, 400, $base-heading);
+      position: absolute;
+      right: -60px;
+      bottom: 0;
+      @media (max-width: 1099px) {
+        bottom: -20px;
+        right: 0;
+      }
+    }
+  }
+}

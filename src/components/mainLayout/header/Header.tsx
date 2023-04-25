@@ -27,7 +27,7 @@ const userNavLinks = [
   },
   {
     name: "Chat",
-    link: routes.user.home,
+    link: routes.user.chat,
   },
   {
     name: "Profile",
@@ -49,7 +49,7 @@ const companyNavLinks = [
   },
   {
     name: "Chat",
-    link: routes.company.home,
+    link: routes.company.chat,
   },
   {
     name: "Profile",
