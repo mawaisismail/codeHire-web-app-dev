@@ -1,6 +1,9 @@
 import styles from "./jobCard.module.scss";
+import { useRouter } from "next/router";
+import { routes } from "../../../../../constants/routes";
 
 export const JobCard = () => {
+  const { push } = useRouter();
   return (
     <div className={styles.main}>
       <div className={styles.sec1}>
@@ -21,7 +24,9 @@ export const JobCard = () => {
       </p>
       <p className={styles.time}>2 min ago</p>
       <div className={styles.button_wrapper}>
-        <button>Apply Now</button>
+        <button onClick={() => push(`${routes.user.applyJob}/${1}`)}>
+          Apply Now
+        </button>
         <button>View Profile</button>
       </div>
     </div>

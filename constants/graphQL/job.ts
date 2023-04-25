@@ -14,6 +14,7 @@ export const GET_COMPANY_JOB = gql`
     getCompanyJobs {
       id
       title
+      createdAt
     }
   }
 `;
@@ -23,6 +24,14 @@ export const CREATE_JOB = gql`
     createJob(jobInput: $jobInput) {
       id
       title
+    }
+  }
+`;
+
+export const APPLY_TO_JOB = gql`
+  mutation applyJob($jobApplyDto: JobApplyDto!) {
+    applyJob(jobApplyDto: $jobApplyDto) {
+      id
     }
   }
 `;
