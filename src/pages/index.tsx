@@ -7,6 +7,7 @@ import { Footer } from "@/components/mainLayout/Footer/Footer";
 import { useContext } from "react";
 import { GlobalContext } from "../../utils/context/GlobalProvider";
 import { NewJobs } from "@/components/user/jobs/newJobs/newJobs";
+import { GoogleApi } from "@/components/GoogleApi/GoogleApi";
 
 const Pages = () => {
   const [{ baseUser }] = useContext(GlobalContext);
@@ -25,6 +26,7 @@ const Pages = () => {
           <GGetInTouch />
         </>
       )}
+      <GoogleApi />
       <Footer />
     </div>
   );
