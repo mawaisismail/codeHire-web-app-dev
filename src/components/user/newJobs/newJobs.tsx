@@ -20,7 +20,7 @@ const swiperSetting = {
   },
 };
 
-export const NewJobs = () => {
+export const NewUsers = () => {
   const isMobile = useIsMobile();
   return (
     <div className={styles.main}>
