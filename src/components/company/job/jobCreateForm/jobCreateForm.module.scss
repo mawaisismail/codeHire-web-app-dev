@@ -1,0 +1,67 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main {
+  padding: 5rem 0;
+  .error{
+    @include mixins.Error;
+  }
+  form {
+    p {
+      margin: 1rem 0;
+    }
+    width: 100%;
+    .checkbox_main {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      .checkbox_content {
+        input {
+          margin: 1rem;
+        }
+      }
+    }
+.heading{
+  @include mixins.textFont(1.2rem, 700, $text-heading-color);
+}
+    .input_main {
+      @include mixins.flex(space-between);
+      .input_wrapper {
+        margin: 0.5rem;
+        width: 100%;
+
+        .label {
+          @include mixins.textFont(1rem, 500, $text-heading-color);
+          margin: 0.5rem 0;
+        }
+
+        input,
+        select,
+        textarea {
+          outline: none;
+          padding: 0.9rem;
+          border-radius: 0.3rem;
+          background-color: $white;
+          width: 100%;
+          border: 1px solid $input-border;
+          resize: none;
+        }
+      }
+
+      @media (max-width: 1100px) {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    .button_wrapper {
+      @include mixins.flex(flex-end);
+
+      button {
+        @include mixins.globalButton($button-blue, $button-blue, 145px, 45px);
+        border-radius: 0.3rem;
+        @include mixins.textFont(0.9rem, 700, $white);
+      }
+    }
+  }
+}

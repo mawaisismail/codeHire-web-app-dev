@@ -1,21 +1,30 @@
 import { HeroSection } from "@/components/HearoSection/HeroSection";
 import { BrowserJob } from "@/components/BrowserJob/BrowserJob";
 import { GGetInTouch } from "@/components/common/getInTouch/g-getInTouch";
-import { JobWork } from "@/components/JobWork/JobWork";
+import { HowItWork } from "@/components/howItWork/JobWork";
 import { Client } from "@/components/Browse/Client";
-import { Footer } from "@/components/Footer/Footer";
-import { NewJobs } from "@/components/user/newJobs/newJobs";
+import { Footer } from "@/components/mainLayout/Footer/Footer";
+import { useContext } from "react";
+import { GlobalContext } from "../../utils/context/GlobalProvider";
+import { NewJobs } from "@/components/user/jobs/newJobs/newJobs";
 
 const Pages = () => {
+  const [{ baseUser }] = useContext(GlobalContext);
   return (
     <div>
-      {/*<ChatDash />*/}
       <HeroSection />
-      <BrowserJob />
-      <JobWork />
-      <Client />
-      <NewJobs />
-      <GGetInTouch />
+      {baseUser?.uid ? (
+        <>
+          <BrowserJob />
+          <NewJobs />
+        </>
+      ) : (
+        <>
+          <HowItWork />
+          <Client />
+          <GGetInTouch />
+        </>
+      )}
       <Footer />
     </div>
   );

@@ -1,0 +1,28 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main {
+  width: 100%;
+
+  .header {
+    @include mixins.flex(space-between, center);
+    margin: 1rem 0;
+    border-bottom: 1px solid $gray-main;
+    border-top: 1px solid $gray-main;
+
+    & > :first-child {
+      padding: 1rem;
+      border-right: 1px solid $gray-main;
+    }
+
+    & > :last-child {
+      padding: 1rem;
+      border-left: 1px solid $gray-main;
+    }
+
+    p {
+      padding: 1rem;
+      @include mixins.ellipsis;
+    }
+  }
+}

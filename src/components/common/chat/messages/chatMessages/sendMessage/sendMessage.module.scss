@@ -1,0 +1,27 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main {
+  margin: 2rem 0 0 0;
+  @include mixins.flex(flex-end);
+  .message {
+    position: relative;
+    @include mixins.textFont(14px, 400);
+    margin: 0 0 0 10rem;
+    padding: 0.5rem;
+    background: $bg_main;
+    @media (max-width: 1099px) {
+      margin: 0;
+    }
+    span {
+      @include mixins.textFont(10px, 400, $base-heading);
+      position: absolute;
+      left: -60px;
+      bottom: 0;
+      @media (max-width: 1099px) {
+        bottom: -20px;
+        left: 0;
+      }
+    }
+  }
+}

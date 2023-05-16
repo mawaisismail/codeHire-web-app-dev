@@ -140,13 +140,13 @@
 
         input {
           @include mixins.input(
-                          rgba(255, 255, 255, 0.2),
-                          0.25rem,
-                          $black,
-                          14px,
-                          500,
-                          12px,
-                          100%
+            rgba(255, 255, 255, 0.2),
+            0.25rem,
+            $black,
+            14px,
+            500,
+            12px,
+            100%
           );
         }
 
@@ -166,26 +166,7 @@
         @include mixins.flex(space-between, center);
         flex-wrap: wrap;
         margin-bottom: 1.5rem;
-        .checkContainer {
-          @include mixins.flex("", center);
-          gap:6px;
-          input[type="checkbox"]::before {
-            background-color: $white;
-            border-radius: 4px;
-            height: 12px;
-            width: 12px;
-            cursor: pointer;
-          }
-          input[type="checkbox"]:checked::before {
-            background-size: 10px 10px;
-          }
-
-          label {
-            @include mixins.textFont(14px, 400, mixins.$white);
-            cursor: pointer;
-          }
-        }
-        .forget{
+        .forget {
           @include mixins.textFont(14px, 400, mixins.$white);
           text-decoration: none;
           @media (max-width: 400px) {
@@ -197,7 +178,7 @@
         @include mixins.input($white, 0.25rem, $black, 14px, 500, 12px, 100%);
         transition: all 0.4s linear;
         cursor: pointer;
-        &:hover{
+        &:hover {
           transform: translateY(-6px);
         }
       }
@@ -226,15 +207,10 @@
           }
 
           &:hover::before {
-            width:0;
+            width: 0;
           }
         }
       }
     }
   }
 }
-
-
-
-
-

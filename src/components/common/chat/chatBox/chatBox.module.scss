@@ -1,0 +1,82 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+@mixin Icon($color) {
+  @include mixins.flex(center, center);
+  margin: 0 0.5rem;
+  height: 45px;
+  width: 45px;
+  background-color: $color;
+  border-radius: 50%;
+}
+
+.main {
+  @include mixins.flex(space-between, normal);
+  flex-direction: column;
+  height: calc(100vh - 10px);
+  .chat_main {
+    padding: 1rem;
+    margin-bottom: 1rem ;
+    overflow: hidden;
+    overflow-y: scroll;
+    .load_more {
+      text-align: center;
+      @include mixins.textFont(1rem, 700, $white);
+      @include mixins.globalButton($message, $message, 100%, 25px);
+    }
+  }
+
+  .chat_main::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .chat_main::-webkit-scrollbar-thumb {
+    background-color: $gray-main;
+    border-radius: 50px;
+  }
+
+  @media (min-width: 1100px) {
+    height: 85vh;
+    margin: 0 1rem 1rem 1rem;
+    border: 1px solid $gray-main;
+  }
+
+  .footer {
+    @include mixins.flex(space-between, baseline);
+    @media (max-width: 1099px) {
+      @include mixins.flex(space-between, center);
+    }
+    background-color: $gray;
+
+    textarea {
+      width: 70%;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      resize: none;
+      outline: none;
+      border: 1px solid $gray-main;
+    }
+
+    .export {
+      @include Icon($base-heading);
+
+      input {
+        display: none;
+      }
+    }
+
+    .send {
+      @include Icon($message);
+    }
+    .send_message {
+      @include mixins.textFont(1rem, 700, $white);
+      @include mixins.globalButton($message, $message, 70px, 40px);
+      margin: 0 0.5rem;
+    }
+    .disable {
+      background: $gray-main;
+      border: none;
+      color: $white;
+    }
+  }
+}
