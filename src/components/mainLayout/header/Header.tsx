@@ -33,6 +33,10 @@ const userNavLinks = [
     name: "Profile",
     link: routes.user.profile,
   },
+  {
+    name: "Maps",
+    link: routes.user.map,
+  },
 ];
 const companyNavLinks = [
   {
