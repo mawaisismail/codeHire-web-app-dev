@@ -1,4 +1,3 @@
-import { UserMultistep } from "@/components/user/multistep/multistep";
 import {GoogleApi} from "@/components/GoogleApi/GoogleApi";
 
 const Index = () => {
