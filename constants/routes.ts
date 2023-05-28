@@ -8,6 +8,7 @@ export const routes = {
     applyJob: "/user/jobs/apply",
     forgetPassword: "/user/forgotpassword",
     login: "/user/login",
+    map: "/user/Map",
   },
   company: {
     home: "/company",
