@@ -7,8 +7,8 @@ import { Container } from "@mui/material";
 const Index: FC = () => {
   const [{ baseUser }] = useContext(GlobalContext);
   return (
-    <Container maxWidth="lg" className={styles.container_main}>
-      {baseUser.uid ? <Chat /> : <></>}
+    <Container maxWidth="xl">
+      <Chat />
     </Container>
   );
 };

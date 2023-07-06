@@ -3,7 +3,6 @@
 
 .main {
   box-shadow: 0 3px 10px 0 rgb(49 64 71 / 8%);
-  padding: 1rem;
 
   .main_content {
     @include mixins.flex(space-between);
@@ -20,6 +19,13 @@
       p {
         margin: 0 1rem;
       }
+      a{
+        text-decoration: none;
+        :hover{
+
+        }
+      }
+
     }
 
     .main_notification {
