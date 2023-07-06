@@ -13,6 +13,7 @@ export const ReceivedMessage: FC<IUserChat> = ({ text, createdAt }) => {
       <p className={styles.message}>
         {text}
         <span>{createdAt ? createdAt : "0000 / 00 / 00 00:00"}</span>
+        <span>helooooooooooo</span>
       </p>
     </div>
   );

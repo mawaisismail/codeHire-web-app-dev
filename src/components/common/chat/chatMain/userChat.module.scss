@@ -3,14 +3,16 @@
 
 .main {
   @include mixins.flex(center, normal);
-
+  height: 91vh;
   .list {
     width: 100%;
-    height: 85vh;
+    //height: calc(100vh - 150px);
+    height: calc(100vh - 175px);
     overflow: hidden;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    border: 1px solid $bg_grey;
 
     &::-webkit-scrollbar {
       display: none; /* Safari and Chrome */
@@ -24,7 +26,7 @@
       background: $gray;
     }
     .no_company {
-      margin: 2rem 0;
+      //margin: 2rem 0;
       text-align: center;
       @include mixins.textFont(1.5rem, 700, $warning);
     }
@@ -34,6 +36,7 @@
     padding: 0 1rem;
     .no_company_label {
       @include mixins.textFont(1.5rem, 700, $warning);
+      margin: 0.5rem 0 ;
     }
     .label {
       text-overflow: ellipsis;
@@ -44,14 +47,12 @@
       font-weight: 700;
     }
 
-    hr {
-      margin: 1rem 0;
-      border-color: $signup-main;
-    }
   }
 
   .chat_user_section {
     display: flex;
+    margin: -0.5rem 0 0 0;
+
 
     .chat_box {
       width: 100%;
@@ -63,12 +64,57 @@
   }
 
   @media (min-width: 1100px) {
-    padding: 1rem 0;
     & > :nth-child(1) {
       width: 25%;
     }
     & > :last-child {
       width: 75%;
     }
+  }
+  .bar_chat{
+    @include mixins.flex(space-between,center);
+    //gap: 0.5rem;
+    background: $gray;
+    height: 60px;
+    padding: 0 1rem;
+    img:first-child{
+        cursor: pointer;
+        height: 100%;
+        width: 2.8rem;
+    }
+    img:last-child{
+      cursor: pointer;
+      height: 100%;
+      width: 1.2rem;
+    }
+  }
+  .bar_content{
+    @include mixins.flex(flex-start,center);
+    gap: 0.8rem;
+    background: $gray;
+    height: 60px;
+    border-left: 1px solid $bg_grey;
+    padding: 0 0.5rem;
+    width: 100%;
+    div{
+      flex-grow: 1;
+    }
+    .setting{
+      cursor: pointer;
+      height: 100% ;
+      width: 1.5rem ;
+    }
+    .status{
+      font-weight: 200;
+      font-size: 15px;
+    }
+    .picture{
+        cursor: pointer;
+        height: 45px;
+        width: 45px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
   }
 }

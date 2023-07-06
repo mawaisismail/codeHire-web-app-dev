@@ -1,5 +1,5 @@
 import styles from "./chatBox.module.scss";
-import exportImg from "../../../../../static/images/chat_export_icon.svg";
+import exportImg from "../../../../../static/images/chat_export_icon_dark.svg";
 import sendImg from "../../../../../static/images/send_message_icon.svg";
 import { FC } from "react";
 import Image from "next/image";
