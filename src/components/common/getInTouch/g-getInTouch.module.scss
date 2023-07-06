@@ -1,6 +1,7 @@
 @use "/styles/mixins";
 @import "/styles/variables";
 .main {
+
   margin: 8rem 0;
   @include mixins.flex(space-between);
   @media (max-width: 1100px) {

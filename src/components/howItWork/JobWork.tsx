@@ -1,19 +1,18 @@
 import styles from "./JobWork.module.scss";
 import { JobWorkData } from "@/components/howItWork/JobWorkData";
 import { Container } from "@mui/material";
+import { GHeader } from "@/components/common/GHeader";
 
 export const HowItWork = () => {
   return (
     <Container maxWidth="xl">
       <div className={styles.JobWorkMain}>
         <div className={styles.JobWorkContent}>
-          <div className={styles.JobWorkHeading}>
-            <h2>How it Work</h2>
-            <p>
-              Post a job to tell us about your project.We will quickly match you
-              with the right freelancer
-            </p>
-          </div>
+          <GHeader
+            title="How it Work"
+            subtitle=" Post a job to tell us about your project.We will quickly match you
+              with the right freelancer"
+          />
           {JobWorkData.map((data) => (
             <div key={data.id} className={styles.JobWorkList}>
               <h2>

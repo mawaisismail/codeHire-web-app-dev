@@ -31,11 +31,11 @@
       }
       margin: 3rem 0;
       .CategoriesIcons {
-        background-color: rgba(118, 109, 244, 0.15);
+        //background-color: rgba(118, 109, 244, 0.15);
         display: inline;
         border-radius: 7px;
         padding: 1rem 1.5rem;
-        color: #766df4;
+        color: white;
         font-size: 1.8em;
       }
       h5 {
@@ -47,7 +47,7 @@
     text-align: center;
     justify-content: center;
     button {
-      @include mixins.globalButton($button-blue, $button-blue, 250px, 45px);
+      @include mixins.globalButton("bg-gray-900", "bg-gray-900", 250px, 45px);
       margin: 1.5rem 0;
       @include mixins.textFont(1rem, 400, $white);
       border-radius: 5px;

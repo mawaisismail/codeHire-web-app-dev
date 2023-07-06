@@ -1,11 +1,11 @@
 import {
+  FaCity,
+  FaDeskpro,
   FaLayerGroup,
   FaShoppingBag,
-  FaUser,
-  FaCity,
   FaTelegram,
   FaTelegramPlane,
-  FaDeskpro,
+  FaUser,
 } from "react-icons/fa";
 
 export const firstData = [

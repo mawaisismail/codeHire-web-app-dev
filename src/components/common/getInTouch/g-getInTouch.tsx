@@ -1,17 +1,19 @@
 import styles from "./g-getInTouch.module.scss";
 import { Container } from "@mui/material";
 import { SlCursor, SlEnvolope, SlPhone } from "react-icons/sl";
+import { GHeader } from "@/components/common/GHeader";
 
 export const GGetInTouch = () => {
   return (
     <Container maxWidth="xl">
       <div className={styles.main}>
         <div className={styles.mainDetails}>
-          <p className={styles.heading}>Get in touch</p>
-          <p className={styles.details}>
-            Start working with codeHire that can provide everything you need to
-            generate awareness, drive traffic, connect.
-          </p>
+          <GHeader
+            title={"Get in touch"}
+            subtitle={
+              " Start working with codeHire that can provide everything you need to generate awareness, drive traffic, connect."
+            }
+          />
           <form>
             <div className={styles.input_main}>
               <div className={styles.input_wrapper}>
