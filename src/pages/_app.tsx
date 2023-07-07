@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }: any) {
         <GlobalProvider>
           <MainLayout>
             <Component {...pageProps} />
+            <ToastContainer />
           </MainLayout>
         </GlobalProvider>
       </ApolloProvider>

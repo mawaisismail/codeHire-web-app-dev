@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { routes } from "../../../constants/routes";
 import { User } from "firebase/auth";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../utils/context/GlobalProvider";
 import { setBaseUser } from "../../../utils/context/actions";
 import { toast } from "react-toastify";
@@ -43,26 +43,24 @@ const fbSignIn = async ({
 export const Login = () => {
   const [{ baseUser }, dispatch] = useContext(GlobalContext);
   const { push, asPath } = useRouter();
-  const [getUserById] = useLazyQuery(GET_USER_BY_UID, {
+  const [getUserById, getUseridData] = useLazyQuery(GET_USER_BY_UID, {
     fetchPolicy: "network-only",
   });
+
+  useEffect(() => {
+    if (getUseridData?.data?.getUserById) {
+      toast.success("Login Successfull");
+      dispatch(setBaseUser(getUseridData.data.getUserById));
+      push(asPath.includes("company") ? routes.company.home : routes.user.home);
+    }
+  }, [getUseridData]);
 
   const getUserFun = async (uid: string) => {
     await getUserById({
       variables: {
         uid,
       },
-    })
-      .then((e) => {
-        toast("Success");
-        dispatch(setBaseUser(e.data.getUserById));
-        push(
-          asPath.includes("company") ? routes.company.home : routes.user.home
-        );
-      })
-      .catch((error) => {
-        toast.error("something went wrong");
-      });
+    });
   };
 
   return (
@@ -86,7 +84,11 @@ export const Login = () => {
               onSubmit={async (values) => {
                 const user = await fbSignIn(values);
                 if (user) {
-                  await getUserFun(user.uid);
+                  try {
+                    await getUserFun(user.uid);
+                  } catch (e) {
+                    toast.error("something went wrong");
+                  }
                 }
               }}
             >

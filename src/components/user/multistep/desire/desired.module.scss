@@ -3,6 +3,11 @@
 
 .main {
   padding: 5rem 0;
+  .input_error{
+    color: $warning;
+    font-size: 0.8rem;
+    //margin: 0.5rem 0;
+  }
   form {
     p {
       margin: 1rem 0;

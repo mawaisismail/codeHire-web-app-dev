@@ -6,23 +6,20 @@ import { Footer } from "@/components/mainLayout/Footer/Footer";
 import { useContext } from "react";
 import { GlobalContext } from "../../../utils/context/GlobalProvider";
 import { NewUsers } from "@/components/company/newusers/newUsers";
+import { OurTeam } from "@/components/owners/OurTeam";
+import { Testimonials } from "@/components/owners/testimonials";
+import { AnimatedCounter } from "@/components/AnimatedCounter/AnimatedCounter";
 
 const Company = () => {
   const [{ baseUser }] = useContext(GlobalContext);
   return (
     <div>
       <HeroSection />
-      {baseUser?.uid ? (
-        <>
-          <NewUsers />
-        </>
-      ) : (
-        <>
-          <Client />
-          <GGetInTouch />
-        </>
-      )}
+      <NewUsers />
+      <AnimatedCounter />
       <HowItWork />
+      <OurTeam />
+      <Testimonials />
       <Footer />
     </div>
   );

@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER_INFO } from "../../../../../constants/graphQL/user";
+import { useRouter } from "next/router";
+import { routes } from "../../../../../constants/routes";
 
 export const desireInitialValues = {
   desiredOccupation: [],
@@ -20,12 +22,16 @@ export const desireInitialValues = {
 };
 
 export const desireValidationSchema = Yup.object({
-  desiredOccupation: Yup.array().min(1).required(),
-  firstChoiceOfWork: Yup.string().required(),
-  secondChoiceOfWork: Yup.string().required(),
-  employmentType: Yup.array().required(),
-  annualSalary: Yup.string().required(),
-  previousSalary: Yup.string().required(),
+  desiredOccupation: Yup.array()
+    .min(1, "Please select at least 1")
+    .required("Desired occupation is required"),
+  firstChoiceOfWork: Yup.string().required("Please select at least 1"),
+  secondChoiceOfWork: Yup.string().required("Please enter second choice"),
+  employmentType: Yup.array()
+    .min(1, "Please select at least 1")
+    .required("Employment type is required"),
+  annualSalary: Yup.string().required("Annual salary is required"),
+  previousSalary: Yup.string().required("Previous salary is required"),
 });
 
 interface IDesired {
@@ -34,6 +40,7 @@ interface IDesired {
 }
 
 export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
+  const { push } = useRouter();
   const [updateUser, updateUserData] = useMutation(UPDATE_USER_INFO, {
     fetchPolicy: "network-only",
   });
@@ -57,6 +64,7 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
               }).catch((e) => {
                 console.log(e.error);
               });
+              await push(routes.user.home);
             }}
           >
             <Form>
@@ -75,8 +83,12 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
                     <label htmlFor={`check-${name}`}>{name}</label>
                   </div>
                 ))}
-                <ErrorMessage name="desiredOccupation" component="div" />
               </div>
+              <ErrorMessage
+                className={styles.input_error}
+                name="desiredOccupation"
+                component="div"
+              />
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>First Choice of Location</p>
@@ -85,7 +97,11 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
                     name="firstChoiceOfWork"
                     placeholder="Lahore"
                   />
-                  <ErrorMessage name="firstChoiceOfWork" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="firstChoiceOfWork"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>First Choice of Location</p>
@@ -94,7 +110,11 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
                     name="secondChoiceOfWork"
                     placeholder="Karachi"
                   />
-                  <ErrorMessage name="secondChoiceOfWork" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="secondChoiceOfWork"
+                    component="div"
+                  />
                 </div>
               </div>
               <p>Working Style</p>
@@ -108,8 +128,12 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
                     <label htmlFor={`check-${name}`}>{name}</label>
                   </div>
                 ))}
-                <ErrorMessage name="employmentType" component="div" />
               </div>
+              <ErrorMessage
+                className={styles.input_error}
+                name="employmentType"
+                component="div"
+              />
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Desire Salary</p>
@@ -118,7 +142,11 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
                     name="annualSalary"
                     placeholder="10,000,00/-"
                   />
-                  <ErrorMessage name="annualSalary" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="annualSalary"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Previous Salary</p>
@@ -127,7 +155,11 @@ export const Desired: FC<IDesired> = ({ setUserInfo, info }) => {
                     name="previousSalary"
                     placeholder="10,000,00/-"
                   />
-                  <ErrorMessage name="previousSalary" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="previousSalary"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.button_wrapper}>

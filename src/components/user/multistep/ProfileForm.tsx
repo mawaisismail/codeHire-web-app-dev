@@ -28,20 +28,22 @@ export const profileInitialValues = {
 };
 
 export const profileValidationSchema = Yup.object({
-  first_name: Yup.string().required(),
-  last_name: Yup.string().required(),
-  otherEmail: Yup.string().required(),
-  about: Yup.string().required(),
-  languages: Yup.string().required(),
-  country: Yup.string().required(),
-  postalCode: Yup.string().required(),
-  building: Yup.string().required(),
-  phone: Yup.string().required(),
-  other: Yup.string().required(),
-  birthday: Yup.date().required(),
-  gender: Yup.string().required(),
-  profession: Yup.string().required(),
-  otherOccupation: Yup.array().min(1).required(),
+  first_name: Yup.string().required("First name is required"),
+  last_name: Yup.string().required("Last name is required"),
+  otherEmail: Yup.string().required("Other email is required"),
+  about: Yup.string().required("About is required"),
+  languages: Yup.string().required("Languages is required"),
+  country: Yup.string().required("Country is required"),
+  postalCode: Yup.string().required("Postal code is required"),
+  building: Yup.string().required("Building is required"),
+  phone: Yup.string().required("Phone is required"),
+  other: Yup.string().required("Other is required"),
+  birthday: Yup.date().required("Birthday is required"),
+  gender: Yup.string().required("Gender is required"),
+  profession: Yup.string().required("Profession is required"),
+  otherOccupation: Yup.array()
+    .min(1, "Please select at least one option")
+    .required("Other occupation is required"),
 });
 
 export const ProfileForm: FC<IProfileForm> = ({
@@ -72,12 +74,20 @@ export const ProfileForm: FC<IProfileForm> = ({
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>First Name</p>
                   <Field type="text" name="first_name" placeholder="Joe" />
-                  <ErrorMessage name="first_name" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="first_name"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Last Name</p>
                   <Field type="text" name="last_name" placeholder="Doe" />
-                  <ErrorMessage name="last_name" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="last_name"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -88,7 +98,11 @@ export const ProfileForm: FC<IProfileForm> = ({
                     name="otherEmail"
                     placeholder="abcs@gmail.com  "
                   />
-                  <ErrorMessage name="otherEmail" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="otherEmail"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -100,50 +114,82 @@ export const ProfileForm: FC<IProfileForm> = ({
                     rows={10}
                     placeholder="Developer with over 5 years' experience working ...."
                   />
-                  <ErrorMessage name="about" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="about"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Languages</p>
                   <Field type="text" name="languages" placeholder="English" />
-                  <ErrorMessage name="languages" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="languages"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Country</p>
                   <Field type="text" name="country" placeholder="Pakistan" />
-                  <ErrorMessage name="country" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="country"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Postal Code</p>
                   <Field type="text" name="postalCode" placeholder="54000" />
-                  <ErrorMessage name="postalCode" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="postalCode"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Building number</p>
                   <Field type="text" name="building" placeholder="001/C1" />
-                  <ErrorMessage name="building" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="building"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Phone</p>
                   <Field type="text" name="phone" placeholder="03xx-xxxxxxxx" />
-                  <ErrorMessage name="phone" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="phone"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Other</p>
                   <Field type="text" name="other" placeholder="042-xxxxxxx" />
-                  <ErrorMessage name="other" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="other"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Date of Birth</p>
                   <Field type="date" name="birthday" />
-                  <ErrorMessage name="birthday" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="birthday"
+                    component="div"
+                  />
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Gender</p>
@@ -152,7 +198,11 @@ export const ProfileForm: FC<IProfileForm> = ({
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                   </Field>
-                  <ErrorMessage name="gender" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="gender"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -163,7 +213,11 @@ export const ProfileForm: FC<IProfileForm> = ({
                     name="profession"
                     placeholder="Javascript Developer"
                   />
-                  <ErrorMessage name="profession" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="profession"
+                    component="div"
+                  />
                 </div>
               </div>
               <p className={styles.label}>Other Experience</p>
@@ -182,7 +236,11 @@ export const ProfileForm: FC<IProfileForm> = ({
                     <label htmlFor={`check-${name}`}>{name}</label>
                   </div>
                 ))}
-                <ErrorMessage name="otherOccupation" component="div" />
+                <ErrorMessage
+                  className={styles.input_error}
+                  name="otherOccupation"
+                  component="div"
+                />
               </div>
               <div className={styles.button_wrapper}>
                 <button type="submit">Next</button>

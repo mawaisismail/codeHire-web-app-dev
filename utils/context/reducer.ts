@@ -10,13 +10,13 @@ export enum UserType {
 }
 
 export interface IBaseUser {
-  uid: string;
+  uid: string | null;
   userType: UserType | null;
   isConfirmed: boolean;
 }
 
 export const baseUserInitialValues = {
-  uid: "",
+  uid: null,
   userType: null,
   isConfirmed: false,
 };

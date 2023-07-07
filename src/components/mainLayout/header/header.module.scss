@@ -41,10 +41,20 @@
     }
 
     .button_wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       button {
+        margin: 0 0.5rem;
         @include mixins.textFont(1rem, 400, $white);
         @include mixins.globalButton($signup-main, $white, 120px, 40px);
+        border-radius: 0.5rem !important;
       }
+      .apply_job{
+        @include mixins.textFont(1rem, 400, mixins.$white);
+        @include mixins.globalButton(mixins.$base-color-main, mixins.$base-color-main, 150px, 40px);
+      }
+
     }
   }
 }

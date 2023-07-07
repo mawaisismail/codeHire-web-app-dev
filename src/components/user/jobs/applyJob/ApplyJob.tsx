@@ -7,6 +7,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { APPLY_TO_JOB } from "../../../../../constants/graphQL/job";
 import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
+import { toast } from "react-toastify";
 
 export const applyInitialValues = {
   name: "",
@@ -38,17 +39,20 @@ export const ApplyJobForm: FC = () => {
             initialValues={applyInitialValues}
             validationSchema={applyValidationSchema}
             onSubmit={async (values) => {
-              await applyJob({
-                variables: {
-                  jobApplyDto: {
-                    ...values,
-                    company_id: "DU4JGEuSOzXk2hEoUTvhbCjD1DE2",
-                    job_id: query.applyJob,
-                    user_id: baseUser?.uid,
+              try {
+                await applyJob({
+                  variables: {
+                    jobApplyDto: {
+                      ...values,
+                      company_id: "DU4JGEuSOzXk2hEoUTvhbCjD1DE2",
+                      job_id: query.applyJob,
+                      user_id: baseUser?.uid,
+                    },
                   },
-                },
-              });
-              console.log(values);
+                });
+              } catch (error) {
+                toast.error("Something went wrong");
+              }
             }}
           >
             <Form>

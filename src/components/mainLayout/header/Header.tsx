@@ -15,54 +15,67 @@ import {
 import { setBaseUser } from "../../../../utils/context/actions";
 import { baseUserInitialValues } from "../../../../utils/context/reducer";
 import Link from "next/link";
+import { GConfirm } from "@/components/common/g-confirm";
 
 const userNavLinks = [
   {
     name: "Home",
     link: routes.user.home,
+    isPrivate: false,
   },
   {
     name: "Jobs",
     link: routes.user.jobs,
+    isPrivate: false,
   },
   {
     name: "Chat",
     link: routes.user.chat,
+    isPrivate: true,
   },
   {
     name: "Profile",
     link: routes.user.profile,
+    isPrivate: true,
   },
   {
     name: "Maps",
     link: routes.user.map,
+    isPrivate: true,
   },
 ];
 const companyNavLinks = [
   {
     name: "Home",
     link: routes.company.home,
+    isPrivate: false,
   },
   {
     name: "User",
     link: routes.company.users,
+    isPrivate: false,
   },
   {
     name: "Job",
     link: routes.company.jobs,
+    isPrivate: true,
   },
   {
     name: "Chat",
     link: routes.company.chat,
+    isPrivate: true,
   },
   {
     name: "Profile",
     link: routes.company.profile,
+    isPrivate: true,
   },
 ];
 
 const navLinks = [userNavLinks, companyNavLinks];
 export const Header = () => {
+  const [loading, setLoading] = useState(false);
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
   const [{ baseUser }, dispatch] = useContext(GlobalContext);
   const cookies = getClientCookie("baseUser");
   const [isOpen, setIsOpen] = useState(false);
@@ -82,10 +95,16 @@ export const Header = () => {
     });
   };
 
-  const logout = () => {
-    dispatch(setBaseUser(baseUserInitialValues));
-    clearCookie("baseUser");
-    push("/");
+  const logout = async () => {
+    setLoading(true);
+    setTimeout(async () => {
+      dispatch(setBaseUser(baseUserInitialValues));
+      clearCookie("baseUser");
+      setLoading(false);
+      await push(
+        asPath.includes("company") ? routes.company.home : routes.user.home
+      );
+    }, 2000);
   };
 
   useEffect(() => {
@@ -96,32 +115,76 @@ export const Header = () => {
     <div className={styles.main}>
       <Container maxWidth="xl">
         <div className={styles.main_content}>
-          <div onClick={() => push(routes.user.home)} className={styles.logo} />
+          <div
+            onClick={() =>
+              push(
+                asPath.includes("company")
+                  ? routes.company.home
+                  : routes.user.home
+              )
+            }
+            className={styles.logo}
+          />
           {!isMobile && (
             <>
               <div className={styles.links}>
                 {navLinks[asPath.includes("company") ? 1 : 0].map(
-                  ({ link, name }, index) => (
-                    <Link href={link} passHref>
-                      <p key={`${name}-${index}`}>{name}</p>
-                    </Link>
+                  ({ link, name, isPrivate }, index) => (
+                    <>
+                      {!isPrivate ? (
+                        <Link href={link} passHref>
+                          <p key={`${name}-${index}`}>{name}</p>
+                        </Link>
+                      ) : baseUser?.uid ? (
+                        <Link href={link} passHref>
+                          <p key={`${name}-${index}`}>{name}</p>
+                        </Link>
+                      ) : (
+                        <></>
+                      )}
+                    </>
                   )
                 )}
               </div>
-              {baseUser?.uid && (
-                <div className={styles.main_notification}>
-                  <div
-                    onClick={() => push(routes.user.profile)}
-                    className={styles.cover_image}
-                  />
-                  <p>Hi, Awais</p>
-                </div>
-              )}
               <div className={styles.button_wrapper}>
                 {baseUser?.uid ? (
-                  <button onClick={logout}>Logout</button>
+                  <>
+                    <div className={styles.main_notification}>
+                      <div
+                        onClick={() => push(routes.user.profile)}
+                        className={styles.cover_image}
+                      />
+                      <p>Hi, Awais</p>
+                    </div>
+                    <GConfirm
+                      title="Logout your account?"
+                      description="You’re about to log out of your account. Are you sure you want to continue?"
+                      open={isLogoutOpen}
+                      setOpen={() => setIsLogoutOpen(!isLogoutOpen)}
+                      onConfirm={logout}
+                      loading={loading}
+                    >
+                      <button onClick={() => setIsLogoutOpen(true)}>
+                        Logout
+                      </button>
+                    </GConfirm>
+                  </>
                 ) : (
                   <>
+                    <button
+                      className={styles.apply_job}
+                      onClick={() =>
+                        push(
+                          asPath.includes("company")
+                            ? routes.user.home
+                            : routes.company.home
+                        )
+                      }
+                    >
+                      {asPath.includes("company")
+                        ? "Apply Jobs"
+                        : "Hire Developer"}
+                    </button>
                     <button
                       onClick={() =>
                         push(

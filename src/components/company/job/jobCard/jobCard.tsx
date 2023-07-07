@@ -1,9 +1,21 @@
 import styles from "./jobCard.module.scss";
 import { useRouter } from "next/router";
 import { routes } from "../../../../../constants/routes";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
+import { GConfirm } from "@/components/common/g-confirm";
 
 export const JobCard = () => {
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [{ baseUser }] = useContext(GlobalContext);
   const { push } = useRouter();
+  const applyJob = () => {
+    if (baseUser?.uid) {
+      push(`${routes.user.applyJob}/${1}`);
+    } else {
+      setIsConfirmOpen(true);
+    }
+  };
   return (
     <div className={styles.main}>
       <div className={styles.sec1}>
@@ -24,10 +36,16 @@ export const JobCard = () => {
       </p>
       <p className={styles.time}>2 min ago</p>
       <div className={styles.button_wrapper}>
-        <button onClick={() => push(`${routes.user.applyJob}/${1}`)}>
-          Apply Now
-        </button>
-        <button>View Profile</button>
+        <GConfirm
+          title="Apple for this job"
+          description="You’re not logged in. Please login to apply for this job."
+          open={isConfirmOpen}
+          setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+          onConfirm={() => push(routes.user.login)}
+        >
+          <button onClick={applyJob}>Apply Now</button>
+        </GConfirm>
+        <button onClick={() => push(routes.user.jobs + "/1")}>View Job</button>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 html,
 * {
   margin: 0;
@@ -16,6 +18,90 @@ html,
 @font-face {
   font-family: "Inter";
   src: url("/static/fonts/Inter-VariableFont_slnt,wght.ttf") format("opentype");
+}
+
+body {
+  background: linear-gradient(98.3deg, #f5f7ff 18.08%, #f5f5f5 100%);
+}
+select:invalid {
+  color: gray;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(208, 208, 226, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+:root {
+  --color-text-light: #f6f8fa;
+  --color-text-dark: #4e545e;
+  --color-text-secondary: #8992a4;
+  --color-input-secondary: #69707D;
+  --color-text-title: #1b2534;
+
+  --color-text-default: #343741;
+  --color-text-heading: #080736;
+  --color-text-sidebar: #da0b38;
+  --color-text-menu: #5e5e7c;
+  --color-text-border: #EDEFFD;
+
+  --color-primary-100: #d3e4fe;
+  --color-primary-200: #a7c7fe;
+  --color-primary-300: #7ba7fe;
+  --color-primary-400: #5a8dfd;
+  --color-primary-500: #0d3ef2;
+  /* the old primary is: 2461FD */
+  --color-primary-600: #1a4ad9;
+  --color-primary-700: #1236b6;
+  --color-primary-800: #153996;
+  --color-primary-900: #06112f;
+  /* new button color */
+  --button--color-primary: #f3f4f6;
+
+  --toastify-color-info: #2461fd;
+  --toastify-color-success: #22c55e;
+  --toastify-color-warning: #f59e0b;
+  --toastify-color-error: #ef4444;
+
+  --badge-color-default: #ffffff;
+  --badge-color-selected: #e0e7ff;
+  --badge-text-color-default: #082796;
+  --badge-text-color-selected: #082796;
+  --badge-color-green: #e4f8ec;
+  --badge-color-green-600: #136e35;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.select2-selection__input:focus,
+.windowed-select [type='text']:focus {
+  box-shadow: none !important;
 }
 
 input[type="checkbox"] {

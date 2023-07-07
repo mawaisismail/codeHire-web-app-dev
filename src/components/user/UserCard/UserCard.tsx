@@ -1,7 +1,10 @@
 import styles from "./UserCard.module.scss";
 import { FaStar } from "react-icons/fa";
+import { routes } from "../../../../constants/routes";
+import { useRouter } from "next/router";
 
 export const UserCard = () => {
+  const { push } = useRouter();
   return (
     <div className={styles.main}>
       <div className={styles.sec1}>
@@ -28,7 +31,9 @@ export const UserCard = () => {
       </p>
       <div className={styles.button_wrapper}>
         <button>Hire Now</button>
-        <button>View Profile</button>
+        <button onClick={() => push(`${routes.company.users}/1`)}>
+          View Profile
+        </button>
       </div>
     </div>
   );
