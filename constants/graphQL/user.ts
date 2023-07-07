@@ -20,6 +20,7 @@ export const UPDATE_USER_INFO = gql`
       profileImageURL
       userName
       name
+      token
     }
   }
 `;
@@ -32,6 +33,31 @@ export const GET_USER_BY_UID = gql`
       profileImageURL
       userName
       name
+      token
+    }
+  }
+`;
+export const GET_USER = gql`
+  query getUser {
+    getUser {
+      uid
+      userType
+      profileImageURL
+      userName
+      name
+    }
+  }
+`;
+
+export const GET_LOGIN_USER_BY_UID = gql`
+  query getLoginUser($uid: String!) {
+    getLoginUser(uid: $uid) {
+      uid
+      userType
+      profileImageURL
+      userName
+      name
+      token
     }
   }
 `;

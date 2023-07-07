@@ -3,7 +3,10 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { firebaseSignIn } from "../../../constants/utils/firebase";
 import { useLazyQuery } from "@apollo/client";
-import { GET_USER_BY_UID } from "../../../constants/graphQL/user";
+import {
+  GET_LOGIN_USER_BY_UID,
+  GET_USER_BY_UID,
+} from "../../../constants/graphQL/user";
 import { useRouter } from "next/router";
 import { routes } from "../../../constants/routes";
 import { User } from "firebase/auth";
@@ -12,6 +15,7 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../utils/context/GlobalProvider";
 import { setBaseUser } from "../../../utils/context/actions";
 import { toast } from "react-toastify";
+import { clientSetCookie } from "../../../constants/utils/cookies";
 
 export interface emailSignUp {
   email: string;
@@ -43,15 +47,24 @@ const fbSignIn = async ({
 export const Login = () => {
   const [{ baseUser }, dispatch] = useContext(GlobalContext);
   const { push, asPath } = useRouter();
-  const [getUserById, getUseridData] = useLazyQuery(GET_USER_BY_UID, {
+  const [getUserById, getUseridData] = useLazyQuery(GET_LOGIN_USER_BY_UID, {
     fetchPolicy: "network-only",
   });
 
   useEffect(() => {
-    if (getUseridData?.data?.getUserById) {
+    console.log("getUseridData", getUseridData?.data?.getLoginUser);
+    if (getUseridData?.data?.getLoginUser) {
       toast.success("Login Successfull");
-      dispatch(setBaseUser(getUseridData.data.getUserById));
-      push(asPath.includes("company") ? routes.company.home : routes.user.home);
+      clientSetCookie({
+        key: "baseUser",
+        data: getUseridData.data.getLoginUser,
+      });
+      dispatch(setBaseUser(getUseridData.data.getLoginUser));
+      push(
+        getUseridData.data.getLoginUser.userType === "USER"
+          ? routes.user.home
+          : routes.company.home
+      );
     }
   }, [getUseridData]);
 

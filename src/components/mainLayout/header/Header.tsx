@@ -7,7 +7,7 @@ import { Container } from "@mui/material";
 import { useIsMobile } from "../../../../hooks/useIsMobile";
 import { GlobalContext } from "../../../../utils/context/GlobalProvider";
 import { useLazyQuery } from "@apollo/client";
-import { GET_USER_BY_UID } from "../../../../constants/graphQL/user";
+import { GET_USER, GET_USER_BY_UID } from "../../../../constants/graphQL/user";
 import {
   clearCookie,
   getClientCookie,
@@ -81,19 +81,23 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { push, asPath } = useRouter();
   const isMobile = useIsMobile();
-  const [getUserById] = useLazyQuery(GET_USER_BY_UID, {
+  const [getUserById, getUserByIdData] = useLazyQuery(GET_USER, {
     fetchPolicy: "network-only",
   });
 
-  const getUserFun = async (uid: string) => {
-    await getUserById({
-      variables: {
-        uid,
-      },
-    }).then((e) => {
-      dispatch(setBaseUser(e?.data?.getUserById));
-    });
+  const getUserFun = async () => {
+    if (cookies) {
+      await getUserById({
+        variables: {},
+      });
+    }
   };
+
+  useEffect(() => {
+    if (getUserByIdData?.data?.getUser) {
+      dispatch(setBaseUser(getUserByIdData.data.getUser));
+    }
+  }, [getUserByIdData]);
 
   const logout = async () => {
     setLoading(true);
@@ -108,7 +112,7 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    (async () => cookies && (await getUserFun(cookies.uid)))();
+    getUserFun();
   }, []);
 
   return (
