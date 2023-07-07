@@ -28,9 +28,7 @@ export const Testimonials = () => {
               alt="profile picture"
             />
             <div className="flex items-center divide-x-2 divide-gray-700">
-              <div className="pr-3 font-medium text-white">
-                Micheal Gough
-              </div>
+              <div className="pr-3 font-medium text-white">Micheal Gough</div>
               <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
                 CEO at Google
               </div>

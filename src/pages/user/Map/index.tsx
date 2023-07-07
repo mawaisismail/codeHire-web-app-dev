@@ -1,10 +1,10 @@
-import {GoogleApi} from "@/components/GoogleApi/GoogleApi";
+import { GoogleApi } from "@/components/GoogleApi/GoogleApi";
 
 const Index = () => {
-    return <GoogleApi />;
+  return <GoogleApi />;
 };
 export default Index;
 
 Index.getLayout = function getLayout(page: JSX.Element) {
-    return <>{page}</>;
+  return <>{page}</>;
 };
