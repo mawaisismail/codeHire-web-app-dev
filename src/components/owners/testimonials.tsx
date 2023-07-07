@@ -1,6 +1,6 @@
 export const Testimonials = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-gray-900">
       <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
         <figure className="max-w-screen-md mx-auto">
           <svg
@@ -15,7 +15,7 @@ export const Testimonials = () => {
             />
           </svg>
           <blockquote>
-            <p className="text-2xl font-medium text-gray-900 dark:text-white">
+            <p className="text-2xl font-medium text-white">
               "Flowbite is just awesome. It contains tons of predesigned
               components and pages starting from login screen to complex
               dashboard. Perfect choice for your next SaaS application."
@@ -27,8 +27,8 @@ export const Testimonials = () => {
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
               alt="profile picture"
             />
-            <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-              <div className="pr-3 font-medium text-gray-900 dark:text-white">
+            <div className="flex items-center divide-x-2 divide-gray-700">
+              <div className="pr-3 font-medium text-white">
                 Micheal Gough
               </div>
               <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">

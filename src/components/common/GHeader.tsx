@@ -14,7 +14,7 @@ export const GHeader: FC<IGHeader> = ({ subtitle, title }) => {
       <h1 className="mb-4 text-gray-900 text-4xl font-extrabold tracking-tight leading-none">
         {title}
       </h1>
-      <p className="mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+      <p className="mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">
         {subtitle}
       </p>
     </div>

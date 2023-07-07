@@ -47,7 +47,7 @@
     text-align: center;
     justify-content: center;
     button {
-      @include mixins.globalButton("bg-gray-900", "bg-gray-900", 250px, 45px);
+      @include mixins.globalButton(mixins.$base-color-main,mixins.$base-color-main , 250px, 45px);
       margin: 1.5rem 0;
       @include mixins.textFont(1rem, 400, $white);
       border-radius: 5px;
