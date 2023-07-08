@@ -3,6 +3,7 @@ import styles from "./jobPreview.module.scss";
 import { Container } from "@mui/material";
 import { CompanyMainDetails } from "@/components/company/mypage/mainDetails/companyMainDetails";
 import { SkillsList } from "@/components/user/userProfilePage/profile/skillsList/skillsList";
+import {UserMap} from "@/components/user/UserMap/UserMap";
 
 export const JobPreview: FC = () => {
   return (
@@ -74,6 +75,7 @@ export const JobPreview: FC = () => {
           </div>
           <div className={styles.right_container}>
             <CompanyMainDetails />
+            <UserMap/>
             <div className={styles.button_wrapper}>
               <button className={styles.button1}>Apply</button>
               <button className={styles.button2}>SAVE</button>
