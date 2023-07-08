@@ -29,7 +29,7 @@ export const MainDetails = () => {
         <div className={styles.main_content}>
           <div className={styles.headings}>
             <p>Email</p>
-            <p>Phone Number</p>
+            <p>Phone</p>
             <p>Location</p>
           </div>
           <div className={styles.heading_data}>

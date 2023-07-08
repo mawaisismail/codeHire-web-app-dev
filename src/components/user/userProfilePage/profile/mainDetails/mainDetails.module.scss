@@ -46,6 +46,7 @@
 
       .headings {
         p {
+          margin:0.5rem 0;
           @include mixins.textFont(1rem, 500, $text-heading-color);
         }
       }
@@ -53,7 +54,8 @@
       .heading_data {
         margin: 0 0 0 50px;
         p {
-          color: $text-main-color;
+          margin:0.5rem 0;
+          @include mixins.textFont(1rem, 400, $text-heading-color);
         }
       }
     }

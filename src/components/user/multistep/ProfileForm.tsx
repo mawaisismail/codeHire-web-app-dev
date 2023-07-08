@@ -1,7 +1,10 @@
 import { Dispatch, FC } from "react";
 import styles from "./profile.module.scss";
 import { Container } from "@mui/material";
-import { jsFrameworks } from "../../../../constants/utils/signUp";
+import {
+  jsFrameworks,
+  spokenLanguages,
+} from "../../../../constants/utils/signUp";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
@@ -14,7 +17,6 @@ export const profileInitialValues = {
   first_name: "",
   last_name: "",
   otherEmail: "",
-  about: "",
   languages: "",
   country: "",
   postalCode: "",
@@ -23,16 +25,20 @@ export const profileInitialValues = {
   other: "",
   birthday: "",
   gender: "",
+  about: "",
   profession: "",
   otherOccupation: [],
+  skills: [],
 };
 
 export const profileValidationSchema = Yup.object({
   first_name: Yup.string().required("First name is required"),
   last_name: Yup.string().required("Last name is required"),
+  about: Yup.string().required("about is required"),
   otherEmail: Yup.string().required("Other email is required"),
-  about: Yup.string().required("About is required"),
-  languages: Yup.string().required("Languages is required"),
+  languages: Yup.array()
+    .min(1, "Please select at least one option")
+    .required("skills are required"),
   country: Yup.string().required("Country is required"),
   postalCode: Yup.string().required("Postal code is required"),
   building: Yup.string().required("Building is required"),
@@ -44,6 +50,9 @@ export const profileValidationSchema = Yup.object({
   otherOccupation: Yup.array()
     .min(1, "Please select at least one option")
     .required("Other occupation is required"),
+  skills: Yup.array()
+    .min(1, "Please select at least one option")
+    .required("skills are required"),
 });
 
 export const ProfileForm: FC<IProfileForm> = ({
@@ -122,15 +131,15 @@ export const ProfileForm: FC<IProfileForm> = ({
                 </div>
               </div>
               <div className={styles.input_main}>
-                <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Languages</p>
-                  <Field type="text" name="languages" placeholder="English" />
-                  <ErrorMessage
-                    className={styles.input_error}
-                    name="languages"
-                    component="div"
-                  />
-                </div>
+                {/*<div className={styles.input_wrapper}>*/}
+                {/*  <p className={styles.label}>Languages</p>*/}
+                {/*  <Field type="text" name="languages" placeholder="English" />*/}
+                {/*  <ErrorMessage*/}
+                {/*    className={styles.input_error}*/}
+                {/*    name="languages"*/}
+                {/*    component="div"*/}
+                {/*  />*/}
+                {/*</div>*/}
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Country</p>
                   <Field type="text" name="country" placeholder="Pakistan" />
@@ -220,6 +229,28 @@ export const ProfileForm: FC<IProfileForm> = ({
                   />
                 </div>
               </div>
+              <p className={styles.label}>Languages</p>
+              <div className={styles.checkbox_main}>
+                {spokenLanguages.map((name) => (
+                  <div
+                    key={`profile-checkbox-${name}`}
+                    className={styles.checkbox_content}
+                  >
+                    <Field
+                      type="checkbox"
+                      name="languages"
+                      value={name}
+                      // checked={formik.values.otherOccupation.includes(name)}
+                    />
+                    <label htmlFor={`check-${name}`}>{name}</label>
+                  </div>
+                ))}
+                <ErrorMessage
+                  className={styles.input_error}
+                  name="languages"
+                  component="div"
+                />
+              </div>
               <p className={styles.label}>Other Experience</p>
               <div className={styles.checkbox_main}>
                 {jsFrameworks.map((name) => (
@@ -239,6 +270,28 @@ export const ProfileForm: FC<IProfileForm> = ({
                 <ErrorMessage
                   className={styles.input_error}
                   name="otherOccupation"
+                  component="div"
+                />
+              </div>
+              <p className={styles.label}>Skills</p>
+              <div className={styles.checkbox_main}>
+                {jsFrameworks.map((name) => (
+                  <div
+                    key={`profile-checkbox-${name}`}
+                    className={styles.checkbox_content}
+                  >
+                    <Field
+                      type="checkbox"
+                      name="skills"
+                      value={name}
+                      // checked={formik.values.otherOccupation.includes(name)}
+                    />
+                    <label htmlFor={`check-${name}`}>{name}</label>
+                  </div>
+                ))}
+                <ErrorMessage
+                  className={styles.input_error}
+                  name="skills"
                   component="div"
                 />
               </div>
