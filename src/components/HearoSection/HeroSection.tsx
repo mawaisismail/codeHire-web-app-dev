@@ -1,9 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { routes } from "../../../constants/routes";
 import languagesImg from "../../../assets/images/languages.png";
 import { useRouter } from "next/router";
+import { GlobalContext } from "../../../utils/context/GlobalProvider";
+import Link from "next/link";
 
 export const HeroSection: FC = () => {
+  const [{ baseUser }] = useContext(GlobalContext);
   const { asPath } = useRouter();
   return (
     <>
@@ -42,16 +45,38 @@ export const HeroSection: FC = () => {
                 ></path>
               </svg>
             </a>
-            <a
-              href={
-                asPath.includes("company")
-                  ? routes.company.signUp
-                  : routes.user.signUp
-              }
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 text-white border-gray-700 hover:bg-gray-700 focus:ring-gray-800"
-            >
-              Sign Up
-            </a>
+            {!baseUser?.uid && (
+              <Link
+                href={
+                  asPath.includes("company")
+                    ? routes.company.signUp
+                    : routes.user.signUp
+                }
+                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 text-white border-gray-700 hover:bg-gray-700 focus:ring-gray-800"
+              >
+                {baseUser?.uid
+                  ? asPath.includes("company")
+                    ? "Hire Dev"
+                    : "Find Job"
+                  : "Sign up"}
+              </Link>
+            )}{" "}
+            {baseUser?.uid && (
+              <Link
+                href={
+                  asPath.includes("company")
+                    ? routes.company.users
+                    : routes.user.jobs
+                }
+                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 text-white border-gray-700 hover:bg-gray-700 focus:ring-gray-800"
+              >
+                {baseUser?.uid
+                  ? asPath.includes("company")
+                    ? "Hire Dev"
+                    : "Find Job"
+                  : "Sign up"}
+              </Link>
+            )}
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img
