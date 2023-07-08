@@ -6,7 +6,10 @@ import {
   Experience,
 } from "@/components/user/userProfilePage/profile/education/Education";
 import { MainDetails } from "@/components/user/userProfilePage/profile/mainDetails/mainDetails";
-import { SkillsList } from "@/components/user/userProfilePage/profile/skillsList/skillsList";
+import {
+  LanguagesList,
+  SkillsList,
+} from "@/components/user/userProfilePage/profile/skillsList/skillsList";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 export const Profile = () => {
@@ -22,7 +25,7 @@ export const Profile = () => {
           <Education />
           <Experience />
           <SkillsList data={user?.skills} />
-          <SkillsList isGreen={true} data={user?.languages} />
+          <LanguagesList data={user?.languages} />
         </div>
       </div>
     </Container>

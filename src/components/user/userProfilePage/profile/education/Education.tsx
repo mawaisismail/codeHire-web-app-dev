@@ -149,16 +149,16 @@ export const EducationForm = ({ setEdit }: { setEdit: Dispatch<boolean> }) => {
           name="info"
           component="div"
         />
-        <div className="flex justify-between items-center py-2">
+        <div className="flex justify-between items-center py-2 mb-4">
           <button
             onClick={() => setEdit(false)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-md"
+            className="bg-red-500 text-white font-bold py-1 px-4 rounded-md"
           >
             Close
           </button>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-md"
+            className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
           >
             Save
           </button>
@@ -283,16 +283,16 @@ export const ExperienceForm = ({ setEdit }: { setEdit: Dispatch<boolean> }) => {
           name="info"
           component="div"
         />
-        <div className="flex justify-between items-center py-2">
+        <div className="flex justify-between items-center py-2 mb-4">
           <button
             onClick={() => setEdit(false)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-md"
+            className="bg-red-500 text-white font-bold py-1 px-4 rounded-md"
           >
             Close
           </button>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-md"
+            className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
           >
             Save
           </button>
