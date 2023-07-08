@@ -1,7 +1,7 @@
 import styles from "./mainDetails.module.scss";
 import { FaStar } from "react-icons/fa";
 import { Documents } from "@/components/user/userProfilePage/profile/documents/documents";
-import { UserLocation } from "@/components/user/userProfilePage/profile/UserLocation/UserLocation"
+import { UserLocation } from "@/components/user/userProfilePage/profile/UserLocation/UserLocation";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../../utils/context/GlobalProvider";
 
@@ -45,7 +45,7 @@ export const MainDetails = () => {
           </div>
         </div>
       </div>
-      <UserLocation/>
+      <UserLocation />
     </div>
   );
 };
