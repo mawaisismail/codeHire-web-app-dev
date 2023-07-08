@@ -17,15 +17,62 @@ import {
   IExperienceList,
 } from "../../../../../../utils/context/reducer";
 
-export const EducationList: FC<IEducationList> = ({
+export const EducationList: FC<any> = ({
   degree,
   year,
   institute,
   info,
+  index,
 }) => {
+  const [loading, setLoading] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [updateUser, updateUserData] = useMutation(UPDATE_USER);
+  const [{ user }, dispatch] = useContext(GlobalContext);
+  const updateUserInfo = async () => {
+    setLoading(true);
+    const education = user?.education?.filter((_, i) => i !== index);
+    await updateUser({
+      variables: {
+        userInputType: {
+          userInfo: JSON.stringify({
+            ...user,
+            education,
+          }),
+        },
+      },
+    }).catch((e) => {
+      console.log(e.error);
+    });
+  };
+
+  useEffect(() => {
+    if (updateUserData?.data?.updateUser) {
+      dispatch(setBaseUser(updateUserData.data.updateUser));
+      dispatch(setUserData(updateUserData.data.updateUser) as any);
+      setIsConfirmOpen(false);
+      setLoading(false);
+    }
+  }, [updateUserData?.data?.updateUser]);
   return (
     <div>
-      <p className={styles.heading}>{degree ?? ""}</p>
+      <div className="flex justify-between items-center">
+        <p className={styles.heading}>{degree ?? ""}</p>
+        <GConfirm
+          title="Remove Education"
+          description="You are about to remove this Education. Are you sure?"
+          open={isConfirmOpen}
+          setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+          onConfirm={updateUserInfo}
+          loading={loading}
+        >
+          <button
+            onClick={() => null}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
+          >
+            Delete
+          </button>
+        </GConfirm>
+      </div>
       <p>
         {institute ?? ""} - {year ?? ""}
       </p>
@@ -302,15 +349,69 @@ export const ExperienceForm = ({ setEdit }: { setEdit: Dispatch<boolean> }) => {
   );
 };
 
-export const ExperienceList: FC<IExperienceList> = ({
+export const ExperienceList = ({
   position,
   info,
   institute,
   year,
+  index,
+}: {
+  position: string | null;
+  info: string | null;
+  institute: string | null;
+  year: string | null;
+  index: number;
 }) => {
+  const [loading, setLoading] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [updateUser, updateUserData] = useMutation(UPDATE_USER);
+  const [{ user }, dispatch] = useContext(GlobalContext);
+  const updateUserInfo = async () => {
+    setLoading(true);
+    const experiences = user?.experiences?.filter((_, i) => i !== index);
+    await updateUser({
+      variables: {
+        userInputType: {
+          userInfo: JSON.stringify({
+            ...user,
+            experiences,
+          }),
+        },
+      },
+    }).catch((e) => {
+      console.log(e.error);
+    });
+  };
+
+  useEffect(() => {
+    if (updateUserData?.data?.updateUser) {
+      dispatch(setBaseUser(updateUserData.data.updateUser));
+      dispatch(setUserData(updateUserData.data.updateUser) as any);
+      setIsConfirmOpen(false);
+      setLoading(false);
+    }
+  }, [updateUserData?.data?.updateUser]);
+
   return (
     <div>
-      <p className={styles.heading}>{institute ?? ""}</p>
+      <div className="flex justify-between items-center">
+        <p className={styles.heading}>{institute ?? ""}</p>
+        <GConfirm
+          title="Remove Experience"
+          description="You are about to remove this experience. Are you sure?"
+          open={isConfirmOpen}
+          setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+          onConfirm={updateUserInfo}
+          loading={loading}
+        >
+          <button
+            onClick={() => null}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
+          >
+            Delete
+          </button>
+        </GConfirm>
+      </div>
       <p>
         {position}
         {"-"}
@@ -346,7 +447,7 @@ export const Education: FC = () => {
       </div>
       {edit && <EducationForm setEdit={setEdit} />}
       {educationData.map((education, index) => (
-        <EducationList key={index} {...education} />
+        <EducationList key={index} {...education} index={index} />
       ))}
       {!educationData.length && (
         <div className="flex justify-center items-center h-[150px]">
@@ -376,8 +477,15 @@ export const Experience: FC = () => {
         </button>
       </div>
       {edit && <ExperienceForm setEdit={setEdit} />}
-      {experience.map((education, index) => (
-        <ExperienceList key={index} {...education} />
+      {experience.map(({ position, info, year, institute }, index) => (
+        <ExperienceList
+          key={index}
+          index={index}
+          info={info}
+          institute={institute}
+          position={position}
+          year={year}
+        />
       ))}
       {!experience.length && (
         <div className="flex justify-center items-center h-[150px]">
