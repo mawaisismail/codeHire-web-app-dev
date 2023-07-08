@@ -41,7 +41,7 @@ export const GTooltip = ({
         onMouseLeave={() => !persist && setShow(false)}
         onPointerLeave={() => !persist && setShow(false)}
       >
-        {children}
+        <>{children}</>
       </div>
 
       <div
@@ -57,7 +57,7 @@ export const GTooltip = ({
             className="bg-white text-t-dark shadow-lg px-4 py-2 rounded-lg border text-sm max-w-lg whitespace-normal"
             onClick={() => !persist && setShow(false)}
           >
-            {content}
+            <> {content}</>
           </div>
           <div ref={setArrowElement} style={styles.arrow} />
         </GTransition>
