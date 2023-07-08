@@ -1,0 +1,20 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.main{
+  .location{
+    display: flex;
+    margin: 2rem 0;
+    button{
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+    input{
+      border: none !important;
+      outline: none !important;
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
+}

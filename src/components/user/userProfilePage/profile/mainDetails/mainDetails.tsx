@@ -1,14 +1,14 @@
 import styles from "./mainDetails.module.scss";
 import { FaStar } from "react-icons/fa";
 import { Documents } from "@/components/user/userProfilePage/profile/documents/documents";
-
+import { UserLocation } from "@/components/user/userProfilePage/profile/UserLocation/UserLocation"
 export const MainDetails = () => {
   return (
     <div className={styles.main}>
       <div className={styles.about}>
         <div className={styles.profileImage} />
         <p className={styles.profession}>
-          <span>Muhammad Awais</span>
+          <span>Muhammad Ali</span>
           <span>Developer</span>
         </p>
         <p className={styles.rating}>
@@ -39,6 +39,7 @@ export const MainDetails = () => {
           </div>
         </div>
       </div>
+      <UserLocation/>
     </div>
   );
 };
