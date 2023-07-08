@@ -10,6 +10,7 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import { ToastContainer } from "react-toastify";
+import { Loader } from "@/components/Loader/loader";
 
 export default function App({ Component, pageProps }: any) {
   if (Component.getLayout) {

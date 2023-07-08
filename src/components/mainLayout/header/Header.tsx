@@ -12,7 +12,7 @@ import {
   clearCookie,
   getClientCookie,
 } from "../../../../constants/utils/cookies";
-import { setBaseUser } from "../../../../utils/context/actions";
+import { setBaseUser, setUserData } from "../../../../utils/context/actions";
 import { baseUserInitialValues } from "../../../../utils/context/reducer";
 import Link from "next/link";
 import { GConfirm } from "@/components/common/g-confirm";
@@ -111,6 +111,7 @@ export const Header = () => {
   useEffect(() => {
     if (getUserByIdData?.data?.getUser) {
       dispatch(setBaseUser(getUserByIdData.data.getUser));
+      dispatch(setUserData(getUserByIdData.data.getUser) as any);
     }
   }, [getUserByIdData]);
 

@@ -71,7 +71,6 @@ export const JobPreview: FC = () => {
                 arenas.
               </div>
             </div>
-            <SkillsList />
           </div>
           <div className={styles.right_container}>
             <CompanyMainDetails />
