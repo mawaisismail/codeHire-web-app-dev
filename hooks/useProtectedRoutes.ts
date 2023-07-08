@@ -9,12 +9,12 @@ export const useProtectedRoutes = () => {
   useEffect(() => {
     if (baseUser?.userType) {
       if (baseUser.userType === UserType.USER) {
-        if (asPath.includes("company")) {
+        if (asPath.includes("company") || asPath.includes("signup")) {
           push("/");
         }
       }
       if (baseUser.userType === UserType.COMPANY) {
-        if (asPath.includes("user")) {
+        if (asPath.includes("user") || asPath.includes("signup")) {
           push("/company");
         }
       }
