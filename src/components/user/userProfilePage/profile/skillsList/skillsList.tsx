@@ -13,14 +13,7 @@ import {
   setBaseUser,
   setUserData,
 } from "../../../../../../utils/context/actions";
-const tools = [
-  "Cloud Management",
-  "Data Analyst",
-  "Developer",
-  "software testing",
-];
-const languages = ["English", "Japanese", "Spanish"];
-const lists = [tools, languages];
+import { toast } from "react-toastify";
 
 interface ISkillsList {
   data: string[] | null | undefined;
@@ -64,6 +57,7 @@ export const SkillsList: FC<ISkillsList> = ({ data }) => {
 
   useEffect(() => {
     if (updateUserData?.data?.updateUser) {
+      toast.success("Success");
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
       setEdit(false);
@@ -168,6 +162,7 @@ export const LanguagesList: FC<ISkillsList> = ({ data }) => {
 
   useEffect(() => {
     if (updateUserData?.data?.updateUser) {
+      toast.success("Success");
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
       setEdit(false);

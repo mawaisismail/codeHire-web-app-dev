@@ -16,6 +16,7 @@ import {
   IEducationList,
   IExperienceList,
 } from "../../../../../../utils/context/reducer";
+import { toast } from "react-toastify";
 
 export const EducationList: FC<any> = ({
   degree,
@@ -50,6 +51,7 @@ export const EducationList: FC<any> = ({
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
       setIsConfirmOpen(false);
+      toast.success("Success");
       setLoading(false);
     }
   }, [updateUserData?.data?.updateUser]);
@@ -114,6 +116,7 @@ export const EducationForm = ({ setEdit }: { setEdit: Dispatch<boolean> }) => {
 
   useEffect(() => {
     if (updateUserData?.data?.updateUser) {
+      toast.success("Success");
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
       setEdit(false);
@@ -248,6 +251,7 @@ export const ExperienceForm = ({ setEdit }: { setEdit: Dispatch<boolean> }) => {
 
   useEffect(() => {
     if (updateUserData?.data?.updateUser) {
+      toast.success("Success");
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
       setEdit(false);
@@ -385,6 +389,7 @@ export const ExperienceList = ({
 
   useEffect(() => {
     if (updateUserData?.data?.updateUser) {
+      toast.success("Success");
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
       setIsConfirmOpen(false);

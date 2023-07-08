@@ -17,6 +17,7 @@ import {
   setBaseUser,
   setUserData,
 } from "../../../../../../utils/context/actions";
+import { toast } from "react-toastify";
 export const About = () => {
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
   const [edit, setEdit] = useState(false);
@@ -39,8 +40,10 @@ export const About = () => {
 
   useEffect(() => {
     if (updateUserData?.data?.updateUser) {
+      toast.success("Success");
       dispatch(setBaseUser(updateUserData.data.updateUser));
       dispatch(setUserData(updateUserData.data.updateUser) as any);
+      setEdit(false);
     }
   }, [updateUserData?.data?.updateUser]);
 
@@ -75,7 +78,6 @@ export const About = () => {
             validationSchema={aboutValidationSchema}
             onSubmit={(value) => {
               updateUserInfo(value.about);
-              setEdit(false);
             }}
           >
             <Form>
