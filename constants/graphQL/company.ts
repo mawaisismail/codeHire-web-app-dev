@@ -22,3 +22,25 @@ export const UPDATE_COMPANY_INFO = gql`
     }
   }
 `;
+export const GET_LOGIN_COMPANY = gql`
+  query getLoginCompany($uid: String!) {
+    getLoginCompany(uid: $uid) {
+      uid
+      userType
+      profileImageURL
+      userName
+      name
+    }
+  }
+`;
+export const GET_COMPANY = gql`
+  query getCompany {
+    getCompany {
+      uid
+      userType
+      profileImageURL
+      userName
+      name
+    }
+  }
+`;

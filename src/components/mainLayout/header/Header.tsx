@@ -7,7 +7,7 @@ import { Container } from "@mui/material";
 import { useIsMobile } from "../../../../hooks/useIsMobile";
 import { GlobalContext } from "../../../../utils/context/GlobalProvider";
 import { useLazyQuery } from "@apollo/client";
-import { GET_USER, GET_USER_BY_UID } from "../../../../constants/graphQL/user";
+import { GET_USER } from "../../../../constants/graphQL/user";
 import {
   clearCookie,
   getClientCookie,
@@ -16,6 +16,10 @@ import { setBaseUser } from "../../../../utils/context/actions";
 import { baseUserInitialValues } from "../../../../utils/context/reducer";
 import Link from "next/link";
 import { GConfirm } from "@/components/common/g-confirm";
+import {
+  GET_COMPANY,
+  GET_LOGIN_COMPANY,
+} from "../../../../constants/graphQL/company";
 
 const userNavLinks = [
   {
@@ -84,10 +88,21 @@ export const Header = () => {
   const [getUserById, getUserByIdData] = useLazyQuery(GET_USER, {
     fetchPolicy: "network-only",
   });
+  const [getCompanyById, getCompanyByIdData] = useLazyQuery(GET_COMPANY, {
+    fetchPolicy: "network-only",
+  });
 
   const getUserFun = async () => {
     if (cookies) {
       await getUserById({
+        variables: {},
+      });
+    }
+  };
+
+  const getCompanyFun = async () => {
+    if (cookies) {
+      await getCompanyById({
         variables: {},
       });
     }
@@ -98,6 +113,12 @@ export const Header = () => {
       dispatch(setBaseUser(getUserByIdData.data.getUser));
     }
   }, [getUserByIdData]);
+
+  useEffect(() => {
+    if (getCompanyByIdData?.data?.getCompany) {
+      dispatch(setBaseUser(getCompanyByIdData.data.getCompany));
+    }
+  }, [getCompanyByIdData]);
 
   const logout = async () => {
     setLoading(true);
@@ -112,7 +133,7 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    getUserFun();
+    asPath.includes("company") ? getCompanyFun() : getUserFun();
   }, []);
 
   return (

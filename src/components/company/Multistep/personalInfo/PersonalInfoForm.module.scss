@@ -5,6 +5,10 @@
   .heading{
     @include mixins.textFont(1.2rem,500,$base-color-main);
   }
+  .input_error{
+    @include mixins.textFont(0.8rem,500,mixins.$warning);
+    margin: 5px 0 0 0;
+  }
   padding: 5rem 0;
   form {
     p {

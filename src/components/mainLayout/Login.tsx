@@ -16,6 +16,7 @@ import { GlobalContext } from "../../../utils/context/GlobalProvider";
 import { setBaseUser } from "../../../utils/context/actions";
 import { toast } from "react-toastify";
 import { clientSetCookie } from "../../../constants/utils/cookies";
+import { GET_LOGIN_COMPANY } from "../../../constants/graphQL/company";
 
 export interface emailSignUp {
   email: string;
@@ -50,10 +51,28 @@ export const Login = () => {
   const [getUserById, getUseridData] = useLazyQuery(GET_LOGIN_USER_BY_UID, {
     fetchPolicy: "network-only",
   });
+  const [getCompanyById, getCompanyidData] = useLazyQuery(GET_LOGIN_COMPANY, {
+    fetchPolicy: "network-only",
+  });
 
   useEffect(() => {
-    console.log("getUseridData", getUseridData?.data?.getLoginUser);
-    if (getUseridData?.data?.getLoginUser) {
+    if (getUseridData?.data?.getLoginCompany) {
+      toast.success("Login Successfull");
+      clientSetCookie({
+        key: "baseUser",
+        data: getUseridData.data.getLoginCompany,
+      });
+      dispatch(setBaseUser(getUseridData.data.getLoginCompany));
+      push(
+        getUseridData.data.getLoginCompany.userType === "USER"
+          ? routes.user.home
+          : routes.company.home
+      );
+    }
+  }, [getUseridData]);
+
+  useEffect(() => {
+    if (getCompanyidData?.data?.getLoginUser) {
       toast.success("Login Successfull");
       clientSetCookie({
         key: "baseUser",
@@ -66,10 +85,17 @@ export const Login = () => {
           : routes.company.home
       );
     }
-  }, [getUseridData]);
+  }, [getCompanyidData]);
 
   const getUserFun = async (uid: string) => {
     await getUserById({
+      variables: {
+        uid,
+      },
+    });
+  };
+  const getCompanyFun = async (uid: string) => {
+    await getCompanyById({
       variables: {
         uid,
       },
@@ -98,7 +124,9 @@ export const Login = () => {
                 const user = await fbSignIn(values);
                 if (user) {
                   try {
-                    await getUserFun(user.uid);
+                    asPath.includes("company")
+                      ? getCompanyFun(user.uid)
+                      : getUserFun(user.uid);
                   } catch (e) {
                     toast.error("something went wrong");
                   }
@@ -147,7 +175,11 @@ export const Login = () => {
               <p>
                 Don't have an account ?
                 <a
-                  onClick={() => push(routes.user.signUp)}
+                  onClick={() =>
+                    asPath.includes("company")
+                      ? push(routes.company.signUp)
+                      : push(routes.user.signUp)
+                  }
                   className={styles.loginLink}
                 >
                   Sign Up

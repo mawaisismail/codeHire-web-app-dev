@@ -20,13 +20,15 @@ export const desireInitialValues = {
 };
 
 export const desireValidationSchema = Yup.object({
-  name: Yup.string().required("Name is Required"),
-  owner: Yup.string().required("Owner is Required"),
-  total_employee: Yup.string().required("This field Required"),
-  location: Yup.string().required("Location is Required"),
-  website: Yup.string().required("Website is Required"),
-  phone: Yup.number().required("Phone is Required"),
-  established: Yup.string().required("EST is Required"),
+  name: Yup.string().required("please enter company name"),
+  owner: Yup.string().required("please enter owner name"),
+  total_employee: Yup.string().required(
+    "Please enter total no of employee in your company"
+  ),
+  location: Yup.string().required("please enter your company location"),
+  website: Yup.string().required("please enter your company website"),
+  phone: Yup.number().required("Please enter your phone number"),
+  established: Yup.string().required("company established year is required"),
 });
 
 export const PersonalInfoForm: FC = () => {
@@ -70,7 +72,11 @@ export const PersonalInfoForm: FC = () => {
                     name="name"
                     placeholder="Southville Solution"
                   />
-                  <ErrorMessage name="name" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="name"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -88,14 +94,22 @@ export const PersonalInfoForm: FC = () => {
                     name="total_employee"
                     placeholder="Awais"
                   />
-                  <ErrorMessage name="total_employee" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="total_employee"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Location</p>
                   <Field type="text" name="location" placeholder="Lahore" />
-                  <ErrorMessage name="location" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="location"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -106,7 +120,11 @@ export const PersonalInfoForm: FC = () => {
                     name="website"
                     placeholder="https://www.google.com"
                   />
-                  <ErrorMessage name="website" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="website"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -117,7 +135,11 @@ export const PersonalInfoForm: FC = () => {
                     name="phone"
                     placeholder="+42-00000001"
                   />
-                  <ErrorMessage name="phone" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="phone"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.input_main}>
@@ -128,7 +150,11 @@ export const PersonalInfoForm: FC = () => {
                     name="established"
                     placeholder="July 2022"
                   />
-                  <ErrorMessage name="established" component="div" />
+                  <ErrorMessage
+                    className={styles.input_error}
+                    name="established"
+                    component="div"
+                  />
                 </div>
               </div>
               <div className={styles.button_wrapper}>

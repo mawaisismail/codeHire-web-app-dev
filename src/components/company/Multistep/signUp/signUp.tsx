@@ -165,7 +165,7 @@ export const CompanySignup: FC<ISignUp> = ({ setCurrentStep }) => {
               <p>
                 Already a member ?
                 <a
-                  onClick={() => push(routes.user.login)}
+                  onClick={() => push(routes.company.login)}
                   className={styles.loginLink}
                 >
                   Sign In
