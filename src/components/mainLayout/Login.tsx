@@ -3,10 +3,7 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { firebaseSignIn } from "../../../constants/utils/firebase";
 import { useLazyQuery } from "@apollo/client";
-import {
-  GET_LOGIN_USER_BY_UID,
-  GET_USER_BY_UID,
-} from "../../../constants/graphQL/user";
+import { GET_LOGIN_USER_BY_UID } from "../../../constants/graphQL/user";
 import { useRouter } from "next/router";
 import { routes } from "../../../constants/routes";
 import { User } from "firebase/auth";
