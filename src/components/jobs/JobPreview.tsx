@@ -3,6 +3,7 @@ import styles from "./jobPreview.module.scss";
 import { Container } from "@mui/material";
 import { CompanyMainDetails } from "@/components/company/mypage/mainDetails/companyMainDetails";
 import { SkillsList } from "@/components/user/userProfilePage/profile/skillsList/skillsList";
+import { Loader } from "@/components/Loader/loader";
 
 export const JobPreview: FC = () => {
   return (
