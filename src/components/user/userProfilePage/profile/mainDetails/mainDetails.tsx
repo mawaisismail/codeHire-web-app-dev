@@ -1,15 +1,20 @@
 import styles from "./mainDetails.module.scss";
 import { FaStar } from "react-icons/fa";
 import { Documents } from "@/components/user/userProfilePage/profile/documents/documents";
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../../utils/context/GlobalProvider";
 
 export const MainDetails = () => {
+  const [{ user }] = useContext(GlobalContext);
   return (
     <div className={styles.main}>
       <div className={styles.about}>
         <div className={styles.profileImage} />
         <p className={styles.profession}>
-          <span>Muhammad Awais</span>
-          <span>Developer</span>
+          <span className="py-2">
+            {user?.first_name ?? "A"}.{user?.last_name?.charAt(0) ?? "B"}
+          </span>
+          <span>{user?.currentOccupation ?? ""}</span>
         </p>
         <p className={styles.rating}>
           <FaStar />
@@ -33,9 +38,9 @@ export const MainDetails = () => {
             <p>Location</p>
           </div>
           <div className={styles.heading_data}>
-            <p>Awais@gmail.com</p>
-            <p>0322-4911133</p>
-            <p>Lahore,Pakistan</p>
+            <p>{user?.email ?? ""}</p>
+            <p>{user?.phone ?? ""}</p>
+            <p>{user?.address?.Country ?? ""}</p>
           </div>
         </div>
       </div>

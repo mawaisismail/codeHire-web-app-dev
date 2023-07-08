@@ -4,6 +4,8 @@ export const CREATE_USER = gql`
   mutation createUser($userInputType: UserInputType!) {
     createUser(userInputType: $userInputType) {
       uid
+      first_name
+      last_name
       userType
       profileImageURL
       userName
@@ -54,6 +56,8 @@ export const UPDATE_USER_INFO = gql`
   mutation updateUser($userInputType: UserInputType!) {
     updateUser(userInputType: $userInputType) {
       uid
+      first_name
+      last_name
       userType
       profileImageURL
       userName
@@ -105,6 +109,8 @@ export const GET_USER_BY_UID = gql`
   query getUserById($uid: String!) {
     getUserById(uid: $uid) {
       uid
+      first_name
+      last_name
       userType
       profileImageURL
       userName
@@ -155,6 +161,8 @@ export const GET_USER = gql`
   query getUser {
     getUser {
       uid
+      first_name
+      last_name
       userType
       profileImageURL
       userName
@@ -207,6 +215,8 @@ export const GET_LOGIN_USER_BY_UID = gql`
     getLoginUser(uid: $uid) {
       uid
       userType
+      first_name
+      last_name
       profileImageURL
       userName
       name
@@ -261,6 +271,8 @@ export const UPDATE_USER = gql`
       profileImageURL
       userName
       name
+      first_name
+      last_name
       currentOccupation
       age
       birthday

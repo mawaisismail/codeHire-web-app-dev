@@ -32,6 +32,8 @@ export interface IExperienceList {
 
 export interface IUser {
   uid: string | null;
+  first_name: string | null;
+  last_name: string | null;
   userType: UserType;
   profileImageURL: string | null;
   userName: string | null;
