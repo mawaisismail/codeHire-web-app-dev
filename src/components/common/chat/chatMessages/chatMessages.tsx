@@ -13,7 +13,7 @@ export const ChatMessages: FC<IChatMessages> = ({ messages }) => {
       {messages.length > 0 &&
         messages.map(({ text, receiver, createdAt }, index) => (
           <div key={`${text}-${index}`}>
-            {baseUser?.uid.toString() === receiver.toString() ? (
+            {baseUser && baseUser?.uid?.toString() === receiver.toString() ? (
               <ReceivedMessage text={text} createdAt={createdAt} />
             ) : (
               <SendMessage text={text} createdAt={createdAt} />

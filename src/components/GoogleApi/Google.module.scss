@@ -1,0 +1,43 @@
+
+@use "/styles/mixins";
+@import "/styles/variables";
+.main {
+    display: flex;
+    flex-direction: column;
+
+    .content {
+        padding: 0.5rem;
+        display: flex;
+        border-radius: 10px;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        background-color: white;
+        transform: translate(-50%, -50%);
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+        .inputContainer{
+            display: flex;
+            flex-direction: column;
+            div>input{
+                padding: 1rem 2rem;
+                margin: 1rem 1rem;
+                border-radius: 5px;
+                border: 1px solid lightgray;
+            }
+            div>span{
+                padding: 1rem 2rem;
+                margin: 2rem 1rem;
+                border: none;
+            }
+        }
+        .infoContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .icons{
+            color: red;
+        }
+        }
+    }
+
+}
