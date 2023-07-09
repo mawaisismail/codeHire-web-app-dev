@@ -29,7 +29,17 @@ export const GET_LOGIN_COMPANY = gql`
       userType
       profileImageURL
       userName
+      email
       name
+      owner
+      coverImage
+      total_employee
+      location
+      website
+      phone
+      established
+      about
+      token
     }
   }
 `;

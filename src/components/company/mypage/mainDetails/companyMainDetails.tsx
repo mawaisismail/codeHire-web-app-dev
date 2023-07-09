@@ -1,14 +1,30 @@
 import styles from "./companyMainDetails.module.scss";
 import { FaStar } from "react-icons/fa";
+import { FC } from "react";
+import { ICompany } from "../../../../../constants/interfaces/company";
 
-export const CompanyMainDetails = () => {
+export const CompanyMainDetails: FC<ICompany> = ({
+  about,
+  profileImageURL,
+  coverImage,
+  email,
+  name,
+  owner,
+  phone,
+  userName,
+  token,
+  location,
+  total_employee,
+  established,
+  website,
+}) => {
   return (
     <div className={styles.main}>
       <div className={styles.about}>
         <div className={styles.profileImage} />
         <p className={styles.profession}>
-          <span>Jobcy Technology Pvt.Ltd</span>
-          <span>Since July 2017</span>
+          <span>{name ?? ""}</span>
+          <span>Since {established ?? ""}</span>
         </p>
         <p className={styles.rating}>
           <FaStar />
@@ -29,14 +45,21 @@ export const CompanyMainDetails = () => {
             <p>Established</p>
           </div>
           <div className={styles.heading_data}>
-            <p>Muhammad Awais</p>
-            <p>1500 - 1850</p>
-            <p>New York</p>
-            <p>www.google.com</p>
-            <p>July 10 2017</p>
+            <p>{owner ?? ""}</p>
+            <p>{total_employee ?? ""}</p>
+            <p>{location ?? ""}</p>
+            <p>{website ?? ""}</p>
+            <p>{established ?? ""}</p>
           </div>
         </div>
-        <button className={styles.button_contact}>Contact</button>
+        <div>
+          <a
+            href="tel:555-555-5555"
+            className="w-full flex justify-center items-center"
+          >
+            <button className={styles.button_contact}>Contact</button>
+          </a>
+        </div>
       </div>
       <div className={styles.office_time}>
         <p className={styles.heading}>Working Days</p>

@@ -6,6 +6,8 @@ import { JobCard } from "@/components/company/job/jobCard/jobCard";
 import { useLazyQuery } from "@apollo/client";
 import { GET_COMPANY_JOB } from "../../../../../constants/graphQL/job";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { routes } from "../../../../../constants/routes";
 
 export const MyJobs = () => {
   const [jobs, setJobs] = useState<Array<any>>([]);
@@ -30,6 +32,10 @@ export const MyJobs = () => {
     <Container>
       <div className={styles.main_content}>
         <PaginationDetails pagination={100} coordinate={{ x: 10, y: 18 }} />
+        <div>
+          <Link href={routes.company.create}>Create Job</Link>
+        </div>
+
         <div className={styles.main}>
           {jobs?.map((value, index) => (
             <div key={index} className={styles.main_card}>

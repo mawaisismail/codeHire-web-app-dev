@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 
 interface ISkillsList {
   data: string[] | null | undefined;
+  disabledEdit?: boolean;
 }
 export const skillsValidationSchema = Yup.object({
   skills: Yup.array()
@@ -30,7 +31,7 @@ export const languagesValidationSchema = Yup.object({
     .required("skills are required"),
 });
 
-export const SkillsList: FC<ISkillsList> = ({ data }) => {
+export const SkillsList: FC<ISkillsList> = ({ data, disabledEdit = false }) => {
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
   const [edit, setEdit] = useState(false);
   const [{ user }, dispatch] = useContext(GlobalContext);
@@ -68,12 +69,14 @@ export const SkillsList: FC<ISkillsList> = ({ data }) => {
     <div className={styles.main}>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>Skills</p>
-        <button
-          onClick={() => setEdit(!edit)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-        >
-          Edit
-        </button>
+        {!disabledEdit && (
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Edit
+          </button>
+        )}
       </div>
       {!edit ? (
         <div className={styles.content}>

@@ -60,7 +60,7 @@
       }
     }
     .button_contact {
-      @include mixins.globalButton($button-red, $button-red, 100%, 45px);
+      @include mixins.globalButton($button-red, $button-red, 80%, 45px);
       border-radius: 0.4rem;
       @include mixins.textFont(1rem, 700, $white);
     }

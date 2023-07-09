@@ -1,17 +1,36 @@
 import styles from "./jobCard.module.scss";
 import { useRouter } from "next/router";
 import { routes } from "../../../../../constants/routes";
-import { useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 import { GConfirm } from "@/components/common/g-confirm";
+import { IJob } from "../../../../../constants/interfaces/jobs";
 
-export const JobCard = () => {
+export const JobCard: FC<IJob> = ({
+  title,
+  skills,
+  description,
+  coverImg,
+  employmentType,
+  experience,
+  location,
+  freeWords,
+  position,
+  qualification,
+  responsibilities,
+  offer_salary,
+  id,
+  company,
+  companyID,
+  updatedAt,
+  createdAt,
+}) => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [{ baseUser }] = useContext(GlobalContext);
   const { push } = useRouter();
   const applyJob = () => {
     if (baseUser?.uid) {
-      push(`${routes.user.applyJob}/${1}`);
+      push(`${routes.user.applyJob}/${id}`);
     } else {
       setIsConfirmOpen(true);
     }
@@ -19,22 +38,28 @@ export const JobCard = () => {
   return (
     <div className={styles.main}>
       <div className={styles.sec1}>
-        <div className={styles.coverImages} />
+        <div
+          style={
+            coverImg
+              ? {
+                  backgroundImage: `url(${coverImg})`,
+                }
+              : {}
+          }
+          className={styles.coverImages}
+        />
         <div>
-          <p className={styles.profile}>Magento Developer</p>
-          <p className={styles.amount}>Jobcy Technology Pvt.Ltd</p>
+          <p className={styles.profile}>{title ?? ""}</p>
+          <p className={styles.amount}>{company?.name ?? ""}</p>
         </div>
       </div>
       <div className={styles.occupation}>
-        <p className={styles.salary}>$500/ Month</p>
-        <p className={styles.other}>Min. 1 Year</p>
-        <p className={styles.other}>Developer</p>
+        <p className={styles.salary}>${offer_salary ?? ""}/ month</p>
+        <p className={styles.other}>{experience ?? ""} Year</p>
+        <p className={styles.other}>{position ?? ""}</p>
       </div>
-      <p>
-        As a Product Designer, you will work within a Product Delivery Team
-        fused with UX, engineering, product and data talent.
-      </p>
-      <p className={styles.time}>2 min ago</p>
+      <p className="line-clamp-4 h-[100px]">{description ?? ""}</p>
+      <p className={styles.time}>{createdAt ?? ""}</p>
       <div className={styles.button_wrapper}>
         <GConfirm
           title="Apple for this job"
@@ -45,7 +70,9 @@ export const JobCard = () => {
         >
           <button onClick={applyJob}>Apply Now</button>
         </GConfirm>
-        <button onClick={() => push(routes.user.jobs + "/1")}>View Job</button>
+        <button onClick={() => push(`${routes.user.jobs}/${id}`)}>
+          View Job
+        </button>
       </div>
     </div>
   );

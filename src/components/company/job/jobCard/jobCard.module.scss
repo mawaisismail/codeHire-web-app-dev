@@ -29,6 +29,7 @@
     .profile {
       margin: 1rem 0 0.5rem 0;
       @include mixins.textFont(1.1rem, 700, $black);
+      @include mixins.ellipsis(200px)
     }
 
     .amount {
@@ -46,6 +47,7 @@
     .other {
       @include mixins.Label;
       @include mixins.textFont(0.8rem, 500);
+      @include mixins.ellipsis(80px)
     }
 
   }
