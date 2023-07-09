@@ -5,6 +5,3 @@ const Index = () => {
 };
 export default Index;
 
-Index.getLayout = function getLayout(page: JSX.Element) {
-  return <>{page}</>;
-};
