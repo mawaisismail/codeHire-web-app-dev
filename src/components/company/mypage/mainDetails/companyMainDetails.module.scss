@@ -1,6 +1,9 @@
 @use "/styles/mixins";
 @import "/styles/variables";
 .main {
+  .profileImage {
+    @include mixins.profileImage;
+  }
   border: 1px solid $border-light;
   .heading {
     margin: 1rem;

@@ -165,3 +165,14 @@ export const GET_JOB_BY_ID = gql`
     }
   }
 `;
+
+export const GET_APPLY_JOBS = gql`
+  query getApplyJobs {
+    getApplyJobs {
+      id
+      job {
+        id
+      }
+    }
+  }
+`;

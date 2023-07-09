@@ -7,7 +7,26 @@ export const CREATE_COMPANY = gql`
       userType
       profileImageURL
       userName
+      email
+      name
+      owner
+      coverImage
+      total_employee
+      location
+      website
+      phone
+      established
+      about
       token
+      workingHours {
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
+      }
     }
   }
 `;
@@ -18,7 +37,26 @@ export const UPDATE_COMPANY_INFO = gql`
       userType
       profileImageURL
       userName
+      email
       name
+      owner
+      coverImage
+      total_employee
+      location
+      website
+      phone
+      established
+      about
+      workingHours {
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
+      }
+      token
     }
   }
 `;
@@ -37,6 +75,15 @@ export const GET_LOGIN_COMPANY = gql`
       location
       website
       phone
+      workingHours {
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
+      }
       established
       about
       token
@@ -50,7 +97,26 @@ export const GET_COMPANY = gql`
       userType
       profileImageURL
       userName
+      email
       name
+      owner
+      coverImage
+      total_employee
+      location
+      website
+      phone
+      established
+      workingHours {
+        monday
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
+      }
+      about
+      token
     }
   }
 `;

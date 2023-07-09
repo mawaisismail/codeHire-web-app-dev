@@ -1,8 +1,10 @@
 import { ActionNames, ActionTypes } from "./actions";
+import { ICompany } from "../../constants/interfaces/company";
 
 export interface IStoreStates {
   baseUser: IBaseUser;
   user: IUser | null;
+  company: ICompany | null;
 }
 export enum UserType {
   USER = "USER",
@@ -92,6 +94,7 @@ export type IDispatch = (action: ActionTypes) => void;
 export const initialState: IStoreStates = {
   baseUser: baseUserInitialValues,
   user: null,
+  company: null,
 };
 
 export const reducer = (state: IStoreStates, action: ActionTypes) => {
@@ -101,6 +104,8 @@ export const reducer = (state: IStoreStates, action: ActionTypes) => {
       return { ...state, baseUser: payload };
     case ActionNames.SET_USER_DATA:
       return { ...state, user: payload };
+    case ActionNames.SET_COMPANY_DATA:
+      return { ...state, company: payload };
     default:
       return state;
   }

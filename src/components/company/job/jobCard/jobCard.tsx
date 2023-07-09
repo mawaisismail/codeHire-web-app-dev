@@ -6,7 +6,12 @@ import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 import { GConfirm } from "@/components/common/g-confirm";
 import { IJob } from "../../../../../constants/interfaces/jobs";
 
-export const JobCard: FC<IJob> = ({
+interface IJobProps extends IJob {
+  hideSave?: boolean;
+  hideApply?: boolean;
+}
+
+export const JobCard: FC<IJobProps> = ({
   title,
   skills,
   description,
@@ -24,6 +29,8 @@ export const JobCard: FC<IJob> = ({
   companyID,
   updatedAt,
   createdAt,
+  hideApply = false,
+  hideSave = false,
 }) => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [{ baseUser }] = useContext(GlobalContext);
@@ -64,11 +71,17 @@ export const JobCard: FC<IJob> = ({
         <GConfirm
           title="Apple for this job"
           description="You’re not logged in. Please login to apply for this job."
-          open={isConfirmOpen}
+          open={!hideApply && isConfirmOpen}
           setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
           onConfirm={() => push(routes.user.login)}
         >
-          <button onClick={applyJob}>Apply Now</button>
+          <button
+            className="disabled:bg-blue-400"
+            disabled={hideApply}
+            onClick={applyJob}
+          >
+            Apply Now
+          </button>
         </GConfirm>
         <button onClick={() => push(`${routes.user.jobs}/${id}`)}>
           View Job

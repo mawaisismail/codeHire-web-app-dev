@@ -20,7 +20,6 @@ const Pages = () => {
       <OurTeam />
       <HowItWork />
       <Testimonials />
-      {/*<GGetInTouch />*/}
       <Footer />
     </div>
   );

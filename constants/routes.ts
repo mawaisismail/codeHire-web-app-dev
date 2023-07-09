@@ -6,6 +6,7 @@ export const routes = {
     jobs: "/user/jobs",
     chat: "/user/chats",
     applyJob: "/user/jobs/apply",
+    saveJob: "/user/jobs/save",
     forgetPassword: "/user/forgotpassword",
     login: "/user/login",
     map: "/user/Map",

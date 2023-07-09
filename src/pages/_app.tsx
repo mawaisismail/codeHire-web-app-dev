@@ -14,7 +14,7 @@ import { Loader } from "@/components/Loader/loader";
 import { useProtectedRoutes } from "../../hooks/useProtectedRoutes";
 
 export default function App({ Component, pageProps }: any) {
-  useProtectedRoutes();
+  // useProtectedRoutes();
   if (Component.getLayout) {
     return Component.getLayout(
       <ApolloProvider client={client}>
