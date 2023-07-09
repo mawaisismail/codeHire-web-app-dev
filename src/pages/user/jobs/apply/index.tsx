@@ -9,23 +9,27 @@ import {
   GET_APPLY_JOBS,
 } from "../../../../../constants/graphQL/job";
 import { useLazyQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IJob } from "../../../../../constants/interfaces/jobs";
+import axios from "axios";
+import { BASE_URL } from "../../../../../constants/constants";
+import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 
 const Apply = () => {
+  const [{ baseUser }] = useContext(GlobalContext);
   const [jobs, setJobs] = useState<Array<IJob>>([]);
-  const [getJobsForUser, { data, loading, error }] =
-    useLazyQuery(GET_APPLY_JOBS);
+  const getApplyJobs = async () => {
+    const res = await axios.get(`${BASE_URL}/jobs/${baseUser.uid}`);
+    setJobs(res.data);
+  };
 
   useEffect(() => {
-    if (data?.getJobs) {
-      setJobs(data?.getJobs);
+    if (baseUser.uid) {
+      getApplyJobs();
     }
-  }, [data?.getJobs]);
+  }, [baseUser]);
 
-  useEffect(() => {
-    getJobsForUser();
-  }, []);
+  console.log("jobs", jobs);
 
   return (
     <Container>
@@ -36,9 +40,9 @@ const Apply = () => {
           </div>
         )}
         <div className={styles.main}>
-          {jobs?.map((value, index) => (
+          {jobs?.map((value: any, index) => (
             <div key={index} className={styles.main_card}>
-              <JobCard hideApply={true} {...value} />
+              <JobCard hideApply={true} {...value.job} />
             </div>
           ))}
         </div>
