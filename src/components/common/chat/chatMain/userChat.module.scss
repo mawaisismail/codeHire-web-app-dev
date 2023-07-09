@@ -2,10 +2,12 @@
 @import "/styles/variables";
 
 .main {
+  overflow: scroll;
   @include mixins.flex(center, normal);
   height: 91vh;
   .list {
     width: 100%;
+    background-color: white;
     //height: calc(100vh - 150px);
     height: calc(100vh - 175px);
     overflow: hidden;
@@ -63,18 +65,27 @@
     }
   }
 
-  @media (min-width: 1100px) {
+  //@media (min-width: 1100px) {
+  //  & > :nth-child(1) {
+  //    width: 25%;
+  //  }
+  //  & > :last-child {
+  //    width: 75%;
+  //  }
+  //}
+
+  @media (max-width: 900px) {
     & > :nth-child(1) {
-      width: 25%;
+      min-width: 300px;
     }
     & > :last-child {
-      width: 75%;
+      min-width:600px;
     }
   }
   .bar_chat{
     @include mixins.flex(space-between,center);
     //gap: 0.5rem;
-    background: $gray;
+    background: rgba(39, 110, 208, 0.84);
     height: 60px;
     padding: 0 1rem;
     img:first-child{
@@ -82,16 +93,16 @@
         height: 100%;
         width: 2.8rem;
     }
-    img:last-child{
-      cursor: pointer;
-      height: 100%;
-      width: 1.2rem;
-    }
+    //img:last-child{
+    //  cursor: pointer;
+    //  height: 100%;
+    //  width: 1.2rem;
+    //}
   }
   .bar_content{
     @include mixins.flex(flex-start,center);
     gap: 0.8rem;
-    background: $gray;
+    background: white;
     height: 60px;
     border-left: 1px solid $bg_grey;
     padding: 0 0.5rem;
@@ -105,8 +116,9 @@
       width: 1.5rem ;
     }
     .status{
-      font-weight: 200;
+      font-weight: 500;
       font-size: 15px;
+      color: rgba(39, 110, 208, 0.84);
     }
     .picture{
         cursor: pointer;
