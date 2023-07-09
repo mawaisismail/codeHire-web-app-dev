@@ -11,13 +11,18 @@
     border-radius: 5px;
     background: url(/static/images/default_profile_img.svg) no-repeat center;
     background-size: cover;
+
   }
   .message {
+    border-radius: 5px;
     position: relative;
+    max-width: 400px;
     @include mixins.textFont(14px, 400);
-    padding: 0.5rem;
+    padding: 1rem 0.7rem;
     margin: 0 10rem 0 0;
     background: $gray;
+    word-wrap: break-word; /* Add this line to wrap long words */
+
     @media (max-width: 1099px) {
       margin: 0;
     }
@@ -26,6 +31,8 @@
       position: absolute;
       right: -60px;
       bottom: 0;
+      top: 20px;
+
       @media (max-width: 1099px) {
         bottom: -20px;
         right: 0;
