@@ -14,6 +14,7 @@ import {
   setUserData,
 } from "../../../../../../utils/context/actions";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 interface ISkillsList {
   data: string[] | null | undefined;
@@ -32,6 +33,7 @@ export const languagesValidationSchema = Yup.object({
 });
 
 export const SkillsList: FC<ISkillsList> = ({ data, disabledEdit = false }) => {
+  const { asPath } = useRouter();
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
   const [edit, setEdit] = useState(false);
   const [{ user }, dispatch] = useContext(GlobalContext);
@@ -69,7 +71,7 @@ export const SkillsList: FC<ISkillsList> = ({ data, disabledEdit = false }) => {
     <div className={styles.main}>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>Skills</p>
-        {!disabledEdit && (
+        {!asPath.includes("company") && !disabledEdit && (
           <button
             onClick={() => setEdit(!edit)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
@@ -139,6 +141,7 @@ export const SkillsList: FC<ISkillsList> = ({ data, disabledEdit = false }) => {
 };
 
 export const LanguagesList: FC<ISkillsList> = ({ data }) => {
+  const { asPath } = useRouter();
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
   const [edit, setEdit] = useState(false);
   const [{ user }, dispatch] = useContext(GlobalContext);
@@ -176,12 +179,14 @@ export const LanguagesList: FC<ISkillsList> = ({ data }) => {
     <div className={styles.main}>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>Spoken languages</p>
-        <button
-          onClick={() => setEdit(!edit)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-        >
-          Edit
-        </button>
+        {!asPath.includes("company") && (
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Edit
+          </button>
+        )}
       </div>
       {!edit ? (
         <div className={styles.content}>

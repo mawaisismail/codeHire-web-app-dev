@@ -14,6 +14,7 @@ import {
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { uploadFile } from "../../../../../../utils/file-upload-service";
+import { useRouter } from "next/router";
 
 const initialValues = {
   first_name: "",
@@ -28,6 +29,7 @@ const profileValidationSchema = Yup.object({
 });
 
 export const MainDetails = () => {
+  const { asPath } = useRouter();
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
   const [edit, setEdit] = useState(false);
   const [{ user }, dispatch] = useContext(GlobalContext);
@@ -73,12 +75,14 @@ export const MainDetails = () => {
     <div className={styles.main}>
       <div className="flex justify-between items-center py-6">
         <p className={styles.heading}>Personal</p>
-        <button
-          onClick={() => setEdit(!edit)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-        >
-          Edit
-        </button>
+        {!asPath.includes("company") && (
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Edit
+          </button>
+        )}
       </div>
       {!edit ? (
         <div className={styles.about}>

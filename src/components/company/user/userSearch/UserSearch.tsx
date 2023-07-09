@@ -4,8 +4,26 @@ import { UserCard } from "@/components/user/UserCard/UserCard";
 import { Pagination } from "@/components/common/pagination/pagination";
 import { GSearch } from "@/components/common/search/g-search";
 import { PaginationDetails } from "@/components/common/pagination/paginationDetails/paginationDetails";
+import { useLazyQuery } from "@apollo/client";
+import { GET_ALL_USERS } from "../../../../../constants/graphQL/user";
+import { useEffect, useState } from "react";
+import { IUser } from "../../../../../utils/context/reducer";
 
 export const UserSearch = () => {
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [getAllUsers, { data, loading, error }] = useLazyQuery(GET_ALL_USERS);
+
+  useEffect(() => {
+    getAllUsers({
+      variables: {},
+    });
+  }, []);
+
+  useEffect(() => {
+    if (data?.getAllUsers) {
+      setUsers(data.getAllUsers);
+    }
+  }, [data]);
   const handlePagination = async ({ selected }: { selected: number }) => {
     const offset = selected * 10;
   };
@@ -15,9 +33,9 @@ export const UserSearch = () => {
         <GSearch />
         <PaginationDetails pagination={100} coordinate={{ x: 10, y: 18 }} />
         <div className={styles.main}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((value, index) => (
+          {users.map((user, index) => (
             <div key={index} className={styles.main_card}>
-              <UserCard />
+              <UserCard key={index} {...user} />
             </div>
           ))}
         </div>

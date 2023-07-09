@@ -17,6 +17,7 @@ import {
   IExperienceList,
 } from "../../../../../../utils/context/reducer";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 export const EducationList: FC<any> = ({
   degree,
@@ -25,6 +26,7 @@ export const EducationList: FC<any> = ({
   info,
   index,
 }) => {
+  const { asPath } = useRouter();
   const [loading, setLoading] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
@@ -59,21 +61,23 @@ export const EducationList: FC<any> = ({
     <div>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>{degree ?? ""}</p>
-        <GConfirm
-          title="Remove Education"
-          description="You are about to remove this Education. Are you sure?"
-          open={isConfirmOpen}
-          setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
-          onConfirm={updateUserInfo}
-          loading={loading}
-        >
-          <button
-            onClick={() => null}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
+        {!asPath.includes("company") && (
+          <GConfirm
+            title="Remove Education"
+            description="You are about to remove this Education. Are you sure?"
+            open={isConfirmOpen}
+            setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+            onConfirm={updateUserInfo}
+            loading={loading}
           >
-            Delete
-          </button>
-        </GConfirm>
+            <button
+              onClick={() => null}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
+            >
+              Delete
+            </button>
+          </GConfirm>
+        )}
       </div>
       <p>
         {institute ?? ""} - {year ?? ""}
@@ -366,6 +370,7 @@ export const ExperienceList = ({
   year: string | null;
   index: number;
 }) => {
+  const { asPath } = useRouter();
   const [loading, setLoading] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
@@ -401,21 +406,23 @@ export const ExperienceList = ({
     <div>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>{institute ?? ""}</p>
-        <GConfirm
-          title="Remove Experience"
-          description="You are about to remove this experience. Are you sure?"
-          open={isConfirmOpen}
-          setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
-          onConfirm={updateUserInfo}
-          loading={loading}
-        >
-          <button
-            onClick={() => null}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
+        {!asPath.includes("company") && (
+          <GConfirm
+            title="Remove Experience"
+            description="You are about to remove this experience. Are you sure?"
+            open={isConfirmOpen}
+            setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+            onConfirm={updateUserInfo}
+            loading={loading}
           >
-            Delete
-          </button>
-        </GConfirm>
+            <button
+              onClick={() => null}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
+            >
+              Delete
+            </button>
+          </GConfirm>
+        )}
       </div>
       <p>
         {position}
@@ -432,6 +439,7 @@ interface IEducation {
 }
 
 export const Education: FC = () => {
+  const { asPath } = useRouter();
   const [edit, setEdit] = useState(false);
   const [data, dispatch] = useContext(GlobalContext);
   const [educationData, setEducationData] = useState<IEducationList[]>([]);
@@ -443,12 +451,14 @@ export const Education: FC = () => {
     <div className={styles.main}>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>Education</p>
-        <button
-          onClick={() => setEdit(!edit)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-        >
-          Add
-        </button>
+        {!asPath.includes("company") && (
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Add
+          </button>
+        )}
       </div>
       {edit && <EducationForm setEdit={setEdit} />}
       {educationData.map((education, index) => (
@@ -464,6 +474,7 @@ export const Education: FC = () => {
 };
 
 export const Experience: FC = () => {
+  const { asPath } = useRouter();
   const [edit, setEdit] = useState(false);
   const [data, dispatch] = useContext(GlobalContext);
   const [experience, setExperienceData] = useState<IExperienceList[]>([]);
@@ -474,12 +485,14 @@ export const Experience: FC = () => {
     <div className={styles.main}>
       <div className="flex justify-between items-center">
         <p className={styles.heading}>Experience</p>
-        <button
-          onClick={() => setEdit(!edit)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-        >
-          Add
-        </button>
+        {!asPath.includes("company") && (
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Add
+          </button>
+        )}
       </div>
       {edit && <ExperienceForm setEdit={setEdit} />}
       {experience.map(({ position, info, year, institute }, index) => (

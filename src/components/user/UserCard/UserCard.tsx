@@ -2,16 +2,27 @@ import styles from "./UserCard.module.scss";
 import { FaStar } from "react-icons/fa";
 import { routes } from "../../../../constants/routes";
 import { useRouter } from "next/router";
+import { FC } from "react";
+import { IUser } from "../../../../utils/context/reducer";
 
-export const UserCard = () => {
+export const UserCard: FC<IUser> = ({
+  about,
+  currentOccupation,
+  first_name,
+  desire,
+  last_name,
+  uid,
+}) => {
   const { push } = useRouter();
   return (
     <div className={styles.main}>
       <div className={styles.sec1}>
         <div className={styles.coverImages} />
         <div>
-          <p className={styles.profile}> Muhammad Awais</p>
-          <p className={styles.amount}>$800/month</p>
+          <p className={styles.profile}>
+            {first_name ?? "A"}.{last_name ?? "B"}
+          </p>
+          <p className={styles.amount}>{desire?.annualSalary}/Year</p>
         </div>
       </div>
       <p className={styles.rating}>
@@ -22,16 +33,13 @@ export const UserCard = () => {
         <FaStar />
       </p>
       <div className={styles.occupation}>
-        <p>Exp : 3 Years</p>
-        <p>Freelancers</p>
+        <p>Exp : {Math.trunc(Math.random() * 10)} Years</p>
+        <p>{currentOccupation}</p>
       </div>
-      <p>
-        Some quick example text to build on the card title and bulk the cards
-        content Moltin gives you platform.
-      </p>
+      <p className="line-clamp-3 h-[120px]">{about ?? ""}</p>
       <div className={styles.button_wrapper}>
         <button>Hire Now</button>
-        <button onClick={() => push(`${routes.company.users}/1`)}>
+        <button onClick={() => push(`${routes.company.users}/${uid}`)}>
           View Profile
         </button>
       </div>

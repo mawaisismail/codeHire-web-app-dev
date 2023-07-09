@@ -18,7 +18,9 @@ import {
   setUserData,
 } from "../../../../../../utils/context/actions";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 export const About = () => {
+  const { asPath } = useRouter();
   const [updateUser, updateUserData] = useMutation(UPDATE_USER);
   const [edit, setEdit] = useState(false);
   const [{ user }, dispatch] = useContext(GlobalContext);
@@ -51,12 +53,14 @@ export const About = () => {
     <div className={styles.main}>
       <div className="flex justify-between items-center py-6">
         <p className={styles.heading}>About</p>
-        <button
-          onClick={() => setEdit(!edit)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-        >
-          Edit
-        </button>
+        {!asPath.includes("company") && (
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Edit
+          </button>
+        )}
       </div>
       {!edit ? (
         <p className="min-h-[100px]">
