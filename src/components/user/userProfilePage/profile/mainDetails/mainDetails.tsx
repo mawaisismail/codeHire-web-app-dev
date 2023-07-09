@@ -41,6 +41,10 @@ export const MainDetails = () => {
     currentOccupation: user?.currentOccupation || "",
   };
 
+  const check=(lan:number,long:number)=>{
+    console.log(lan,long)
+  }
+
   const updateUserInfo = async (values: typeof initialValues) => {
     let file = null;
     if (selectedFile) {
@@ -241,7 +245,7 @@ export const MainDetails = () => {
           </div>
         </div>
       </div>
-      <UserLocation />
+      <UserLocation check={check}/>
     </div>
   );
 };

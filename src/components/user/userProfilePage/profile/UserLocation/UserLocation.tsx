@@ -14,7 +14,7 @@ interface Coordinates {
   lng: number;
 }
 const Defaultcenter = { lat: 31.5204, lng: 74.3587 };
-export const UserLocation = () => {
+export const UserLocation = ({check}:{check:(lat:number,lng:number)=>void}) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAWuzs6avBryDYxXo7blEkHt56ikcQ11jU",
     libraries: ["places"],
@@ -32,18 +32,24 @@ export const UserLocation = () => {
   };
 
   const handleLocationSubmit = async () => {
+
     try {
-      const response = await axios.get<{ results: any[] }>(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-          userLocation
-        )}&key=AIzaSyAWuzs6avBryDYxXo7blEkHt56ikcQ11jU`
-      );
-      const { results } = response.data;
-      if (results.length > 0) {
-        const { lat, lng } = await results[0].geometry.location;
-        setCoordinates({ lat, lng });
-      } else {
-        console.log("Location not found");
+      if(userLocation){
+        const response = await axios.get<{ results: any[] }>(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+                userLocation
+            )}&key=AIzaSyAWuzs6avBryDYxXo7blEkHt56ikcQ11jU`
+        );
+        const { results } = response.data;
+        if (results.length > 0) {
+          const { lat, lng } = await results[0].geometry.location;
+          setCoordinates({ lat, lng });
+          check(lat,lng)
+        } else {
+          console.log("Location not found");
+        }
+      }else{
+        console.log('user  location is empty')
       }
     } catch (error) {
       console.error("Error retrieving location:", error);
@@ -58,7 +64,7 @@ export const UserLocation = () => {
     return <div>Loading maps</div>;
   }
 
-  const mapCenter = coordinates || Defaultcenter;
+  const mapCenter = coordinates||Defaultcenter;
 
   return (
     <div className={styles.main}>
