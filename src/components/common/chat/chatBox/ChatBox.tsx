@@ -93,12 +93,7 @@ export const  ChatBox: FC<{ messages: Message[]; }> =
                     {renderMessages()}
                 </div>
                 <div className={styles.footer}>
-                    <p className={styles.export}>
-                        <label htmlFor="file-input">
-                            <Image src={exportImg} height={25} width={25} alt="exportIcon"  className={styles.exportIcons}/>
-                        </label>
-                        <input id="file-input" className={styles.export_input} type="file" />
-                    </p>
+
                     <textarea
                         rows={isMobile ? 1 : 4}
                         placeholder="Enter Message"
