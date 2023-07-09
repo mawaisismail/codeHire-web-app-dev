@@ -15,7 +15,11 @@
     border-bottom: 1px solid $border-light;
     border-radius: 0.4rem;
     .profileImage {
-      @include mixins.profileImage;
+      min-width: 100px;
+      min-height: 100px;
+      border-radius: 50%;
+      background: url(/static/images/default_profile_img.svg) center center
+      no-repeat;
     }
     .profession {
       display: flex;

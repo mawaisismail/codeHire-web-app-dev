@@ -52,7 +52,7 @@ export const MainDetails = () => {
             first_name: values.first_name,
             last_name: values.last_name,
             currentOccupation: values.currentOccupation,
-            profileImageURL: file,
+            profileImageURL: file || user?.profileImageURL,
           }),
         },
       },
@@ -84,13 +84,7 @@ export const MainDetails = () => {
         <div className={styles.about}>
           <div
             style={
-              selectedFile
-                ? {
-                    backgroundImage: `url(${URL.createObjectURL(
-                      selectedFile
-                    )})`,
-                  }
-                : user?.profileImageURL
+              user?.profileImageURL
                 ? {
                     backgroundImage: `url(${user?.profileImageURL})`,
                   }
