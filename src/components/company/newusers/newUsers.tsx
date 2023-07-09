@@ -9,6 +9,10 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import { IUser } from "../../../../utils/context/reducer";
+import { useLazyQuery } from "@apollo/client";
+import { GET_ALL_USERS } from "../../../../constants/graphQL/user";
 
 const swiperSetting = {
   slidesPerView: 1,
@@ -22,6 +26,20 @@ const swiperSetting = {
 
 export const NewUsers = () => {
   const isMobile = useIsMobile();
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [getAllUsers, { data, loading, error }] = useLazyQuery(GET_ALL_USERS);
+
+  useEffect(() => {
+    getAllUsers({
+      variables: {},
+    });
+  }, []);
+
+  useEffect(() => {
+    if (data?.getAllUsers) {
+      setUsers(data.getAllUsers);
+    }
+  }, [data]);
   return (
     <div className={styles.main}>
       <Container maxWidth={"lg"}>
@@ -42,9 +60,9 @@ export const NewUsers = () => {
             }}
             modules={[Navigation, Pagination, Autoplay]}
           >
-            {[1, 2, 3, 4, 5].map((index) => (
+            {users?.map((index) => (
               <SwiperSlide key={`Recommended-Job-listing ${index} `}>
-                <UserCard />
+                <UserCard {...(users as any)} />
               </SwiperSlide>
             ))}
           </Swiper>

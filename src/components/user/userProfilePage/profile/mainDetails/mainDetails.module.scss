@@ -15,11 +15,11 @@
     border-bottom: 1px solid $border-light;
     border-radius: 0.4rem;
     .profileImage {
-      min-width: 100px;
-      min-height: 100px;
+      min-width: 80px;
+      min-height: 80px;
       border-radius: 50%;
-      background: url(/static/images/default_profile_img.svg) center center
-      no-repeat;
+      background: url(/static/images/default_profile_img.svg) center center;
+      background-size: cover;
     }
     .profession {
       display: flex;

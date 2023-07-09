@@ -4,9 +4,10 @@ import { firstData } from "./BrowserData";
 import { Container } from "@mui/material";
 import { useRouter } from "next/router";
 import { GHeader } from "@/components/common/GHeader";
+import { routes } from "../../../constants/routes";
 
 export const BrowserJob = () => {
-  const { push } = useRouter();
+  const { push, asPath } = useRouter();
   return (
     <Container>
       <div className={styles.CategoriesContainer}>
@@ -30,7 +31,15 @@ export const BrowserJob = () => {
           ))}
         </div>
         <div>
-          <button>
+          <button
+            onClick={() =>
+              push(
+                asPath.includes("company")
+                  ? routes.company.users
+                  : routes.user.jobs
+              )
+            }
+          >
             Browse All Categories <FaArrowRight className={styles.arrow} />
           </button>
         </div>

@@ -15,6 +15,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { uploadFile } from "../../../../../../utils/file-upload-service";
 import { useRouter } from "next/router";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 const initialValues = {
   first_name: "",

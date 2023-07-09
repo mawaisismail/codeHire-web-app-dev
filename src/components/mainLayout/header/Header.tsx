@@ -51,6 +51,11 @@ const userNavLinks = [
     link: routes.user.map,
     isPrivate: true,
   },
+  {
+    name: "Docs",
+    link: routes.user.docs,
+    isPrivate: true,
+  },
 ];
 const companyNavLinks = [
   {
@@ -76,6 +81,11 @@ const companyNavLinks = [
   {
     name: "Profile",
     link: routes.company.profile,
+    isPrivate: true,
+  },
+  {
+    name: "Docs",
+    link: routes.company.docs,
     isPrivate: true,
   },
 ];

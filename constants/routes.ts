@@ -9,7 +9,8 @@ export const routes = {
     saveJob: "/user/jobs/save",
     forgetPassword: "/user/forgotpassword",
     login: "/user/login",
-    map: "/user/Map",
+    map: "/user/map",
+    docs: "/user/docs",
   },
   company: {
     home: "/company",
@@ -22,5 +23,6 @@ export const routes = {
     users: "/company/users",
     signUp: "/company/signup",
     login: "/company/login",
+    docs: "/company/docs",
   },
 };
