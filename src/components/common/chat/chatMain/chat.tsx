@@ -66,7 +66,7 @@ const Chat: FC = () => {
     useEffect(() => {
         if (allMessagesData?.messages) {
             const filteredMessages = allMessagesData.messages.filter(
-                (message) => message.jobId === "862fdb99-f52a-4beb-8e6a-79553143eef0"
+                (message:any) => message.jobId === "862fdb99-f52a-4beb-8e6a-79553143eef0"
             );
             setMessages(filteredMessages);
         }
@@ -79,12 +79,10 @@ const Chat: FC = () => {
   return (
     <>
       <div className={styles.main}>
-        {!isMobile ? (
           <>
             <div className={styles.col1}>
               <div className={styles.bar_chat}>
                 <Image src={profile} alt={profile} />
-                <Image src={setting} alt={setting} />
               </div>
               <div className={styles.list}>
                 <ChatList />
@@ -101,7 +99,7 @@ const Chat: FC = () => {
                   <p>Design Team Management </p>
                   <p className={styles.status}>Online</p>
                 </div>
-                <Image className={styles.setting} src={setting} alt={setting} />
+                {/*<Image className={styles.setting} src={setting} alt={setting} />*/}
               </div>
               <div>
                 <div className={styles.label_section}>
@@ -122,9 +120,6 @@ const Chat: FC = () => {
               </div>
             </div>
           </>
-        ) : (
-          <MobileChatBox />
-        )}
       </div>
     </>
   );

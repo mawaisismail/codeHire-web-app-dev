@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useIsMobile } from "../../../../../hooks/useIsMobile";
 import {gql, useMutation} from "@apollo/client";
 import {GlobalContext} from "../../../../../utils/context/GlobalProvider";
+import {SendMessage} from "@/components/common/chat/messages/chatMessages/sendMessage/sendMessage";
+import {ReceivedMessage} from "@/components/common/chat/messages/chatMessages/reciverMessage/receivedMessage"
 interface Message {
     jobId: string;
     content: string;
@@ -39,7 +41,7 @@ export const  ChatBox: FC<{ messages: Message[]; }> =
         }
     }, [messages]);
 
-        const renderMessages = () => {
+        const   renderMessages = () => {
             console.log(messages)
             if (!messages || messages.length === 0) {
                 return null; // Return null or a placeholder if there are no messages
@@ -57,7 +59,8 @@ export const  ChatBox: FC<{ messages: Message[]; }> =
                         key={index}
                         className={isSender ? styles.senderMessage : styles.receiverMessage}
                     >
-                        <div className={styles.messageContent}>{message.content}</div>
+                        <ReceivedMessage text={message.content} createdAt={new Date().toLocaleString()} />
+                        {/*<div className={styles.messageContent}>{message.content}</div>*/}
                     </div>
                 );
             });
@@ -90,12 +93,7 @@ export const  ChatBox: FC<{ messages: Message[]; }> =
                     {renderMessages()}
                 </div>
                 <div className={styles.footer}>
-                    <p className={styles.export}>
-                        <label htmlFor="file-input">
-                            <Image src={exportImg} height={25} width={25} alt="exportIcon" />
-                        </label>
-                        <input id="file-input" className={styles.export_input} type="file" />
-                    </p>
+
                     <textarea
                         rows={isMobile ? 1 : 4}
                         placeholder="Enter Message"

@@ -14,7 +14,8 @@
 .main {
   @include mixins.flex(space-between, normal);
   flex-direction: column;
-  background: $white url(/static/images/chatMain_display.png) no-repeat center;
+  //background: $white url(/static/images/chatMain_display.png) no-repeat center;
+  background: $white  no-repeat center;
   background-size: 40%;
   height: calc(100vh - 175px);
   border-top: 1px solid $bg_grey;
@@ -54,7 +55,7 @@
     textarea {
       width: 85%;
       height: 45px;
-      margin: 1rem 0;
+      margin: 1rem 0 1rem 1rem;
       padding: 0.8rem 1rem;
       resize: none;
       outline: none;
@@ -69,6 +70,9 @@
         opacity: 0.5;
       }
 
+      img{
+        margin-left: 1rem !important;
+      }
       input {
         display: none;
       }
@@ -76,11 +80,15 @@
 
     .send {
       @include Icon($message);
+      background-color: #276ed0;
     }
 
     .send_message {
       @include mixins.textFont(1rem, 700, $white);
-      @include mixins.globalButton($message, $message, 70px, 40px);
+      //@include mixins.globalButton(#276ed0, 70px, 40px);
+      background-color: #276ed0;
+      padding: 1rem;
+      border-radius: 10px;
       margin: 0 0.5rem;
     }
 
@@ -92,6 +100,8 @@
   }
 
   .senderMessage {
+    margin-left: 2rem;
+    margin-right: 2rem;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
