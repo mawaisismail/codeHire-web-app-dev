@@ -5,6 +5,9 @@
     margin: 1rem;
     @include mixins.textFont(1.1rem, 700, $text-heading-color);
   }
+  .profileImage {
+    @include mixins.profileImage;
+  }
   .about {
     padding: 2rem 0;
     @include mixins.flex;

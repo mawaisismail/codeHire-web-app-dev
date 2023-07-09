@@ -8,6 +8,7 @@ import { NewJobs } from "@/components/user/jobs/newJobs/newJobs";
 import { OurTeam } from "@/components/owners/OurTeam";
 import { AnimatedCounter } from "@/components/AnimatedCounter/AnimatedCounter";
 import { Testimonials } from "@/components/owners/testimonials";
+import UploadFileForm from "@/components/uploadtest1";
 
 const Pages = () => {
   const [{ baseUser }] = useContext(GlobalContext);
@@ -20,6 +21,7 @@ const Pages = () => {
       <OurTeam />
       <HowItWork />
       <Testimonials />
+      <UploadFileForm />
       {/*<GGetInTouch />*/}
       <Footer />
     </div>
