@@ -134,6 +134,44 @@ export const GET_JOB_BY_ID = gql`
     }
   }
 `;
+export const GET_FILTER_JOBS = gql`
+  query getFilterJobs($search: String!) {
+    getFilterJobs(search: $search) {
+      id
+      companyID
+      company {
+        uid
+        userType
+        profileImageURL
+        userName
+        email
+        name
+        owner
+        coverImage
+        total_employee
+        location
+        website
+        phone
+        established
+        about
+      }
+      title
+      coverImg
+      experience
+      employmentType
+      position
+      offer_salary
+      description
+      responsibilities
+      qualification
+      skills
+      freeWords
+      location
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 export const GET_APPLY_JOBS = gql`
   query getApplyJobs {

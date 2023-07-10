@@ -17,6 +17,23 @@ interface IGSearchProps {
   input6: Dispatch<any>;
   handleSubmit: () => void;
 }
+
+interface IGCompanySearchProps {
+  description: string;
+  responsibilities: string;
+  offer_salary: string;
+  title: string;
+  position: string;
+  skills: string;
+  setPosition: Dispatch<any>;
+  setTitle: Dispatch<any>;
+  setOfferSalary: Dispatch<any>;
+  setDescription: Dispatch<any>;
+  setResponsibilities: Dispatch<any>;
+  setSkills: Dispatch<any>;
+  handleSubmit: () => void;
+}
+
 export const GSearch: FC<IGSearchProps> = ({
   input1,
   input2,
@@ -71,6 +88,69 @@ export const GSearch: FC<IGSearchProps> = ({
         <input
           onChange={(e) => input6(e.target.value)}
           value={value6}
+          type="text"
+          placeholder="Work preference"
+        />
+      </div>
+      <button onClick={handleSubmit}>Filter</button>
+    </div>
+  );
+};
+
+export const GCompanySearch: FC<IGCompanySearchProps> = ({
+  setDescription,
+  description,
+  setResponsibilities,
+  responsibilities,
+  offer_salary,
+  setOfferSalary,
+  handleSubmit,
+  setPosition,
+  position,
+  setSkills,
+  skills,
+  setTitle,
+  title,
+}) => {
+  const { asPath } = useRouter();
+  return (
+    <div className={styles.main}>
+      <div>
+        <input
+          value={title}
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder={"Title"}
+        />
+        <input
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          type="text"
+          placeholder="Description"
+        />
+        <input
+          onChange={(e) => setOfferSalary(e.target.value)}
+          value={offer_salary}
+          type="text"
+          placeholder="Offer Salary"
+        />
+      </div>
+      <div>
+        <input
+          value={responsibilities}
+          type="text"
+          onChange={(e) => setResponsibilities(e.target.value)}
+          placeholder={"Responsibility"}
+        />
+        <input
+          onChange={(e) => setPosition(e.target.value)}
+          value={position}
+          type="text"
+          placeholder="Position"
+        />
+        <input
+          onChange={(e) => setSkills(e.target.value)}
+          value={skills}
           type="text"
           placeholder="Work preference"
         />
