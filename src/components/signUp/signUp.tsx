@@ -144,18 +144,18 @@ export const Signup: FC<ISignUp> = ({ setCurrentStep }) => {
                     component="div"
                   />
                 </div>
-                <div className={styles.checkWrapper}>
-                  <div className={styles.checkContainer}>
-                    <input
-                      id="remember"
-                      type="checkbox"
-                      className={styles.checkBox}
-                    />
-                    <label htmlFor="remember">
-                      I agree to the Terms and conditions
-                    </label>
-                  </div>
-                </div>
+                {/*<div className={styles.checkWrapper}>*/}
+                {/*  <div className={styles.checkContainer}>*/}
+                {/*    <input*/}
+                {/*      id="remember"*/}
+                {/*      type="checkbox"*/}
+                {/*      className={styles.checkBox}*/}
+                {/*    />*/}
+                {/*    <label htmlFor="remember">*/}
+                {/*      I agree to the Terms and conditions*/}
+                {/*    </label>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
                 <button type="submit" className={styles.submitButton}>
                   Sign Up
                 </button>
