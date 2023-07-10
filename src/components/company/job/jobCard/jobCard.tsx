@@ -5,6 +5,7 @@ import { FC, useContext, useState } from "react";
 import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 import { GConfirm } from "@/components/common/g-confirm";
 import { IJob } from "../../../../../constants/interfaces/jobs";
+import { getClientCookie } from "../../../../../constants/utils/cookies";
 
 interface IJobProps extends IJob {
   hideSave?: boolean;
@@ -68,13 +69,20 @@ export const JobCard: FC<IJobProps> = ({
       <p className="line-clamp-4 h-[100px]">{description ?? ""}</p>
       <p className={styles.time}>{createdAt ?? ""}</p>
       <div className={styles.button_wrapper}>
-        <GConfirm
-          title="Apple for this job"
-          description="You’re not logged in. Please login to apply for this job."
-          open={!hideApply && isConfirmOpen}
-          setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
-          onConfirm={() => push(routes.user.login)}
-        >
+        {!baseUser?.uid && (
+          <GConfirm
+            title="Apple for this job"
+            description="You’re not logged in. Please login to apply for this job."
+            open={!hideApply && isConfirmOpen}
+            setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+            onConfirm={() => push(routes.user.login)}
+          >
+            <button className="disabled:bg-blue-400" disabled={hideApply}>
+              Apply Now
+            </button>
+          </GConfirm>
+        )}
+        {baseUser?.uid && (
           <button
             className="disabled:bg-blue-400"
             disabled={hideApply}
@@ -82,7 +90,8 @@ export const JobCard: FC<IJobProps> = ({
           >
             Apply Now
           </button>
-        </GConfirm>
+        )}
+
         <button
           onClick={() =>
             push(
