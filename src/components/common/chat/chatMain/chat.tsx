@@ -41,10 +41,10 @@ interface Message {
 
 const Chat: FC = () => {
     const [{ baseUser }] = useContext(GlobalContext);
-  const isMobile = useIsMobile();
-  const { asPath } = useRouter();
-  const [openChat, setOpenChat] = useState(false);
-  const [favoriteList, setFavoriteList] = useState([]);
+    const isMobile = useIsMobile();
+    const { asPath } = useRouter();
+    const [openChat, setOpenChat] = useState(false);
+    const [favoriteList, setFavoriteList] = useState([]);
 
     const [messages, setMessages] = useState<Message[]>([]);
     // const [receiverMessages, setReceiverMessages] = useState<Message[]>([]);
@@ -76,52 +76,52 @@ const Chat: FC = () => {
 
     console.log(messages,"messages")
 
-  return (
-    <>
-      <div className={styles.main}>
-          <>
-            <div className={styles.col1}>
-              <div className={styles.bar_chat}>
-                <Image src={profile} alt={profile} />
-              </div>
-              <div className={styles.list}>
-                <ChatList />
-              </div>
-            </div>
-            <div className={styles.col2}>
-              <div className={styles.bar_content}>
-                <Image
-                  className={styles.picture}
-                  src={picture}
-                  alt={"picture"}
-                />
-                <div>
-                  <p>Design Team Management </p>
-                  <p className={styles.status}>Online</p>
-                </div>
-                {/*<Image className={styles.setting} src={setting} alt={setting} />*/}
-              </div>
-              <div>
-                <div className={styles.label_section}>
-                  {favoriteList.length > 0 ? (
-                    <p className={styles.label}>React.Js Developer</p>
-                  ) : (
-                    <p className={styles.no_company_label}></p>
-                  )}
+    return (
+        <>
+            <div className={styles.main}>
+                <>
+                    <div className={styles.col1}>
+                        <div className={styles.bar_chat}>
+                            <Image src={profile} alt={profile} />
+                        </div>
+                        <div className={styles.list}>
+                            <ChatList />
+                        </div>
+                    </div>
+                    <div className={styles.col2}>
+                        <div className={styles.bar_content}>
+                            <Image
+                                className={styles.picture}
+                                src={picture}
+                                alt={"picture"}
+                            />
+                            <div>
+                                <p>Design Team Management </p>
+                                <p className={styles.status}>Online</p>
+                            </div>
+                            {/*<Image className={styles.setting} src={setting} alt={setting} />*/}
+                        </div>
+                        <div>
+                            <div className={styles.label_section}>
+                                {favoriteList.length > 0 ? (
+                                    <p className={styles.label}>React.Js Developer</p>
+                                ) : (
+                                    <p className={styles.no_company_label}></p>
+                                )}
 
-                  {/*<hr className={styles.hr_line} />*/}
-                </div>
-                <div className={styles.chat_user_section}>
-                  <div className={styles.chat_box}>
-                    <ChatBox messages={messages}/>
-                  </div>
-                  {/*<div className={styles.company_details}></div>*/}
-                </div>
-              </div>
+                                {/*<hr className={styles.hr_line} />*/}
+                            </div>
+                            <div className={styles.chat_user_section}>
+                                <div className={styles.chat_box}>
+                                    <ChatBox messages={messages}/>
+                                </div>
+                                {/*<div className={styles.company_details}></div>*/}
+                            </div>
+                        </div>
+                    </div>
+                </>
             </div>
-          </>
-      </div>
-    </>
-  );
+        </>
+    );
 };
 export default Chat;
