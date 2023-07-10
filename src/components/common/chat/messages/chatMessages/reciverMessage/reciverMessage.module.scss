@@ -29,14 +29,9 @@
     span {
       @include mixins.textFont(10px, 400, $base-heading);
       position: absolute;
-      right: -60px;
+      right: 0;
       bottom: 0;
-      top: 20px;
-
-      @media (max-width: 1099px) {
-        bottom: -20px;
-        right: 0;
-      }
+      top: 0;
     }
   }
 }

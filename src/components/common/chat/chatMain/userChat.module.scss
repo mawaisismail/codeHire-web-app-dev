@@ -2,7 +2,7 @@
 @import "/styles/variables";
 
 .main {
-  overflow: scroll;
+  //overflow: scroll;
   @include mixins.flex(center, normal);
   height: 91vh;
   .list {
@@ -74,14 +74,15 @@
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     & > :nth-child(1) {
-      min-width: 300px;
+      width: 25%;
     }
     & > :last-child {
-      min-width:600px;
+      width: 75%;
     }
   }
+
   .bar_chat{
     @include mixins.flex(space-between,center);
     //gap: 0.5rem;
@@ -109,6 +110,9 @@
     width: 100%;
     div{
       flex-grow: 1;
+      @media (max-width: 400px) {
+        font-size: 15px;
+      }
     }
     .setting{
       cursor: pointer;
