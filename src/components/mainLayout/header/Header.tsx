@@ -108,6 +108,11 @@ const companyNavLinks = [
     link: routes.company.hired,
     isPrivate: true,
   },
+  {
+    name: "Save",
+    link: routes.company.save,
+    isPrivate: true,
+  },
 ];
 
 const navLinks = [userNavLinks, companyNavLinks];
