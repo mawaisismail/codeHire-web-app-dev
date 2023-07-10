@@ -2,7 +2,7 @@
 @import "/styles/variables";
 
 .main {
-  overflow: scroll;
+  //overflow: scroll;
   @include mixins.flex(center, normal);
   height: 91vh;
   .list {
@@ -74,14 +74,15 @@
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     & > :nth-child(1) {
-      min-width: 300px;
+      width: 25%;
     }
     & > :last-child {
-      min-width:600px;
+      width: 75%;
     }
   }
+
   .bar_chat{
     @include mixins.flex(space-between,center);
     //gap: 0.5rem;
@@ -89,9 +90,9 @@
     height: 60px;
     padding: 0 1rem;
     img:first-child{
-        cursor: pointer;
-        height: 100%;
-        width: 2.8rem;
+      cursor: pointer;
+      height: 100%;
+      width: 2.8rem;
     }
     //img:last-child{
     //  cursor: pointer;
@@ -109,6 +110,9 @@
     width: 100%;
     div{
       flex-grow: 1;
+      @media (max-width: 400px) {
+        font-size: 15px;
+      }
     }
     .setting{
       cursor: pointer;
@@ -121,12 +125,12 @@
       color: rgba(39, 110, 208, 0.84);
     }
     .picture{
-        cursor: pointer;
-        height: 45px;
-        width: 45px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
+      cursor: pointer;
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      border-radius: 50%;
+      }
 
-  }
+    }
 }
