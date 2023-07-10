@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./jobCreateForm.module.scss";
 import { Container } from "@mui/material";
 import * as Yup from "yup";
@@ -9,7 +9,10 @@ import {
   jobWorkingStyles,
   jsFrameworks,
 } from "../../../../../constants/utils/signUp";
-import { CREATE_JOB } from "../../../../../constants/graphQL/job";
+import { CREATE_JOB, UPDATE_JOB } from "../../../../../constants/graphQL/job";
+import { uploadFile } from "../../../../../utils/file-upload-service";
+import { toast } from "react-toastify";
+import { routes } from "../../../../../constants/routes";
 
 export const jobInitialValues = {
   title: "",
@@ -44,31 +47,99 @@ export const jobValidationSchema = Yup.object({
   freeWords: Yup.string().required("Please enter Location"),
 });
 
-export const JobCreateForm: FC = () => {
-  const { push } = useRouter();
+interface IJobCreateFormProps {
+  initialValues?: typeof jobInitialValues;
+  updateJobs?: boolean;
+}
+
+export const JobCreateForm: FC<IJobCreateFormProps> = ({
+  initialValues,
+  updateJobs,
+}) => {
+  console.log(initialValues);
+  const {
+    push,
+    query: { jobId },
+  } = useRouter();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [createJob] = useMutation(CREATE_JOB, {
+    fetchPolicy: "network-only",
+  });
+  const [updateJob] = useMutation(UPDATE_JOB, {
     fetchPolicy: "network-only",
   });
   return (
     <>
       <Container maxWidth="md">
         <div className={styles.main}>
+          <p className="font-bold text-gray-500 text-2xl py-8">Create Job</p>
+          <div className="flex justify-center items-center">
+            <div
+              style={
+                selectedFile
+                  ? {
+                      backgroundImage: `url(${URL.createObjectURL(
+                        selectedFile
+                      )})`,
+                    }
+                  : {}
+              }
+              className={`relative ${styles.profileImage}`}
+            >
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  e?.target?.files &&
+                    e?.target?.files[0] &&
+                    setSelectedFile(e.target.files[0]);
+                }}
+                className="absolute h-full w-full z-10 opacity-0"
+              />
+            </div>
+          </div>
           <Formik
-            initialValues={jobInitialValues}
+            enableReinitialize={true}
+            initialValues={initialValues || jobInitialValues}
             validationSchema={jobValidationSchema}
             onSubmit={async (values) => {
-              await createJob({
-                variables: {
-                  jobInput: {
-                    jobInfo: JSON.stringify(values),
-                  },
-                },
-              });
-              console.log(values);
+              try {
+                let file;
+                if (selectedFile) {
+                  file = await uploadFile(selectedFile);
+                }
+                if (!updateJobs) {
+                  await createJob({
+                    variables: {
+                      jobInput: {
+                        jobInfo: JSON.stringify({
+                          ...values,
+                          coverImg: file || null,
+                        }),
+                      },
+                    },
+                  });
+                }
+                if (updateJobs) {
+                  await updateJob({
+                    variables: {
+                      jobInput: {
+                        jobInfo: JSON.stringify({
+                          ...values,
+                          id: jobId,
+                          coverImg: file || null,
+                        }),
+                      },
+                    },
+                  });
+                  push(routes.company.jobs);
+                }
+              } catch (e) {
+                toast.error("Something went Wrong");
+              }
             }}
           >
             <Form>
-              <p className={styles.heading}>Create Job</p>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Title</p>

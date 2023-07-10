@@ -33,7 +33,12 @@ export const MyJobs = () => {
       <div className={styles.main_content}>
         <PaginationDetails pagination={jobs?.length || 0} />
         <div>
-          <Link href={routes.company.create}>Create Job</Link>
+          <Link
+            href={routes.company.create}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          >
+            Create new Jobs
+          </Link>
         </div>
 
         <div className={styles.main}>

@@ -53,23 +53,23 @@ export const Login = () => {
   });
 
   useEffect(() => {
-    if (getUseridData?.data?.getLoginCompany) {
+    if (getCompanyidData?.data?.getLoginCompany) {
       toast.success("Login Successfull");
       clientSetCookie({
         key: "baseUser",
-        data: getUseridData.data.getLoginCompany,
+        data: getCompanyidData.data.getLoginCompany,
       });
-      dispatch(setBaseUser(getUseridData.data.getLoginCompany));
+      dispatch(setBaseUser(getCompanyidData.data.getLoginCompany));
       push(
-        getUseridData.data.getLoginCompany.userType === "USER"
+        getCompanyidData.data.getLoginCompany.userType === "USER"
           ? routes.user.home
           : routes.company.home
       );
     }
-  }, [getUseridData]);
+  }, [getCompanyidData]);
 
   useEffect(() => {
-    if (getCompanyidData?.data?.getLoginUser) {
+    if (getUseridData?.data?.getLoginUser) {
       toast.success("Login Successfull");
       clientSetCookie({
         key: "baseUser",
@@ -82,7 +82,7 @@ export const Login = () => {
           : routes.company.home
       );
     }
-  }, [getCompanyidData]);
+  }, [getUseridData]);
 
   const getUserFun = async (uid: string) => {
     await getUserById({

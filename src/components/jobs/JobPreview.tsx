@@ -11,10 +11,13 @@ import {
   GET_JOB_BY_ID,
 } from "../../../constants/graphQL/job";
 import { SkillsList } from "@/components/user/userProfilePage/profile/skillsList/skillsList";
+import { routes } from "../../../constants/routes";
 
 export const JobPreview: FC = () => {
   const {
     query: { jobId },
+    asPath,
+    push,
   } = useRouter();
   const [job, setJob] = useState<IJob | null>(null);
   const [getJob, { data, loading, error }] = useLazyQuery(GET_JOB_BY_ID);
@@ -47,6 +50,20 @@ export const JobPreview: FC = () => {
                 <p className={styles.label_text}>{job?.title}</p>
               </div>
             </div>
+            <div className="flex gap-[200px] items-center mt-6">
+              <p className="font-bold text-gray-500 text-xl">Position</p>
+              <p className="font-medium text-gray-500">{job?.position}</p>
+              <button
+                onClick={() => push(`${routes.company.update_job}/${jobId}`)}
+                className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
+              >
+                Edit
+              </button>
+            </div>
+            <div className="flex gap-[200px] items-center mt-6">
+              <p className="font-bold text-gray-500 text-xl">Experience</p>
+              <p className="font-medium text-gray-500">{job?.experience}</p>
+            </div>
             <div className={styles.content_container}>
               <p className={styles.content_heading}>Job Description</p>
               <div className={styles.content_texts}>
@@ -66,6 +83,10 @@ export const JobPreview: FC = () => {
               </div>
             </div>
             <div className={styles.content_container}>
+              <p className={styles.content_heading}>Free Words</p>
+              <div className={styles.content_texts}>{job?.freeWords ?? ""}</div>
+            </div>
+            <div className={styles.content_container}>
               <p className={styles.content_heading}>Skill & Experience</p>
               <div className={styles.content_texts}>
                 <SkillsList data={job?.skills ?? []} disabledEdit={true} />
@@ -75,17 +96,19 @@ export const JobPreview: FC = () => {
           <div className={styles.right_container}>
             <CompanyMainDetails {...(job?.company as any)} />
             <UserMap />
-            <div className="flex justify-between items-center p-4">
-              <button className="bg-blue-500 text-white font-bold py-1 px-4 rounded-md">
-                Apply Job
-              </button>
-              <button
-                type="submit"
-                className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
-              >
-                Save Job
-              </button>
-            </div>
+            {!asPath.includes("company") && (
+              <div className="flex justify-between items-center p-4">
+                <button className="bg-blue-500 text-white font-bold py-1 px-4 rounded-md">
+                  Apply Job
+                </button>
+                <button
+                  type="submit"
+                  className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
+                >
+                  Save Job
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </Container>
