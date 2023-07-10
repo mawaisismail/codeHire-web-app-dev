@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./jobCreateForm.module.scss";
 import { Container } from "@mui/material";
 import * as Yup from "yup";
@@ -10,6 +10,9 @@ import {
   jsFrameworks,
 } from "../../../../../constants/utils/signUp";
 import { CREATE_JOB } from "../../../../../constants/graphQL/job";
+import { uploadFile } from "../../../../../utils/file-upload-service";
+import { toast } from "react-toastify";
+import { routes } from "../../../../../constants/routes";
 
 export const jobInitialValues = {
   title: "",
@@ -46,6 +49,7 @@ export const jobValidationSchema = Yup.object({
 
 export const JobCreateForm: FC = () => {
   const { push } = useRouter();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [createJob] = useMutation(CREATE_JOB, {
     fetchPolicy: "network-only",
   });
@@ -53,22 +57,58 @@ export const JobCreateForm: FC = () => {
     <>
       <Container maxWidth="md">
         <div className={styles.main}>
+          <p className="font-bold text-gray-500 text-2xl py-8">Create Job</p>
+          <div className="flex justify-center items-center">
+            <div
+              style={
+                selectedFile
+                  ? {
+                      backgroundImage: `url(${URL.createObjectURL(
+                        selectedFile
+                      )})`,
+                    }
+                  : {}
+              }
+              className={`relative ${styles.profileImage}`}
+            >
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  e?.target?.files &&
+                    e?.target?.files[0] &&
+                    setSelectedFile(e.target.files[0]);
+                }}
+                className="absolute h-full w-full z-10 opacity-0"
+              />
+            </div>
+          </div>
           <Formik
             initialValues={jobInitialValues}
             validationSchema={jobValidationSchema}
             onSubmit={async (values) => {
-              await createJob({
-                variables: {
-                  jobInput: {
-                    jobInfo: JSON.stringify(values),
+              try {
+                let file;
+                if (selectedFile) {
+                  file = await uploadFile(selectedFile);
+                }
+                await createJob({
+                  variables: {
+                    jobInput: {
+                      jobInfo: JSON.stringify({
+                        ...values,
+                        coverImg: file || null,
+                      }),
+                    },
                   },
-                },
-              });
-              console.log(values);
+                });
+                push(routes.company.jobs);
+              } catch (e) {
+                toast.error("Something went Wrong");
+              }
             }}
           >
             <Form>
-              <p className={styles.heading}>Create Job</p>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Title</p>

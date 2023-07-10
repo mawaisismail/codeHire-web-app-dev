@@ -43,8 +43,37 @@ export const GET_COMPANY_JOB = gql`
   query getCompanyJobs {
     getCompanyJobs {
       id
+      companyID
+      company {
+        uid
+        userType
+        profileImageURL
+        userName
+        email
+        name
+        owner
+        coverImage
+        total_employee
+        location
+        website
+        phone
+        established
+        about
+      }
       title
+      coverImg
+      experience
+      employmentType
+      position
+      offer_salary
+      description
+      responsibilities
+      qualification
+      skills
+      freeWords
+      location
       createdAt
+      updatedAt
     }
   }
 `;
