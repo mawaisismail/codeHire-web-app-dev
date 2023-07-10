@@ -6,13 +6,21 @@
   padding: 1rem;
   overflow: hidden;
   //border-left: 1px solid $bg_grey;
-
+  @media (max-width: 940px) {
+    margin-left: -1rem !important;
+    display: flex;
+    flex-direction: column;
+  }
   .coverImg{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background: url(/static/images/figma_logo.png) no-repeat center;
     background-size: cover;
     border-radius: 50%;
+    @media (max-width: 940px) {
+      width: 35px;
+      height: 35px;
+    }
   }
   .chat_content{
     position: relative;
@@ -38,16 +46,44 @@
           }
         }
       }
+      @media (max-width: 940px) {
+          padding-left: 0;
+          display:flex;
+          flex-direction:row;
+
+        :first-child{
+          flex-grow: 1;
+          justify-content: center;
+          text-align: center;
+          @include mixins.textFont(12px,400,$black)
+
+        }
+      .chat_content_date{
+        p{
+          time{
+            position: absolute;
+            top: -13px;
+            right: -10px;
+            @include mixins.textFont(0.6rem,$black)
+          }
+        }
+      }
+      }
     }
     .chat_content_row2{
       line-height: 20px;
       padding-left: 10px;
-      :first-child{
-        @include mixins.textFont(15px,300,$black);
+      :first-child {
+        @include mixins.textFont(15px, 300, $black);
         width: 140px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        @media (max-width: 940px) {
+          padding-left: -6px;
+          @include mixins.textFont(10px, 300, $black);
+          display: flex;
+        }
       }
     }
     &:before{

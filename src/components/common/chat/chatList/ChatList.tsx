@@ -1,14 +1,10 @@
 import styles from "./chatList.module.scss";
-import { useIsMobile } from "../../../../../hooks/useIsMobile";
-export const ChatList = () => {
-  const isMobile = useIsMobile();
 
+export const ChatList = () => {
+  console.log("chatList data=>")
   return (
     <div className={styles.main}>
       <div className={styles.coverImg} />
-      {isMobile ? (
-        ""
-      ) : (
         <div className={styles.chat_content}>
           <div className={styles.chat_content_row1}>
             <p>Design Team Management</p>
@@ -19,10 +15,9 @@ export const ChatList = () => {
             </div>
           </div>
           <div className={styles.chat_content_row2}>
-            <p>Asiaap maszeehh!</p>
+            <p>Asiaap!</p>
           </div>
         </div>
-      )}
     </div>
   );
 };
