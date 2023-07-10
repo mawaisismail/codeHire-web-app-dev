@@ -1,0 +1,9 @@
+@use "/styles/mixins";
+@import "/styles/variables";
+
+.approved{
+  background-color: #276ed0;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 10px;
+    }
