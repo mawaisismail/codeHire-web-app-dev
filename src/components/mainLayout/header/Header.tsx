@@ -88,6 +88,11 @@ const companyNavLinks = [
     link: routes.company.docs,
     isPrivate: true,
   },
+  {
+    name: "Request",
+    link: routes.company.request,
+    isPrivate: true,
+  },
 ];
 
 const navLinks = [userNavLinks, companyNavLinks];

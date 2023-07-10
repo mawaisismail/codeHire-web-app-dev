@@ -100,7 +100,10 @@ export const JobPreview: FC = () => {
             <UserMap />
             {!asPath.includes("company") && (
               <div className="flex justify-between items-center p-4">
-                <button className="bg-blue-500 text-white font-bold py-1 px-4 rounded-md">
+                <button
+                  onClick={() => push(`${routes.user.applyJob}/${jobId}`)}
+                  className="bg-blue-500 text-white font-bold py-1 px-4 rounded-md"
+                >
                   Apply Job
                 </button>
                 <button

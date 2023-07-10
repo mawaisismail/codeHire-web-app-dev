@@ -125,6 +125,14 @@ export const UPDATE_JOB = gql`
   }
 `;
 
+export const HIRE_USER = gql`
+  mutation hireUser($job_id: String!, $user_id: String!) {
+    hireUser(job_id: $job_id, user_id: $user_id) {
+      id
+    }
+  }
+`;
+
 export const APPLY_TO_JOB = gql`
   mutation applyJob($jobApplyDto: JobApplyDto!) {
     applyJob(jobApplyDto: $jobApplyDto) {

@@ -1,13 +1,17 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import styles from "./applyJob.module.scss";
 import { Container } from "@mui/material";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useMutation } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { APPLY_TO_JOB } from "../../../../../constants/graphQL/job";
+import {
+  APPLY_TO_JOB,
+  GET_JOB_BY_ID,
+} from "../../../../../constants/graphQL/job";
 import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 import { toast } from "react-toastify";
+import { IJob } from "../../../../../constants/interfaces/jobs";
 
 export const applyInitialValues = {
   name: "",
@@ -26,11 +30,32 @@ export const applyValidationSchema = Yup.object({
 });
 
 export const ApplyJobForm: FC = () => {
-  const [{ baseUser }] = useContext(GlobalContext);
-  const { push, query } = useRouter();
+  const [job, setJob] = useState<IJob | null>(null);
+  const [getJob, { data, loading, error }] = useLazyQuery(GET_JOB_BY_ID);
   const [applyJob] = useMutation(APPLY_TO_JOB, {
     fetchPolicy: "network-only",
   });
+  const [{ baseUser }] = useContext(GlobalContext);
+  const { push, query } = useRouter();
+
+  useEffect(() => {
+    if (data?.getJobById) {
+      setJob(data?.getJobById);
+    }
+  }, [data?.getJobById]);
+
+  const getJobsForUser = async () => {
+    await getJob({
+      variables: {
+        id: query.applyJob,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (query?.applyJob) getJobsForUser();
+  }, [query]);
+
   return (
     <>
       <Container maxWidth="md">
@@ -44,7 +69,7 @@ export const ApplyJobForm: FC = () => {
                   variables: {
                     jobApplyDto: {
                       ...values,
-                      company_id: "DU4JGEuSOzXk2hEoUTvhbCjD1DE2",
+                      company_id: job?.companyID,
                       job_id: query.applyJob,
                       user_id: baseUser?.uid,
                     },
