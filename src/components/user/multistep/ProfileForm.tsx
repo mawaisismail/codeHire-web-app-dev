@@ -153,7 +153,7 @@ export const ProfileForm: FC<IProfileForm> = ({
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Postal Code</p>
-                  <Field type="text" name="postalCode" placeholder="54000" />
+                  <Field type="number" name="postalCode" placeholder="54000" />
                   <ErrorMessage
                     className={styles.input_error}
                     name="postalCode"
@@ -173,7 +173,11 @@ export const ProfileForm: FC<IProfileForm> = ({
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Phone</p>
-                  <Field type="text" name="phone" placeholder="03xx-xxxxxxxx" />
+                  <Field
+                    type="number"
+                    name="phone"
+                    placeholder="03xx-xxxxxxxx"
+                  />
                   <ErrorMessage
                     className={styles.input_error}
                     name="phone"
@@ -182,7 +186,7 @@ export const ProfileForm: FC<IProfileForm> = ({
                 </div>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Other</p>
-                  <Field type="text" name="other" placeholder="042-xxxxxxx" />
+                  <Field type="number" name="other" placeholder="042-xxxxxxx" />
                   <ErrorMessage
                     className={styles.input_error}
                     name="other"
