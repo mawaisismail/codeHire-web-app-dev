@@ -16,7 +16,7 @@ interface IProfileForm {
 export const profileInitialValues = {
   first_name: "",
   last_name: "",
-  otherEmail: "",
+  // otherEmail: "",
   languages: "",
   country: "",
   postalCode: "",
@@ -35,7 +35,7 @@ export const profileValidationSchema = Yup.object({
   first_name: Yup.string().required("First name is required"),
   last_name: Yup.string().required("Last name is required"),
   about: Yup.string().required("about is required"),
-  otherEmail: Yup.string().required("Other email is required"),
+  // otherEmail: Yup.string().required("Other email is required"),
   languages: Yup.array()
     .min(1, "Please select at least one option")
     .required("skills are required"),
