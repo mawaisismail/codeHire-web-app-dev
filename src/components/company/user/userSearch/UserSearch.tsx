@@ -97,7 +97,7 @@ export const UserSearch = () => {
         <div className={styles.main}>
           {selectedUsers?.map((user, index) => (
             <div key={index} className={styles.main_card}>
-              <UserCard key={index} {...user} />
+              <UserCard key={index} user={user} />
             </div>
           ))}
         </div>

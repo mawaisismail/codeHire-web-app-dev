@@ -12,4 +12,5 @@ export interface GConfirmProps {
   onConfirm: () => void;
   loading?: boolean;
   disabled?: boolean;
+  childrenElement?: JSX.Element | Element;
 }

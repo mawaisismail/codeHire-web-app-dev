@@ -56,6 +56,16 @@ const userNavLinks = [
     link: routes.user.docs,
     isPrivate: true,
   },
+  {
+    name: "Request",
+    link: routes.user.request,
+    isPrivate: true,
+  },
+  {
+    name: "Hired",
+    link: routes.user.hired,
+    isPrivate: true,
+  },
 ];
 const companyNavLinks = [
   {
@@ -91,6 +101,11 @@ const companyNavLinks = [
   {
     name: "Request",
     link: routes.company.request,
+    isPrivate: true,
+  },
+  {
+    name: "Hired",
+    link: routes.company.hired,
     isPrivate: true,
   },
 ];
