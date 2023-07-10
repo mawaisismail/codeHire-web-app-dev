@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { Container } from "@mui/material";
-import styles from "./newJobs.module.scss";
+import styles from "./recommended.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -10,7 +10,10 @@ import {
 import { useIsMobile } from "../../../../../hooks/useIsMobile";
 import { JobCard } from "@/components/company/job/jobCard/jobCard";
 import { useLazyQuery } from "@apollo/client";
-import { GET_ALL_JOBS_FOR_USERS } from "../../../../../constants/graphQL/job";
+import {
+  GET_ALL_JOBS_FOR_USERS,
+  GET_RECOMMENDED_JOB,
+} from "../../../../../constants/graphQL/job";
 import { useEffect, useState } from "react";
 import { IJob } from "../../../../../constants/interfaces/jobs";
 import { GHeader } from "@/components/common/GHeader";
@@ -25,20 +28,18 @@ const swiperSetting = {
   },
 };
 
-export const NewJobs = () => {
-  const isMobile = useIsMobile();
+export const Recommended = () => {
   const [jobs, setJobs] = useState<Array<IJob>>([]);
-  const [getJobsForUser, { data, loading, error }] = useLazyQuery(
-    GET_ALL_JOBS_FOR_USERS
-  );
+  const [getJobsForUser, { data, loading, error }] =
+    useLazyQuery(GET_RECOMMENDED_JOB);
 
   useEffect(() => {
-    if (data?.getJobs) {
+    if (data?.getRecommendedJobs) {
       const lessThemTen =
-        data?.getJobs?.length < 10 ? data?.getJobs?.length : 10;
-      setJobs(data?.getJobs);
+        data?.getRecommendedJobs?.length < 10 ? data?.getJobs?.length : 10;
+      setJobs(data?.getRecommendedJobs);
     }
-  }, [data?.getJobs]);
+  }, [data?.getRecommendedJobs]);
 
   useEffect(() => {
     getJobsForUser();
@@ -48,7 +49,7 @@ export const NewJobs = () => {
     <div className={styles.main}>
       <Container maxWidth={"lg"}>
         <GHeader
-          title={"New Opening Jobs"}
+          title={"Recommended Jobs"}
           subtitle={"These are the jobs we think you might be interested in."}
         />
         <div className={styles.main_content}>
@@ -74,17 +75,6 @@ export const NewJobs = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          {/*{!isMobile && (*/}
-          {/*  <>*/}
-          {/*    <div className={`recommendedPrev ${styles.prev}`}>*/}
-          {/*      <FontAwesomeIcon size="2x" icon={faChevronLeft} />*/}
-          {/*    </div>*/}
-          {/*    <div className={`recommendedPagination ${styles.pagination}`} />*/}
-          {/*    <div className={`recommendedNext ${styles.next}`}>*/}
-          {/*      <FontAwesomeIcon size="2x" icon={faChevronRight} />*/}
-          {/*    </div>*/}
-          {/*  </>*/}
-          {/*)}*/}
         </div>
       </Container>
     </div>

@@ -117,6 +117,45 @@ export const CREATE_JOB = gql`
   }
 `;
 
+export const GET_RECOMMENDED_JOB = gql`
+  query getRecommendedJobs {
+    getRecommendedJobs {
+      id
+      companyID
+      company {
+        uid
+        userType
+        profileImageURL
+        userName
+        email
+        name
+        owner
+        coverImage
+        total_employee
+        location
+        website
+        phone
+        established
+        about
+      }
+      title
+      coverImg
+      experience
+      employmentType
+      position
+      offer_salary
+      description
+      responsibilities
+      qualification
+      skills
+      freeWords
+      location
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
 export const UPDATE_JOB = gql`
   mutation updateJob($jobInput: JobInput!) {
     updateJob(jobInput: $jobInput) {

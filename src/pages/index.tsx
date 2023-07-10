@@ -8,6 +8,7 @@ import { NewJobs } from "@/components/user/jobs/newJobs/newJobs";
 import { OurTeam } from "@/components/owners/OurTeam";
 import { AnimatedCounter } from "@/components/AnimatedCounter/AnimatedCounter";
 import { Testimonials } from "@/components/owners/testimonials";
+import { Recommended } from "@/components/user/jobs/recommendedJobs/recommended";
 
 const Pages = () => {
   const [{ baseUser }] = useContext(GlobalContext);
@@ -15,10 +16,12 @@ const Pages = () => {
     <div>
       <HeroSection />
       <BrowserJob />
+      {baseUser?.uid && <Recommended />}
       <AnimatedCounter />
       <NewJobs />
+
       <OurTeam />
-      <HowItWork />
+      {!baseUser?.uid && <HowItWork />}
       <Testimonials />
       <Footer />
     </div>

@@ -106,7 +106,7 @@ export const CompanySignup: FC<ISignUp> = ({ setCurrentStep }) => {
             >
               <Form>
                 <div className={styles.formGroup}>
-                  <label htmlFor="email">Username</label>
+                  <label htmlFor="email">Email</label>
                   <Field
                     type="email"
                     name="email"

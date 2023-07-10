@@ -114,7 +114,7 @@ const navLinks = [userNavLinks, companyNavLinks];
 export const Header = () => {
   const [loading, setLoading] = useState(false);
   const [isLogoutOpen, setIsLogoutOpen] = useState(false);
-  const [{ baseUser, user }, dispatch] = useContext(GlobalContext);
+  const [{ baseUser, user, company }, dispatch] = useContext(GlobalContext);
   const cookies = getClientCookie("baseUser");
   const [isOpen, setIsOpen] = useState(false);
   const { push, asPath } = useRouter();
@@ -222,10 +222,14 @@ export const Header = () => {
                         onClick={() => push(routes.user.profile)}
                         className={styles.cover_image}
                       />
-                      <p>
-                        Hi, {user?.first_name ?? "A"}.
-                        {user?.last_name ? user?.last_name[0] : ""}
-                      </p>
+                      {!asPath.includes("company") ? (
+                        <p>
+                          Hi, {user?.first_name ?? "A"}.
+                          {user?.last_name ? user?.last_name[0] : ""}
+                        </p>
+                      ) : (
+                        <p>Hi, {company?.name ?? "A"}.</p>
+                      )}
                     </div>
                     <GConfirm
                       title="Logout your account?"
@@ -247,8 +251,8 @@ export const Header = () => {
                       onClick={() =>
                         push(
                           asPath.includes("company")
-                            ? routes.user.home
-                            : routes.company.home
+                            ? routes.company.home
+                            : routes.user.home
                         )
                       }
                     >
