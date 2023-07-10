@@ -99,21 +99,21 @@ export const ProfileForm: FC<IProfileForm> = ({
                   />
                 </div>
               </div>
-              <div className={styles.input_main}>
-                <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Email</p>
-                  <Field
-                    type="text"
-                    name="otherEmail"
-                    placeholder="abcs@gmail.com  "
-                  />
-                  <ErrorMessage
-                    className={styles.input_error}
-                    name="otherEmail"
-                    component="div"
-                  />
-                </div>
-              </div>
+              {/*<div className={styles.input_main}>*/}
+              {/*  <div className={styles.input_wrapper}>*/}
+              {/*    <p className={styles.label}>Email</p>*/}
+              {/*    <Field*/}
+              {/*      type="text"*/}
+              {/*      name="otherEmail"*/}
+              {/*      placeholder="abcs@gmail.com  "*/}
+              {/*    />*/}
+              {/*    <ErrorMessage*/}
+              {/*      className={styles.input_error}*/}
+              {/*      name="otherEmail"*/}
+              {/*      component="div"*/}
+              {/*    />*/}
+              {/*  </div>*/}
+              {/*</div>*/}
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Introduce Yourself</p>
