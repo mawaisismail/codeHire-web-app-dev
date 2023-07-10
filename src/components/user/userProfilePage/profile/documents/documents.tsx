@@ -2,7 +2,9 @@ import styles from "./documensts.module.scss";
 import { SlDoc } from "react-icons/sl";
 import { TfiImport } from "react-icons/tfi";
 import { IDocs } from "../../../../../../constants/interfaces/docs";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { AiOutlineCopy } from "react-icons/ai";
+import { GTooltip } from "@/components/common/g-tooltip";
 
 interface IDocsProps {
   upload: boolean;
@@ -12,6 +14,13 @@ interface IDocsProps {
   deleteDoc?: (uid: string) => void;
 }
 
+const copyText = (text: string) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {})
+    .catch((error) => {});
+};
+
 export const Documents: FC<IDocsProps> = ({
   upload = false,
   onClick,
@@ -19,6 +28,15 @@ export const Documents: FC<IDocsProps> = ({
   docs,
   deleteDoc,
 }) => {
+  const handleCopy = () => {
+    setContent("Copy");
+    copyText(docs?.url ?? "");
+    setTimeout(() => {
+      setContent("");
+    }, 1000);
+  };
+
+  const [content, setContent] = useState<string>("");
   return (
     <div className={styles.content}>
       <div className={styles.main_content}>
@@ -38,6 +56,11 @@ export const Documents: FC<IDocsProps> = ({
               <TfiImport />
             </div>
           </a>
+          <GTooltip content={content}>
+            <div onClick={handleCopy} className={styles.download_icon}>
+              <AiOutlineCopy />
+            </div>
+          </GTooltip>
           <button
             onClick={() => deleteDoc && deleteDoc(docs?.uid ?? "")}
             disabled={loading}
