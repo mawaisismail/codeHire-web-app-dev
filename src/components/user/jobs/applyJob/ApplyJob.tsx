@@ -12,6 +12,7 @@ import {
 import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 import { toast } from "react-toastify";
 import { IJob } from "../../../../../constants/interfaces/jobs";
+import { routes } from "../../../../../constants/routes";
 
 export const applyInitialValues = {
   name: "",
@@ -30,13 +31,13 @@ export const applyValidationSchema = Yup.object({
 });
 
 export const ApplyJobForm: FC = () => {
+  const { query, push } = useRouter();
   const [job, setJob] = useState<IJob | null>(null);
   const [getJob, { data, loading, error }] = useLazyQuery(GET_JOB_BY_ID);
   const [applyJob] = useMutation(APPLY_TO_JOB, {
     fetchPolicy: "network-only",
   });
   const [{ baseUser }] = useContext(GlobalContext);
-  const { push, query } = useRouter();
 
   useEffect(() => {
     if (data?.getJobById) {
@@ -75,6 +76,7 @@ export const ApplyJobForm: FC = () => {
                     },
                   },
                 });
+                await push(routes.user.jobs);
               } catch (error) {
                 toast.error("Something went wrong");
               }
