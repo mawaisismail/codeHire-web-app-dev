@@ -87,8 +87,8 @@ export const JobCard: FC<IJobProps> = ({
           onClick={() =>
             push(
               asPath.includes("company")
-                ? `${routes.user.jobs}/${id}`
-                : `${routes.company.jobs}/${id}`
+                ? `${routes.company.jobs}/${id}`
+                : `${routes.user.jobs}/${id}`
             )
           }
         >

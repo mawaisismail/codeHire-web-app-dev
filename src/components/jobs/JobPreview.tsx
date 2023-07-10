@@ -53,12 +53,14 @@ export const JobPreview: FC = () => {
             <div className="flex gap-[200px] items-center mt-6">
               <p className="font-bold text-gray-500 text-xl">Position</p>
               <p className="font-medium text-gray-500">{job?.position}</p>
-              <button
-                onClick={() => push(`${routes.company.update_job}/${jobId}`)}
-                className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
-              >
-                Edit
-              </button>
+              {asPath.includes("company") && (
+                <button
+                  onClick={() => push(`${routes.company.update_job}/${jobId}`)}
+                  className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
+                >
+                  Edit
+                </button>
+              )}
             </div>
             <div className="flex gap-[200px] items-center mt-6">
               <p className="font-bold text-gray-500 text-xl">Experience</p>
