@@ -1,14 +1,6 @@
 import { Container } from "@mui/material";
 import styles from "./apply.module.scss";
-import { Pagination } from "@/components/common/pagination/pagination";
-import { GSearch } from "@/components/common/search/g-search";
-import { PaginationDetails } from "@/components/common/pagination/paginationDetails/paginationDetails";
 import { JobCard } from "@/components/company/job/jobCard/jobCard";
-import {
-  GET_ALL_JOBS_FOR_USERS,
-  GET_APPLY_JOBS,
-} from "../../../../../constants/graphQL/job";
-import { useLazyQuery } from "@apollo/client";
 import { useContext, useEffect, useState } from "react";
 import { IJob } from "../../../../../constants/interfaces/jobs";
 import axios from "axios";
@@ -28,8 +20,6 @@ const Apply = () => {
       getApplyJobs();
     }
   }, [baseUser]);
-
-  console.log("jobs", jobs);
 
   return (
     <Container>
