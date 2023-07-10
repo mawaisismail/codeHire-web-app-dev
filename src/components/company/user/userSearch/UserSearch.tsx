@@ -11,6 +11,7 @@ import { IUser } from "../../../../../utils/context/reducer";
 
 export const UserSearch = () => {
   const [users, setUsers] = useState<IUser[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<IUser[]>([]);
   const [getAllUsers, { data, loading, error }] = useLazyQuery(GET_ALL_USERS);
 
   useEffect(() => {
@@ -22,24 +23,35 @@ export const UserSearch = () => {
   useEffect(() => {
     if (data?.getAllUsers) {
       setUsers(data.getAllUsers);
+      const filterData = data.getAllUsers.filter(
+        (_: any, index: number) => index < 10
+      );
+      setSelectedUsers(filterData);
     }
   }, [data]);
   const handlePagination = async ({ selected }: { selected: number }) => {
     const offset = selected * 10;
+    const filterData = users.filter(
+      (_user: any, index: number) => index >= offset && index < offset + 10
+    );
+    setSelectedUsers(filterData);
   };
   return (
     <Container>
       <div className={styles.main_content}>
         <GSearch />
-        <PaginationDetails pagination={100} coordinate={{ x: 10, y: 18 }} />
+        <PaginationDetails pagination={users?.length || 0} />
         <div className={styles.main}>
-          {users.map((user, index) => (
+          {selectedUsers?.map((user, index) => (
             <div key={index} className={styles.main_card}>
               <UserCard key={index} {...user} />
             </div>
           ))}
         </div>
-        <Pagination handlePagination={handlePagination} pagination={100} />
+        <Pagination
+          handlePagination={handlePagination}
+          pagination={users?.length || 0}
+        />
       </div>
     </Container>
   );

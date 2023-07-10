@@ -31,7 +31,7 @@ export const MyJobs = () => {
   return (
     <Container>
       <div className={styles.main_content}>
-        <PaginationDetails pagination={100} coordinate={{ x: 10, y: 18 }} />
+        <PaginationDetails pagination={jobs?.length || 0} />
         <div>
           <Link href={routes.company.create}>Create Job</Link>
         </div>
@@ -39,7 +39,7 @@ export const MyJobs = () => {
         <div className={styles.main}>
           {jobs?.map((value, index) => (
             <div key={index} className={styles.main_card}>
-              <JobCard />
+              <JobCard {...value} />
             </div>
           ))}
         </div>
