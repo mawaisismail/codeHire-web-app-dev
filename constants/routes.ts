@@ -18,6 +18,7 @@ export const routes = {
     jobCreate: "/company/job/create",
     jobs: "/company/job",
     create: "/company/job/create",
+    update_job: "/company/job/update",
     chat: "/company/chats",
     forgetPassword: "/company/forgotpassword",
     users: "/company/users",

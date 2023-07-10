@@ -34,7 +34,7 @@ export const JobCard: FC<IJobProps> = ({
 }) => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [{ baseUser }] = useContext(GlobalContext);
-  const { push } = useRouter();
+  const { push, asPath } = useRouter();
   const applyJob = () => {
     if (baseUser?.uid) {
       push(`${routes.user.applyJob}/${id}`);
@@ -83,7 +83,15 @@ export const JobCard: FC<IJobProps> = ({
             Apply Now
           </button>
         </GConfirm>
-        <button onClick={() => push(`${routes.user.jobs}/${id}`)}>
+        <button
+          onClick={() =>
+            push(
+              asPath.includes("company")
+                ? `${routes.user.jobs}/${id}`
+                : `${routes.company.jobs}/${id}`
+            )
+          }
+        >
           View Job
         </button>
       </div>

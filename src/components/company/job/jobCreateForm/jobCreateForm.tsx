@@ -9,7 +9,7 @@ import {
   jobWorkingStyles,
   jsFrameworks,
 } from "../../../../../constants/utils/signUp";
-import { CREATE_JOB } from "../../../../../constants/graphQL/job";
+import { CREATE_JOB, UPDATE_JOB } from "../../../../../constants/graphQL/job";
 import { uploadFile } from "../../../../../utils/file-upload-service";
 import { toast } from "react-toastify";
 import { routes } from "../../../../../constants/routes";
@@ -47,10 +47,25 @@ export const jobValidationSchema = Yup.object({
   freeWords: Yup.string().required("Please enter Location"),
 });
 
-export const JobCreateForm: FC = () => {
-  const { push } = useRouter();
+interface IJobCreateFormProps {
+  initialValues?: typeof jobInitialValues;
+  updateJobs?: boolean;
+}
+
+export const JobCreateForm: FC<IJobCreateFormProps> = ({
+  initialValues,
+  updateJobs,
+}) => {
+  console.log(initialValues);
+  const {
+    push,
+    query: { jobId },
+  } = useRouter();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [createJob] = useMutation(CREATE_JOB, {
+    fetchPolicy: "network-only",
+  });
+  const [updateJob] = useMutation(UPDATE_JOB, {
     fetchPolicy: "network-only",
   });
   return (
@@ -84,7 +99,8 @@ export const JobCreateForm: FC = () => {
             </div>
           </div>
           <Formik
-            initialValues={jobInitialValues}
+            enableReinitialize={true}
+            initialValues={initialValues || jobInitialValues}
             validationSchema={jobValidationSchema}
             onSubmit={async (values) => {
               try {
@@ -92,17 +108,32 @@ export const JobCreateForm: FC = () => {
                 if (selectedFile) {
                   file = await uploadFile(selectedFile);
                 }
-                await createJob({
-                  variables: {
-                    jobInput: {
-                      jobInfo: JSON.stringify({
-                        ...values,
-                        coverImg: file || null,
-                      }),
+                if (!updateJobs) {
+                  await createJob({
+                    variables: {
+                      jobInput: {
+                        jobInfo: JSON.stringify({
+                          ...values,
+                          coverImg: file || null,
+                        }),
+                      },
                     },
-                  },
-                });
-                push(routes.company.jobs);
+                  });
+                }
+                if (updateJobs) {
+                  await updateJob({
+                    variables: {
+                      jobInput: {
+                        jobInfo: JSON.stringify({
+                          ...values,
+                          id: jobId,
+                          coverImg: file || null,
+                        }),
+                      },
+                    },
+                  });
+                  push(routes.company.jobs);
+                }
               } catch (e) {
                 toast.error("Something went Wrong");
               }

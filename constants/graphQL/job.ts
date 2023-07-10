@@ -117,6 +117,14 @@ export const CREATE_JOB = gql`
   }
 `;
 
+export const UPDATE_JOB = gql`
+  mutation updateJob($jobInput: JobInput!) {
+    updateJob(jobInput: $jobInput) {
+      id
+    }
+  }
+`;
+
 export const APPLY_TO_JOB = gql`
   mutation applyJob($jobApplyDto: JobApplyDto!) {
     applyJob(jobApplyDto: $jobApplyDto) {

@@ -146,7 +146,7 @@ export const CompanyMainDetails: FC<ICompany> = ({
     <div className={styles.main}>
       <div className="flex justify-between items-center py-6">
         <p className={styles.heading}>Personal</p>
-        {asPath.includes("company") && (
+        {asPath.includes("company") && !asPath.includes("job") && (
           <button
             onClick={() => setEditPersonalInfo(!edit)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
@@ -248,7 +248,7 @@ export const CompanyMainDetails: FC<ICompany> = ({
       <div className={styles.contact}>
         <div className="flex justify-between items-center py-6">
           <p className={styles.heading}>Company Profile</p>
-          {asPath.includes("company") && (
+          {asPath.includes("company") && !asPath.includes("job") && (
             <button
               onClick={() => setEdit(!edit)}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
@@ -407,7 +407,7 @@ export const CompanyMainDetails: FC<ICompany> = ({
       <div className={styles.office_time}>
         <div className="flex justify-between items-center py-6">
           <p className={styles.heading}>Working Days</p>
-          {asPath.includes("company") && (
+          {asPath.includes("company") && !asPath.includes("job") && (
             <button
               onClick={() => setEditWorkingHour(!edit)}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
