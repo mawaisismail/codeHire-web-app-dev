@@ -109,16 +109,22 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
                   file = await uploadFile(selectedFile);
                 }
                 if (!updateJobs) {
-                  await createJob({
-                    variables: {
-                      jobInput: {
-                        jobInfo: JSON.stringify({
-                          ...values,
-                          coverImg: file || null,
-                        }),
+                  try {
+                    await createJob({
+                      variables: {
+                        jobInput: {
+                          jobInfo: JSON.stringify({
+                            ...values,
+                            coverImg: file || null,
+                          }),
+                        },
                       },
-                    },
-                  });
+                    });
+                    await push(routes.company.jobs);
+                    toast.success("Job Created Successfully");
+                  } catch (e) {
+                    toast.error("Something went Wrong");
+                  }
                 }
                 if (updateJobs) {
                   await updateJob({
