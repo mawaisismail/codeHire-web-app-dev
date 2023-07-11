@@ -74,6 +74,10 @@ export const UserSearch = () => {
       (_user: any, index: number) => index >= offset && index < offset + 10
     );
     setSelectedUsers(filterData);
+    window?.scrollTo({
+      top: 0,
+      behavior: "smooth", // This enables smooth scrolling
+    });
   };
   return (
     <Container>

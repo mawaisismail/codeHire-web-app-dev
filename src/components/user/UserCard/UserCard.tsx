@@ -26,6 +26,7 @@ interface IUserProps {
 }
 
 export const UserCard: FC<IUserProps> = ({ job, user, id }) => {
+  const [{ baseUser }] = useContext(GlobalContext);
   const [getJob, setGetJob] = useState<IJob | null>(null);
   const [error, setError] = useState<string>("");
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -160,50 +161,54 @@ export const UserCard: FC<IUserProps> = ({ job, user, id }) => {
           <button onClick={handleApply}>Hire Now</button>
         )}
 
-        {asPath.includes("company") && !asPath.includes("request") && (
-          <GConfirm
-            title="Hire User Again ?"
-            description="Please sleect job Again which you want to hire this User."
-            open={isConfirmOpen}
-            setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
-            onConfirm={() => handleHireUser()}
-            childrenElement={
-              <div>
-                <label
-                  htmlFor="countries"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Select an option
-                </label>
-                <select
-                  id="countries"
-                  disabled={jobs?.length === 0}
-                  onChange={(e) => setJobId(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected>Choose a country</option>
-                  {jobs?.map((job) => (
-                    <option value={job?.id}>{job?.title}</option>
-                  ))}
-                </select>
-                {error && <p>{error}</p>}
-              </div>
-            }
-          >
-            <button onClick={() => setIsConfirmOpen(!isConfirmOpen)}>
-              Hire Now
+        {baseUser?.uid &&
+          asPath.includes("company") &&
+          !asPath.includes("request") && (
+            <GConfirm
+              title="Hire User Again ?"
+              description="Please sleect job Again which you want to hire this User."
+              open={isConfirmOpen}
+              setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+              onConfirm={() => handleHireUser()}
+              childrenElement={
+                <div>
+                  <label
+                    htmlFor="countries"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Select an option
+                  </label>
+                  <select
+                    id="countries"
+                    disabled={jobs?.length === 0}
+                    onChange={(e) => setJobId(e.target.value)}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  >
+                    <option selected>Choose a country</option>
+                    {jobs?.map((job) => (
+                      <option value={job?.id}>{job?.title}</option>
+                    ))}
+                  </select>
+                  {error && <p>{error}</p>}
+                </div>
+              }
+            >
+              <button onClick={() => setIsConfirmOpen(!isConfirmOpen)}>
+                Hire Now
+              </button>
+            </GConfirm>
+          )}
+        {baseUser?.uid &&
+          asPath.includes("company") &&
+          asPath.includes("request") && (
+            <button style={{ background: "red", border: "red" }}>
+              Cancel hire
             </button>
-          </GConfirm>
-        )}
-        {asPath.includes("company") && asPath.includes("request") && (
-          <button style={{ background: "red", border: "red" }}>
-            Cancel hire
-          </button>
-        )}
-        {!asPath.includes("save") && (
+          )}
+        {baseUser?.uid && !asPath.includes("save") && (
           <button onClick={() => saveUser()}>Save</button>
         )}
-        {asPath.includes("save") && (
+        {baseUser?.uid && asPath.includes("save") && (
           <button
             style={{ background: "red", border: "red" }}
             onClick={cancelSaveUserFunction}
@@ -211,7 +216,7 @@ export const UserCard: FC<IUserProps> = ({ job, user, id }) => {
             Cancel Save
           </button>
         )}
-        {asPath.includes("save") && (
+        {baseUser?.uid && asPath.includes("save") && (
           <button
             style={{ background: "red", border: "red" }}
             onClick={cancelSaveUserFunction}
@@ -219,6 +224,19 @@ export const UserCard: FC<IUserProps> = ({ job, user, id }) => {
             Cancel Save
           </button>
         )}
+
+        {!baseUser?.uid && (
+          <GConfirm
+            title="Hire This candidate ?"
+            description="You’re not logged in. Please login to hire."
+            open={isConfirmOpen}
+            setOpen={() => setIsConfirmOpen(!isConfirmOpen)}
+            onConfirm={() => push(routes.company.login)}
+          >
+            <button className="disabled:bg-blue-400">Hire</button>
+          </GConfirm>
+        )}
+
         {asPath.includes("hire") && (
           <button
             style={{ background: "red", border: "red" }}
