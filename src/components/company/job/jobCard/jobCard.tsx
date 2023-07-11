@@ -121,14 +121,14 @@ export const JobCard: FC<IJobProps> = ({
             Apply Now
           </button>
         )}
-        {asPath.includes("request") && (
-          <button
-            style={{ background: "red", border: "red" }}
-            onClick={cancelHired}
-          >
-            Terminate
-          </button>
-        )}
+        {/*{asPath.includes("request") && (*/}
+        {/*  <button*/}
+        {/*    style={{ background: "red", border: "red" }}*/}
+        {/*    onClick={cancelHired}*/}
+        {/*  >*/}
+        {/*    Terminate*/}
+        {/*  </button>*/}
+        {/*)}*/}
 
         <button
           onClick={() =>
