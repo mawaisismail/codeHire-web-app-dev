@@ -16,7 +16,7 @@ export const MobileChatBox: FC = () => {
           <FontAwesomeIcon icon={faList} />
         </div>
       </div>
-      <ChatBox />
+      {/*<ChatBox />*/}
     </div>
   );
 };

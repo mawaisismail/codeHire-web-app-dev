@@ -2,8 +2,6 @@ import { FC, useContext, useEffect, useState } from "react";
 import styles from "./userChat.module.scss";
 import { ChatBox } from "../chatBox/ChatBox";
 import { useRouter } from "next/router";
-import { useIsMobile } from "../../../../../hooks/useIsMobile";
-import { MobileChatBox } from "@/components/common/chat/mobileChatBox/MobileChatBox";
 import { ChatList } from "@/components/common/chat/chatList/ChatList";
 import Image from "next/image";
 import setting from "static/images/dots-3-vertical-svgrepo-com.svg";
