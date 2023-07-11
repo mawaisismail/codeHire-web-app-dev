@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { setBaseUser, setCompany } from "../../../../../utils/context/actions";
 import { uploadFile } from "../../../../../utils/file-upload-service";
 import { useRouter } from "next/router";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 const workingHoursValidationSchema = Yup.object({
   monday: Yup.string().required("Field required"),
@@ -157,7 +158,13 @@ export const CompanyMainDetails: FC<ICompany> = ({
       </div>
       {!editPersonalInfo ? (
         <div className={styles.about}>
-          <div className={styles.profileImage} />
+          <UserAvatar
+            src={
+              company?.profileImageURL ||
+              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIcAAACHCAMAAAALObo4AAAAaVBMVEX///8rLzIZHyLp6uoAAAAoLC/w8PAfJCgXHSE9QEIkKCuur7DY2dkAAAoADBIVGx8yNTj4+PiPkJHOz88PFhtvcXKam5zi4uOGh4hjZWZCRUhRVVbFxsdIS066u7vAwMF8fn9bXV+jpKX/3wcjAAADf0lEQVR4nO2a25KjIBBAA4oavCteYyYm//+Rq5Nkx0rUgZZ2drY4D6lK8nIKmga6ORwMBoPBYDAYfhepY4046U9KVH7dtIRSStqm9qufkQgyaguXM0YIYYy7wqZZsLtF3rjeaDCFeW6T72phNcIlc7iisfbTKG0+azHC7XInC+fkLVqMeCdnD40gmZ+SyeQkO8Rr9xae7zCvw9YIJDRGEeQRsZLlCJ3CE9Rlk56/i40n7hkz09frK2WKV+NpVLa0BiE22n6TnmRi9Ak7Yc3MR6SgQUj0geRxklsrT/gJR6OTD9I7FCebFbJr9olboHioLJY7NobGRS1KR6ILgkemOi3DxGT6NdJGbbWM8EZ/CnGOKknsDjvqPxFZ6uExBIj+XVdpb3mCsMfkIA/914g8BHiE/6/HvxIfFmg89K8XiwHyB9PvkSqePkY4xpGsB+wvvX6Ngy+UPYSP4GEBzh8ol6lWNUB4i6FxuMWKHvENxcNK1FYuw7rjZmoDEiOcxj6xFO8vaFd+X+UsFGEs2gdH+RHhRzyNQ0BlQ5VR1IqQ9FUb7ZL9oJQTidCLqL2MSNRja0iNCP5ojPjx+qrhMeKKndIla0cAkaAXcf9SRnTBgu4zJ0+Cgs0Uloffir1bQUFNbcq/XBgfvtf7N6QG8uyaRGEkYjF8Jtds317UlNQJOv9W3vwu+NmOpeEwhmhRLc1CWhU7BWtXiJiKxp8zSf1GuF5U4Geyrg0/szoX9rnMJ8OSVnl5tsX9z/CIa1IV3tfewj2anK9FXZZlXVzPCZ3+RwvENrsvXtL52E+ncRzTR399muBRLpUj1VWtBBJeUYYkJ8p1foKQYX0BqMPonxup4+A7Ya9XI4NpDEdErZdLsIZekRquoVPkA1Ky/CLUdKUKVPuDL2i6YjoKl+t5uJY2TLF0NJeHamhcgvodr2zvfziKRbF5WLJ1ZjL16u0cYuPitYiO4RgGhGwrlvXbg/QO7TcNx7YMNmVTK6bcmMImeBvu35De8RJbesqApwXLbHh0oPziYw34axDVwv468LL/RV+UjsTQien1eoBftkkXseVgHkwj1bHTTrFhpRpQR38NYLdfuR/3HcB+HeBh0jrAZ0tas9inByiTQR5IrQN7PqX2ylMG2EtQp9Xu0UK2XJ2b/sMDtPUbD+PxKzySmOolht0uLf1ANAwGg8FgMBhw+AMuGzVud4irUgAAAABJRU5ErkJggg=="
+            }
+          />
+          {/*<div className={styles.profileImage} />*/}
           <p className={styles.profession}>
             <span>{name ?? ""}</span>
             <span>Since {established ?? ""}</span>

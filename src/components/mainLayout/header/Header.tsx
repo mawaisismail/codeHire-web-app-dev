@@ -24,6 +24,7 @@ import {
   GET_COMPANY,
   GET_LOGIN_COMPANY,
 } from "../../../../constants/graphQL/company";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 const userNavLinks = [
   {
@@ -216,16 +217,13 @@ export const Header = () => {
                 {baseUser?.uid ? (
                   <>
                     <div className={styles.main_notification}>
-                      <div
-                        style={
-                          user?.profileImageURL
-                            ? {
-                                backgroundImage: `url(${user?.profileImageURL})`,
-                              }
-                            : {}
+                      <UserAvatar
+                        size={"w-[60px] h-[60px]"}
+                        src={
+                          user?.profileImageURL ||
+                          company?.profileImageURL ||
+                          ""
                         }
-                        onClick={() => push(routes.user.profile)}
-                        className={styles.cover_image}
                       />
                       {!asPath.includes("company") ? (
                         <p>

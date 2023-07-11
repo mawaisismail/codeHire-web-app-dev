@@ -44,25 +44,17 @@ export const NewUsers = () => {
           >
             {[1, 2, 3, 4, 5].map((index) => (
               <SwiperSlide key={`Recommended-Job-listing ${index} `}>
-                <UserCard />
+                <UserCard user={{} as any} />
               </SwiperSlide>
             ))}
           </Swiper>
           {!isMobile && (
             <>
-              <div
-                className={`recommendedPrev ${
-                  true ? styles.prev : styles.hide
-                }`}
-              >
+              <div className={`recommendedPrev ${styles.prev}`}>
                 <FontAwesomeIcon size="2x" icon={faChevronLeft} />
               </div>
               <div className={`recommendedPagination ${styles.pagination}`} />
-              <div
-                className={`recommendedNext ${
-                  true ? styles.next : styles.hide
-                }`}
-              >
+              <div className={`recommendedNext ${styles.next}`}>
                 <FontAwesomeIcon size="2x" icon={faChevronRight} />
               </div>
             </>

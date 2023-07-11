@@ -4,4 +4,3 @@ const Index = () => {
   return <GoogleApi />;
 };
 export default Index;
-
