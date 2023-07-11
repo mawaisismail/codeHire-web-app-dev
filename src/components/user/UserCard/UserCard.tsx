@@ -9,7 +9,10 @@ import { GET_COMPANY_JOB, HIRE_USER } from "../../../../constants/graphQL/job";
 import { GlobalContext } from "../../../../utils/context/GlobalProvider";
 import { IJob } from "../../../../constants/interfaces/jobs";
 import { GConfirm } from "@/components/common/g-confirm";
-import { SAVE_USER_BY_ID } from "../../../../constants/graphQL/user";
+import {
+  CANCEL_SAVE_USER_BY_ID,
+  SAVE_USER_BY_ID,
+} from "../../../../constants/graphQL/user";
 import { toast } from "react-toastify";
 
 interface IUserProps {
@@ -29,6 +32,9 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
   const [saveUsers, saveUserData] = useMutation(SAVE_USER_BY_ID, {
     fetchPolicy: "network-only",
   });
+  const [cancelSaveUser] = useMutation(CANCEL_SAVE_USER_BY_ID, {
+    fetchPolicy: "network-only",
+  });
 
   const saveUser = async () => {
     if (user?.uid) {
@@ -42,6 +48,23 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
         push(routes.company.save);
       } catch (e) {
         toast.error("User already saved");
+      }
+    }
+  };
+
+  const cancelSaveUserFunction = async () => {
+    if (user?.uid) {
+      try {
+        await cancelSaveUser({
+          variables: {
+            id: user?.uid,
+          },
+        });
+        toast("User Unsaved successfully");
+        window.location.reload();
+        push(routes.company.save);
+      } catch (e) {
+        toast.error("User does not exist");
       }
     }
   };
@@ -156,9 +179,7 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
           <button onClick={() => saveUser()}>Save</button>
         )}
         {asPath.includes("save") && (
-          <button onClick={() => push(`${routes.company.users}/${user?.uid}`)}>
-            Cancel Save
-          </button>
+          <button onClick={cancelSaveUserFunction}>Cancel Save</button>
         )}
         <button onClick={() => push(`${routes.company.users}/${user?.uid}`)}>
           View Profile

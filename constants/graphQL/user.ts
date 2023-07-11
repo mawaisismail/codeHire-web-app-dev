@@ -430,6 +430,14 @@ export const SAVE_USER_BY_ID = gql`
   }
 `;
 
+export const CANCEL_SAVE_USER_BY_ID = gql`
+  mutation cancelSaveUser($id: String!) {
+    cancelSaveUser(id: $id) {
+      uid
+    }
+  }
+`;
+
 export const FILTER_USERS = gql`
   query userSearch($search: String!) {
     userSearch(search: $search) {
