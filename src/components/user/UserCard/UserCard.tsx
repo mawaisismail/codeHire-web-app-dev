@@ -9,6 +9,8 @@ import { GET_COMPANY_JOB, HIRE_USER } from "../../../../constants/graphQL/job";
 import { GlobalContext } from "../../../../utils/context/GlobalProvider";
 import { IJob } from "../../../../constants/interfaces/jobs";
 import { GConfirm } from "@/components/common/g-confirm";
+import { SAVE_USER_BY_ID } from "../../../../constants/graphQL/user";
+import { toast } from "react-toastify";
 
 interface IUserProps {
   user: IUser;
@@ -24,6 +26,25 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
   const [getCompanyJobs, getCompanyJobsData] = useLazyQuery(GET_COMPANY_JOB, {
     fetchPolicy: "network-only",
   });
+  const [saveUsers, saveUserData] = useMutation(SAVE_USER_BY_ID, {
+    fetchPolicy: "network-only",
+  });
+
+  const saveUser = async () => {
+    if (user?.uid) {
+      try {
+        await saveUsers({
+          variables: {
+            id: user?.uid,
+          },
+        });
+        toast("User saved successfully");
+        push(routes.company.save);
+      } catch (e) {
+        toast.error("User already saved");
+      }
+    }
+  };
 
   useEffect(() => {
     if (getCompanyJobsData?.data) {
@@ -129,6 +150,14 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
         {asPath.includes("company") && asPath.includes("request") && (
           <button style={{ background: "red", border: "red" }}>
             Cancel hire
+          </button>
+        )}
+        {!asPath.includes("save") && (
+          <button onClick={() => saveUser()}>Save</button>
+        )}
+        {asPath.includes("save") && (
+          <button onClick={() => push(`${routes.company.users}/${user?.uid}`)}>
+            Cancel Save
           </button>
         )}
         <button onClick={() => push(`${routes.company.users}/${user?.uid}`)}>

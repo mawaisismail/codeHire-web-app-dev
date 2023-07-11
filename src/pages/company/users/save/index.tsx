@@ -22,10 +22,10 @@ const Apply = () => {
   }, [data]);
 
   useEffect(() => {
-    if (baseUser.uid) {
+    if (baseUser?.uid) {
       saveUsers();
     }
-  }, []);
+  }, [baseUser]);
 
   return (
     <Container>

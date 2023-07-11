@@ -422,13 +422,13 @@ export const GET_SAVE_USERS = gql`
   }
 `;
 
-// export const SAVE_USER_BY_ID = gql`
-//   mutation saveUser($id: String!) {
-//    saveUser(id: $ID!){
-//       uid
-//       }
-//       }
-//       `;
+export const SAVE_USER_BY_ID = gql`
+  mutation saveUser($id: String!) {
+    saveUser(id: $id) {
+      uid
+    }
+  }
+`;
 
 export const FILTER_USERS = gql`
   query userSearch($search: String!) {
