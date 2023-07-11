@@ -1,8 +1,10 @@
-import {AdminUser} from "@/components/Admin/User/AdminUser";
+import { AdminUser } from "@/components/Admin/User/AdminUser";
 
 const index = () => {
-    return <>
-        <AdminUser/>
+  return (
+    <>
+      <AdminUser />
     </>
+  );
 };
 export default index;

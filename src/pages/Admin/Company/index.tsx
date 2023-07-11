@@ -1,8 +1,10 @@
-import {AdminCompany} from "@/components/Admin/Company/AdminCompany";
+import { AdminCompany } from "@/components/Admin/Company/AdminCompany";
 
 const index = () => {
-    return <>
-    <AdminCompany/>
+  return (
+    <>
+      <AdminCompany />
     </>
+  );
 };
 export default index;

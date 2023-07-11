@@ -4,17 +4,17 @@ export const UserAvatar = ({
   size,
 }: {
   src: string;
-  name: string;
-  size?: number;
+  name?: string;
+  size?: string;
 }) => {
   return (
     <img
-      className={`inline-block h-${size || 10} w-${size || 10} rounded-full`}
-      src={src || `https://eu.ui-avatars.com/api/?name=${name}`}
+      className={`block rounded-full ${size || "h-[90px] w-[90px]"}`}
+      src={src || `https://eu.ui-avatars.com/api/?name=${name || "Awais"}`}
       alt="user photo"
       onError={(e) =>
         (e.currentTarget.src = `https://eu.ui-avatars.com/api/?name=${
-          user?.name || name
+          name || "Awais"
         }`)
       }
     />

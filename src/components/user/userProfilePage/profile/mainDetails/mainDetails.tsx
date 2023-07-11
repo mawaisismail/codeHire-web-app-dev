@@ -91,16 +91,20 @@ export const MainDetails = () => {
       </div>
       {!edit ? (
         <div className={styles.about}>
-          <div
-            style={
-              user?.profileImageURL
-                ? {
-                    backgroundImage: `url(${user?.profileImageURL})`,
-                  }
-                : {}
-            }
-            className={`relative ${styles.profileImage}`}
+          <UserAvatar
+            src={user?.profileImageURL ?? ""}
+            name={user?.name || "Muhammad Awais"}
           />
+          {/*<div*/}
+          {/*  style={*/}
+          {/*    user?.profileImageURL*/}
+          {/*      ? {*/}
+          {/*          backgroundImage: `url(${user?.profileImageURL})`,*/}
+          {/*        }*/}
+          {/*      : {}*/}
+          {/*  }*/}
+          {/*  className={`relative ${styles.profileImage}`}*/}
+          {/*/>*/}
           <p className={styles.profession}>
             <span className="py-2">
               {user?.first_name ?? "A"}.{user?.last_name?.charAt(0) ?? "B"}
