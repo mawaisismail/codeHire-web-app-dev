@@ -179,7 +179,12 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
           <button onClick={() => saveUser()}>Save</button>
         )}
         {asPath.includes("save") && (
-          <button onClick={cancelSaveUserFunction}>Cancel Save</button>
+          <button
+            style={{ background: "red", border: "red" }}
+            onClick={cancelSaveUserFunction}
+          >
+            Cancel Save
+          </button>
         )}
         <button onClick={() => push(`${routes.company.users}/${user?.uid}`)}>
           View Profile
