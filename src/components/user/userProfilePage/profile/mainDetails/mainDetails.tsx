@@ -226,11 +226,6 @@ export const MainDetails = () => {
           </Formik>
         </>
       )}
-      {/*<div className={styles.documents}>*/}
-      {/*  <p className={styles.heading}>Documents</p>*/}
-      {/*  <Documents />*/}
-      {/*  <Documents />*/}
-      {/*</div>*/}
       <div className={styles.contact}>
         <p className={styles.heading}>Contact</p>
         <div className={styles.main_content}>
