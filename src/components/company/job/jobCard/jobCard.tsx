@@ -6,10 +6,14 @@ import { GlobalContext } from "../../../../../utils/context/GlobalProvider";
 import { GConfirm } from "@/components/common/g-confirm";
 import { IJob } from "../../../../../constants/interfaces/jobs";
 import { formatDate } from "../../../../../utils/common";
+import { toast } from "react-toastify";
+import { useMutation } from "@apollo/client";
+import { CANCELED_HIRE_USER } from "../../../../../constants/graphQL/job";
 
 interface IJobProps extends IJob {
   hideSave?: boolean;
   hideApply?: boolean;
+  apply_id?: string;
 }
 
 export const JobCard: FC<IJobProps> = ({
@@ -24,10 +28,14 @@ export const JobCard: FC<IJobProps> = ({
   company,
   hideApply = false,
   hideSave = false,
+  apply_id,
 }) => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [{ baseUser }] = useContext(GlobalContext);
   const { push, asPath } = useRouter();
+  const [cancelHire] = useMutation(CANCELED_HIRE_USER, {
+    fetchPolicy: "network-only",
+  });
   const applyJob = () => {
     if (baseUser?.uid) {
       push(`${routes.user.applyJob}/${id}`);
@@ -35,6 +43,23 @@ export const JobCard: FC<IJobProps> = ({
       setIsConfirmOpen(true);
     }
   };
+
+  const cancelHired = async () => {
+    if (id) {
+      try {
+        await cancelHire({
+          variables: {
+            id: apply_id,
+          },
+        });
+        toast("User Terminated successfully");
+        push(routes.company.save);
+      } catch (e) {
+        toast.error("User does not exit saved");
+      }
+    }
+  };
+
   return (
     <div className={styles.main}>
       <div className={styles.sec1}>
@@ -94,6 +119,14 @@ export const JobCard: FC<IJobProps> = ({
             onClick={applyJob}
           >
             Apply Now
+          </button>
+        )}
+        {asPath.includes("request") && (
+          <button
+            style={{ background: "red", border: "red" }}
+            onClick={cancelHired}
+          >
+            Terminate
           </button>
         )}
 

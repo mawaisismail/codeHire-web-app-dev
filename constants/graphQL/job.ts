@@ -180,6 +180,14 @@ export const APPLY_TO_JOB = gql`
   }
 `;
 
+export const CANCELED_HIRE_USER = gql`
+  mutation cancelHired($id: String!) {
+    cancelHired(id: $id) {
+      id
+    }
+  }
+`;
+
 export const GET_JOB_BY_ID = gql`
   query getJobById($id: String!) {
     getJobById(id: $id) {

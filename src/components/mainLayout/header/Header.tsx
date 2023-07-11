@@ -256,8 +256,8 @@ export const Header = () => {
                       onClick={() =>
                         push(
                           asPath.includes("company")
-                            ? routes.company.home
-                            : routes.user.home
+                            ? routes.user.home
+                            : routes.company.home
                         )
                       }
                     >

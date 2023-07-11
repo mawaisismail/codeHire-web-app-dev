@@ -90,7 +90,7 @@ export const PersonalInfoForm: FC = () => {
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Employees</p>
                   <Field
-                    type="text"
+                    type="number"
                     name="total_employee"
                     placeholder="Awais"
                   />
@@ -116,7 +116,7 @@ export const PersonalInfoForm: FC = () => {
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Website</p>
                   <Field
-                    type="text"
+                    type="url"
                     name="website"
                     placeholder="https://www.google.com"
                   />
@@ -129,7 +129,7 @@ export const PersonalInfoForm: FC = () => {
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Established</p>
+                  <p className={styles.label}>Tel</p>
                   <Field
                     type="number"
                     name="phone"
@@ -146,7 +146,7 @@ export const PersonalInfoForm: FC = () => {
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Established</p>
                   <Field
-                    type="text"
+                    type="date"
                     name="established"
                     placeholder="July 2022"
                   />

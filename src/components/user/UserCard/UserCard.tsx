@@ -5,7 +5,11 @@ import { useRouter } from "next/router";
 import { FC, useContext, useEffect, useState } from "react";
 import { IUser } from "../../../../utils/context/reducer";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { GET_COMPANY_JOB, HIRE_USER } from "../../../../constants/graphQL/job";
+import {
+  CANCELED_HIRE_USER,
+  GET_COMPANY_JOB,
+  HIRE_USER,
+} from "../../../../constants/graphQL/job";
 import { GlobalContext } from "../../../../utils/context/GlobalProvider";
 import { IJob } from "../../../../constants/interfaces/jobs";
 import { GConfirm } from "@/components/common/g-confirm";
@@ -18,9 +22,10 @@ import { toast } from "react-toastify";
 interface IUserProps {
   user: IUser;
   job?: IJob;
+  id?: string;
 }
 
-export const UserCard: FC<IUserProps> = ({ job, user }) => {
+export const UserCard: FC<IUserProps> = ({ job, user, id }) => {
   const [getJob, setGetJob] = useState<IJob | null>(null);
   const [error, setError] = useState<string>("");
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -36,6 +41,10 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
     fetchPolicy: "network-only",
   });
 
+  const [cancelHire] = useMutation(CANCELED_HIRE_USER, {
+    fetchPolicy: "network-only",
+  });
+
   const saveUser = async () => {
     if (user?.uid) {
       try {
@@ -48,6 +57,22 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
         push(routes.company.save);
       } catch (e) {
         toast.error("User already saved");
+      }
+    }
+  };
+
+  const cancelHired = async () => {
+    if (id) {
+      try {
+        await cancelHire({
+          variables: {
+            id: id,
+          },
+        });
+        toast("User Terminated successfully");
+        push(routes.company.save);
+      } catch (e) {
+        toast.error("User does not exit saved");
       }
     }
   };
@@ -184,6 +209,22 @@ export const UserCard: FC<IUserProps> = ({ job, user }) => {
             onClick={cancelSaveUserFunction}
           >
             Cancel Save
+          </button>
+        )}
+        {asPath.includes("save") && (
+          <button
+            style={{ background: "red", border: "red" }}
+            onClick={cancelSaveUserFunction}
+          >
+            Cancel Save
+          </button>
+        )}
+        {asPath.includes("hire") && (
+          <button
+            style={{ background: "red", border: "red" }}
+            onClick={cancelHired}
+          >
+            Terminate
           </button>
         )}
         <button onClick={() => push(`${routes.company.users}/${user?.uid}`)}>

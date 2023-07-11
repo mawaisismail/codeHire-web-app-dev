@@ -32,7 +32,7 @@ const Apply = () => {
         <div className={styles.main}>
           {jobs?.map((value: any, index) => (
             <div key={index} className={styles.main_card}>
-              <JobCard hideApply={true} {...value.job} />
+              <JobCard hideApply={true} {...value.job} apply_id={value.id} />
             </div>
           ))}
         </div>
