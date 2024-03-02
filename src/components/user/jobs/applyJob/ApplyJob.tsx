@@ -83,7 +83,7 @@ export const ApplyJobForm: FC = () => {
             }}
           >
             <Form>
-              <p className={styles.heading}>Apply To Jo</p>
+              <p className={styles.heading}>Buy Details</p>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
                   <p className={styles.label}>Name</p>
@@ -97,7 +97,7 @@ export const ApplyJobForm: FC = () => {
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Cover Letter</p>
+                  <p className={styles.label}>Details</p>
                   <Field
                     as="textarea"
                     rows={10}
@@ -124,7 +124,7 @@ export const ApplyJobForm: FC = () => {
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Email</p>
+                  <p className={styles.label}>Phone Number</p>
                   <Field type="text" name="email" />
                   <ErrorMessage
                     className={styles.error}

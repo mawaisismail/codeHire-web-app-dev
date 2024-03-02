@@ -70,7 +70,7 @@ export const SkillsList: FC<ISkillsList> = ({ data, disabledEdit = false }) => {
   return (
     <div className={styles.main}>
       <div className="flex justify-between items-center">
-        <p className={styles.heading}>Skills</p>
+        <p className={styles.heading}>Favorites Categories</p>
         {!asPath.includes("company") && !disabledEdit && (
           <button
             onClick={() => setEdit(!edit)}

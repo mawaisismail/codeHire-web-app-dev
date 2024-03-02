@@ -22,8 +22,8 @@ export const Profile = () => {
         </div>
         <div className={styles.main_container_2}>
           <About />
-          <Education />
-          <Experience />
+          {/*<Education />*/}
+          {/*<Experience />*/}
           <SkillsList data={user?.skills} />
           <LanguagesList data={user?.languages} />
         </div>

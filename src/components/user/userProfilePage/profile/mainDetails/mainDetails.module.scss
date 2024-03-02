@@ -61,7 +61,7 @@
       .heading_data {
         margin: 0 0 0 50px;
         p {
-          margin:0.5rem 0;
+          margin:0.2rem 0;
           @include mixins.ellipsis(150px);
           @include mixins.textFont(1rem, 400, $text-heading-color);
         }

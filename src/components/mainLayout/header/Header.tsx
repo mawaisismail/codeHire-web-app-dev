@@ -49,16 +49,6 @@ const userNavLinks = [
     isPrivate: true,
   },
   {
-    name: "Maps",
-    link: routes.user.map,
-    isPrivate: true,
-  },
-  {
-    name: "Docs",
-    link: routes.user.docs,
-    isPrivate: true,
-  },
-  {
     name: "Request",
     link: routes.user.request,
     isPrivate: true,

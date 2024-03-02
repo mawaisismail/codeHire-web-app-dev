@@ -254,7 +254,7 @@ export const CompanyMainDetails: FC<ICompany> = ({
       )}
       <div className={styles.contact}>
         <div className="flex justify-between items-center py-6">
-          <p className={styles.heading}>Company Profile</p>
+          <p className={styles.heading}>Profile</p>
           {asPath.includes("company") && !asPath.includes("job") && (
             <button
               onClick={() => setEdit(!edit)}
@@ -411,194 +411,194 @@ export const CompanyMainDetails: FC<ICompany> = ({
           </a>
         </div>
       </div>
-      <div className={styles.office_time}>
-        <div className="flex justify-between items-center py-6">
-          <p className={styles.heading}>Working Days</p>
-          {asPath.includes("company") && !asPath.includes("job") && (
-            <button
-              onClick={() => setEditWorkingHour(!edit)}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-            >
-              Edit
-            </button>
-          )}
-        </div>
-        {!editWorkingHour ? (
-          <div className={styles.main_content}>
-            <div className={styles.headings}>
-              <p>Monday</p>
-              <p>Tuesday</p>
-              <p>Wednesday</p>
-              <p>Thursday</p>
-              <p>Friday</p>
-              <p>Saturday</p>
-              <p>Sunday</p>
-            </div>
-            <div className={styles.heading_data}>
-              <p>{workingHours?.monday ?? "9AM - 5PM"}</p>
-              <p>{workingHours?.tuesday ?? "9AM - 5PM"}</p>
-              <p>{workingHours?.wednesday ?? "9AM - 5PM"}</p>
-              <p>{workingHours?.thursday ?? "9AM - 5PM"}</p>
-              <p>{workingHours?.friday ?? "9AM - 5PM"}</p>
-              <p>{workingHours?.saturday ?? "9AM - 5PM"}</p>
-              <p>{workingHours?.sunday ?? "9AM - 5PM"}</p>
-            </div>
-          </div>
-        ) : (
-          <>
-            <Formik
-              initialValues={workingHoursInitialValues}
-              validationSchema={workingHoursValidationSchema}
-              onSubmit={(value) => {
-                updateWorkingInfo(value);
-              }}
-            >
-              <Form>
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="monday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Monday
-                  </label>
+      {/*<div className={styles.office_time}>*/}
+      {/*  <div className="flex justify-between items-center py-6">*/}
+      {/*    <p className={styles.heading}>Working Days</p>*/}
+      {/*    {asPath.includes("company") && !asPath.includes("job") && (*/}
+      {/*      <button*/}
+      {/*        onClick={() => setEditWorkingHour(!edit)}*/}
+      {/*        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"*/}
+      {/*      >*/}
+      {/*        Edit*/}
+      {/*      </button>*/}
+      {/*    )}*/}
+      {/*  </div>*/}
+      {/*  {!editWorkingHour ? (*/}
+      {/*    <div className={styles.main_content}>*/}
+      {/*      <div className={styles.headings}>*/}
+      {/*        <p>Monday</p>*/}
+      {/*        <p>Tuesday</p>*/}
+      {/*        <p>Wednesday</p>*/}
+      {/*        <p>Thursday</p>*/}
+      {/*        <p>Friday</p>*/}
+      {/*        <p>Saturday</p>*/}
+      {/*        <p>Sunday</p>*/}
+      {/*      </div>*/}
+      {/*      <div className={styles.heading_data}>*/}
+      {/*        <p>{workingHours?.monday ?? "9AM - 5PM"}</p>*/}
+      {/*        <p>{workingHours?.tuesday ?? "9AM - 5PM"}</p>*/}
+      {/*        <p>{workingHours?.wednesday ?? "9AM - 5PM"}</p>*/}
+      {/*        <p>{workingHours?.thursday ?? "9AM - 5PM"}</p>*/}
+      {/*        <p>{workingHours?.friday ?? "9AM - 5PM"}</p>*/}
+      {/*        <p>{workingHours?.saturday ?? "9AM - 5PM"}</p>*/}
+      {/*        <p>{workingHours?.sunday ?? "9AM - 5PM"}</p>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  ) : (*/}
+      {/*    <>*/}
+      {/*      <Formik*/}
+      {/*        initialValues={workingHoursInitialValues}*/}
+      {/*        validationSchema={workingHoursValidationSchema}*/}
+      {/*        onSubmit={(value) => {*/}
+      {/*          updateWorkingInfo(value);*/}
+      {/*        }}*/}
+      {/*      >*/}
+      {/*        <Form>*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="monday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              Monday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"monday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="monday"
-                    component="div"
-                  />
-                </div>{" "}
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="tuesday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Tuesday
-                  </label>
+      {/*            <Field*/}
+      {/*              name={"monday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="monday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>{" "}*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="tuesday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              Tuesday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"tuesday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="tuesday"
-                    component="div"
-                  />
-                </div>{" "}
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="wednesday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Wednesday
-                  </label>
+      {/*            <Field*/}
+      {/*              name={"tuesday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="tuesday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>{" "}*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="wednesday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              Wednesday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"wednesday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="wednesday"
-                    component="div"
-                  />
-                </div>
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="thursday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Thursday
-                  </label>
+      {/*            <Field*/}
+      {/*              name={"wednesday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="wednesday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="thursday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              Thursday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"thursday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="thursday"
-                    component="div"
-                  />
-                </div>
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="friday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Friday
-                  </label>
+      {/*            <Field*/}
+      {/*              name={"thursday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="thursday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="friday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              Friday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"friday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="friday"
-                    component="div"
-                  />
-                </div>
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="saturday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    saturday
-                  </label>
+      {/*            <Field*/}
+      {/*              name={"friday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="friday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="saturday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              saturday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"saturday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="saturday"
-                    component="div"
-                  />
-                </div>
-                <div className={"py-2"}>
-                  <label
-                    htmlFor="sunday"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Sunday
-                  </label>
+      {/*            <Field*/}
+      {/*              name={"saturday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="saturday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>*/}
+      {/*          <div className={"py-2"}>*/}
+      {/*            <label*/}
+      {/*              htmlFor="sunday"*/}
+      {/*              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"*/}
+      {/*            >*/}
+      {/*              Sunday*/}
+      {/*            </label>*/}
 
-                  <Field
-                    name={"sunday"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  />
-                  <ErrorMessage
-                    className="text-red-500 text-sm pt-2"
-                    name="sunday"
-                    component="div"
-                  />
-                </div>
-                <div className="flex justify-between items-center py-2 mb-4">
-                  <button
-                    onClick={() => setEditWorkingHour(false)}
-                    className="bg-red-500 text-white font-bold py-1 px-4 rounded-md"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="submit"
-                    className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"
-                  >
-                    Save
-                  </button>
-                </div>
-              </Form>
-            </Formik>
-          </>
-        )}
-      </div>
+      {/*            <Field*/}
+      {/*              name={"sunday"}*/}
+      {/*              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"*/}
+      {/*            />*/}
+      {/*            <ErrorMessage*/}
+      {/*              className="text-red-500 text-sm pt-2"*/}
+      {/*              name="sunday"*/}
+      {/*              component="div"*/}
+      {/*            />*/}
+      {/*          </div>*/}
+      {/*          <div className="flex justify-between items-center py-2 mb-4">*/}
+      {/*            <button*/}
+      {/*              onClick={() => setEditWorkingHour(false)}*/}
+      {/*              className="bg-red-500 text-white font-bold py-1 px-4 rounded-md"*/}
+      {/*            >*/}
+      {/*              Close*/}
+      {/*            </button>*/}
+      {/*            <button*/}
+      {/*              type="submit"*/}
+      {/*              className="border-blue-700 border text-blue-500 font-bold py-1 px-4 rounded-md"*/}
+      {/*            >*/}
+      {/*              Save*/}
+      {/*            </button>*/}
+      {/*          </div>*/}
+      {/*        </Form>*/}
+      {/*      </Formik>*/}
+      {/*    </>*/}
+      {/*  )}*/}
+      {/*</div>*/}
     </div>
   );
 };

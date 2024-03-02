@@ -51,7 +51,7 @@ export const JobPreview: FC = () => {
               </div>
             </div>
             <div className="flex gap-[200px] items-center mt-6">
-              <p className="font-bold text-gray-500 text-xl">Position</p>
+              <p className="font-bold text-gray-500 text-xl">Name</p>
               <p className="font-medium text-gray-500">{job?.position}</p>
               {asPath.includes("company") && (
                 <button
@@ -63,21 +63,21 @@ export const JobPreview: FC = () => {
               )}
             </div>
             <div className="flex gap-[200px] items-center mt-6">
-              <p className="font-bold text-gray-500 text-xl">Experience</p>
+              <p className="font-bold text-gray-500 text-xl">Age</p>
               <p className="font-medium text-gray-500">{job?.experience}</p>
             </div>
             <div className={styles.content_container}>
-              <p className={styles.content_heading}>Job Description</p>
+              <p className={styles.content_heading}>Description</p>
               <div className={styles.content_texts}>
                 {job?.description ?? ""}
               </div>
             </div>
-            <div className={styles.content_container}>
-              <p className={styles.content_heading}>Responsibilities</p>
-              <div className={styles.content_texts}>
-                {job?.responsibilities ?? ""}
-              </div>
-            </div>
+            {/*<div className={styles.content_container}>*/}
+            {/*  <p className={styles.content_heading}>Responsibilities</p>*/}
+            {/*  <div className={styles.content_texts}>*/}
+            {/*    {job?.responsibilities ?? ""}*/}
+            {/*  </div>*/}
+            {/*</div>*/}
             <div className={styles.content_container}>
               <p className={styles.content_heading}>Qualification</p>
               <div className={styles.content_texts}>
@@ -85,11 +85,11 @@ export const JobPreview: FC = () => {
               </div>
             </div>
             <div className={styles.content_container}>
-              <p className={styles.content_heading}>Free Words</p>
+              <p className={styles.content_heading}>Keywords</p>
               <div className={styles.content_texts}>{job?.freeWords ?? ""}</div>
             </div>
             <div className={styles.content_container}>
-              <p className={styles.content_heading}>Skill & Experience</p>
+              {/*<p className={styles.content_heading}>Skill & Experience</p>*/}
               <div className={styles.content_texts}>
                 <SkillsList data={job?.skills ?? []} disabledEdit={true} />
               </div>

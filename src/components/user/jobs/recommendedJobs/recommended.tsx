@@ -49,8 +49,8 @@ export const Recommended = () => {
     <div className={styles.main}>
       <Container maxWidth={"lg"}>
         <GHeader
-          title={"Recommended Jobs"}
-          subtitle={"These are the jobs we think you might be interested in."}
+          title={"Recommended Pets"}
+          subtitle={"These are the Pets we think you might be interested in."}
         />
         <div className={styles.main_content}>
           <Swiper

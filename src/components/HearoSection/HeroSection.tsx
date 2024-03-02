@@ -70,8 +70,8 @@ export const HeroSection: FC = () => {
               >
                 {baseUser?.uid
                   ? asPath.includes("company")
-                    ? "Hire Dev"
-                    : "Find Job"
+                    ? "Request User for Pets"
+                    : "Find Pets"
                   : "Sign up"}
               </Link>
             )}
