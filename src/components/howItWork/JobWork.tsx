@@ -10,8 +10,6 @@ export const HowItWork = () => {
         <div className={styles.JobWorkContent}>
           <GHeader
             title="How it Work"
-            subtitle=" Post a job to tell us about your project.We will quickly match you
-              with the right freelancer"
           />
           {JobWorkData.map((data) => (
             <div key={data.id} className={styles.JobWorkList}>
@@ -24,7 +22,6 @@ export const HowItWork = () => {
           ))}
         </div>
         <div className={styles.JobWorkLogo}>
-          <p className={styles.img}></p>
         </div>
       </div>
     </Container>

@@ -132,27 +132,7 @@ export const GCompanySearch: FC<IGCompanySearchProps> = ({
           onChange={(e) => setOfferSalary(e.target.value)}
           value={offer_salary}
           type="text"
-          placeholder="Offer Salary"
-        />
-      </div>
-      <div>
-        <input
-          value={responsibilities}
-          type="text"
-          onChange={(e) => setResponsibilities(e.target.value)}
-          placeholder={"Responsibility"}
-        />
-        <input
-          onChange={(e) => setPosition(e.target.value)}
-          value={position}
-          type="text"
-          placeholder="Position"
-        />
-        <input
-          onChange={(e) => setSkills(e.target.value)}
-          value={skills}
-          type="text"
-          placeholder="Work preference"
+          placeholder="Price"
         />
       </div>
       <button onClick={handleSubmit}>Filter</button>

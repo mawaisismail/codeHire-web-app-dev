@@ -37,7 +37,7 @@ export const MyJobs = () => {
             href={routes.company.create}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
           >
-            Create new Jobs
+            Create new Ad
           </Link>
         </div>
 

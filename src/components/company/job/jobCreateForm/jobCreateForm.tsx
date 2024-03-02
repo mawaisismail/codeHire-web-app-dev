@@ -72,7 +72,7 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
     <>
       <Container maxWidth="md">
         <div className={styles.main}>
-          <p className="font-bold text-gray-500 text-2xl py-8">Create Job</p>
+          <p className="font-bold text-gray-500 text-2xl py-8">Create Ad</p>
           <div className="flex justify-center items-center">
             <div
               style={
@@ -152,7 +152,7 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
                   <Field
                     type="text"
                     name="title"
-                    placeholder="Software Engineer"
+                    placeholder="Cow"
                   />
                   <ErrorMessage
                     className={styles.error}
@@ -163,11 +163,11 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Position</p>
+                  <p className={styles.label}>Name</p>
                   <Field
                     type="text"
                     name="position"
-                    placeholder="JS Develper"
+                    placeholder="Name"
                   />
                   <ErrorMessage
                     className={styles.error}
@@ -176,7 +176,7 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
                   />
                 </div>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Experience</p>
+                    <p className={styles.label}>Age</p>
                   <Field type="text" name="experience" placeholder="1 Year" />
                   <ErrorMessage
                     className={styles.error}
@@ -219,7 +219,7 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
               />
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Offer Salary</p>
+                  <p className={styles.label}>Offer Price</p>
                   <Field
                     type="number"
                     name="offer_salary"
@@ -241,7 +241,7 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
                   />
                 </div>
               </div>
-              <p>Working Style</p>
+              <p>Habits</p>
               <div className={styles.checkbox_main}>
                 {jobWorkingStyles.map((name) => (
                   <div
@@ -276,7 +276,7 @@ export const JobCreateForm: FC<IJobCreateFormProps> = ({
               </div>
               <div className={styles.input_main}>
                 <div className={styles.input_wrapper}>
-                  <p className={styles.label}>Qualification</p>
+                  <p className={styles.label}>Funtings</p>
                   <Field
                     as="textarea"
                     rows={5}

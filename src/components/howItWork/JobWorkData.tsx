@@ -7,14 +7,14 @@ export const JobWorkData = [
   },
   {
     id: 2,
-    heading: "Find your job",
+    heading: "Find your Pets",
     subheading:
-      "their are many variation of passage of avial book marked label but the majority of alteration in some form",
+      "you can rest assured that your new pet will be healthy, happy, and ready to become a cherished member of your family",
   },
   {
     id: 3,
-    heading: "Apply for job",
+    heading: "Send Your Query",
     subheading:
-      "its is a long established long fact that a reader will be distracted by the reader contract of a page",
+      "Visit A&B Mart today and let us help you find your dream pet!",
   },
 ];

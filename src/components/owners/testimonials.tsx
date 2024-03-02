@@ -16,9 +16,7 @@ export const Testimonials = () => {
           </svg>
           <blockquote>
             <p className="text-2xl font-medium text-white">
-              "Flowbite is just awesome. It contains tons of predesigned
-              components and pages starting from login screen to complex
-              dashboard. Perfect choice for your next SaaS application."
+              "Discover your perfect companions with A&B Mart's Dream Pets collection! Whether you're seeking a loyal canine companion, a graceful feline friend, or perhaps something more exotic, we have a diverse array of pets to suit every preference and lifestyle. Our dedicated team ensures that each animal receives the utmost care and attention, so you can rest assured that your new pet will be healthy, happy, and ready to become a cherished member of your family. Visit A&B Mart today and let us help you find your dream pet!"
             </p>
           </blockquote>
           <figcaption className="flex items-center justify-center mt-6 space-x-3">
@@ -30,7 +28,7 @@ export const Testimonials = () => {
             <div className="flex items-center divide-x-2 divide-gray-700">
               <div className="pr-3 font-medium text-white">Micheal Gough</div>
               <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
-                CEO at Google
+                CEO at Birds & Co
               </div>
             </div>
           </figcaption>

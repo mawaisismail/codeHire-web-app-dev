@@ -19,13 +19,11 @@ export const HeroSection: FC = () => {
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">
               {asPath.includes("company")
-                ? "Tired of traditional recruiting to hire software developers?"
-                : "Find your dream jobs with CodeHire"}
+                ? "Tired of traditional selling/buying sites?"
+                : "Find your dream Pets with A&B Mart"}
             </h1>
             <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400">
-              {asPath.includes("user")
-                ? "Find jobs, create trackable resumes and enrich your applications.Carefully crafted after analyzing the needs of different industries."
-                : "Hire senior pre-vetted remote developers with strong technical and communication skills at unbeatable prices, ready to work in your timezone."}
+              Discover your perfect companions with A&B Mart's Dream Pets collection! Whether you're seeking a loyal canine companion, a graceful feline friend, or perhaps something more exotic, we have a diverse array of pets to suit every preference and lifestyle. Our dedicated team ensures that each animal receives the utmost care and attention
             </p>
             <a
               href="#"
@@ -81,11 +79,7 @@ export const HeroSection: FC = () => {
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img
               className="rounded-3xl"
-              src={
-                !asPath.includes("company")
-                  ? "https://www.totaljobs.com/advice/wp-content/uploads/graphic-designer-job-description.jpg"
-                  : "https://www.turing.com/_next/image?url=https%3A%2F%2Fd2mk45aasx86xg.cloudfront.net%2FHire_developers_071d4002bb.webp&w=1920&q=75"
-              }
+              src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnEPOIUVbJezPn77_vk1oeGwL3-FBEUo0ZlSfSk46j2R_itXiM'}
               alt="mockup"
             />
           </div>

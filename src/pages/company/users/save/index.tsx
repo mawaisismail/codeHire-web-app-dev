@@ -32,7 +32,7 @@ const Apply = () => {
       <div className={styles.main_content}>
         {!users.length && (
           <div className="text-gray-500 text-base h-[200px] w-full flex items-end justify-center">
-            <p>No jobs found</p>
+            <p>No found</p>
           </div>
         )}
         <div className={styles.main}>

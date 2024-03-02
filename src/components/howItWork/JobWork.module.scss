@@ -50,10 +50,11 @@
     }
   }
   .JobWorkLogo {
-    background: url("../../../static/images/workjob.png") no-repeat center
+    border-radius: 100%;
+    background: url("https://www.eurokidsindia.com/blog/wp-content/uploads/2023/10/types-of-birds.jpg") no-repeat center
       center;
     background-size: contain;
-    height: 600px;
+    height: 350px;
     width: 100%;
     @media (max-width: 1100px) {
       height: 400px;

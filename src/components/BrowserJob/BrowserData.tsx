@@ -1,60 +1,59 @@
 import {
-  FaCity,
-  FaDeskpro,
-  FaLayerGroup,
-  FaShoppingBag,
-  FaTelegram,
-  FaTelegramPlane,
+  FaEarlybirds,
+
   FaUser,
 } from "react-icons/fa";
+import {GiBirdTwitter, GiEgyptianBird, GiHummingbird, GiNestBirds} from "react-icons/gi";
+import {LuBird} from "react-icons/lu";
+import {SiThunderbird} from "react-icons/si";
 
 export const firstData = [
   {
     id: 0,
-    icons: <FaLayerGroup />,
-    title: "IT & Software",
-    content: "2024 Jobs",
-  },
-  {
-    id: 1,
-    icons: <FaTelegram />,
-    title: "Technology",
-    content: "1250 Jobs",
-  },
-  {
-    id: 2,
-    icons: <FaShoppingBag />,
-    title: "Government",
-    content: "802 Jobs",
+    icons: <GiBirdTwitter />,
+    title: "All Birds",
+    content: "802 Birds",
   },
   {
     id: 3,
-    icons: <FaUser />,
-    title: "Accounting",
-    content: "577 Jobs",
+    icons: <GiNestBirds />,
+    title: "Robin",
+    content: "577 Birds",
   },
   {
     id: 4,
-    icons: <FaCity />,
-    title: "Facilities",
-    content: "285 Jobs",
+    icons: <LuBird />,
+    title: "Blue Jay",
+    content: "285 Birds",
   },
   {
     id: 5,
-    icons: <FaTelegramPlane />,
-    title: "communication",
-    content: "495 Jobs",
+    icons: <FaEarlybirds />,
+    title: "Cardinal",
+    content: "495 Birds",
   },
   {
     id: 6,
-    icons: <FaDeskpro />,
-    title: "Design",
-    content: "1045 Jobs",
+    icons: <GiEgyptianBird />,
+    title: "Sparrow",
+    content: "1045 Birds",
   },
   {
     id: 7,
-    icons: <FaUser />,
-    title: "HR",
-    content: "1516 Job",
+    icons: <SiThunderbird />,
+    title: "Parrot",
+    content: "1516 Birds",
+  },
+  {
+    id: 7,
+    icons: <GiHummingbird/>,
+    title: "Lovebird",
+    content: "1516 Birds",
+  },
+  {
+    id: 7,
+    icons: <LuBird />,
+    title: "Hatebird",
+    content: "1516 Birds",
   },
 ];

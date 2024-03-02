@@ -12,9 +12,9 @@ export const BrowserJob = () => {
     <Container>
       <div className={styles.CategoriesContainer}>
         <GHeader
-          title={"Browser Jobs Categories "}
+          title={"Browser Categories "}
           subtitle={
-            "Post a job to tell us about your project. We will quickly match you with the right freelancers."
+            ""
           }
         />
         <div className={styles.CategoriesSubContainer}>

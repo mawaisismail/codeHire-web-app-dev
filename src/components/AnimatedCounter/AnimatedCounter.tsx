@@ -7,7 +7,7 @@ export const AnimatedCounter = () => {
             <div className="flex flex-col items-center justify-center">
               <dt className="mb-2 text-3xl md:text-4xl font-extrabold">73M+</dt>
               <dd className="font-light text-gray-500 dark:text-gray-400">
-                developers
+                Birds
               </dd>
             </div>
             <div className="flex flex-col items-center justify-center">

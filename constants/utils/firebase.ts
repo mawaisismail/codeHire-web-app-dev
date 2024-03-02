@@ -13,13 +13,13 @@ import {
 import { toast } from "react-toastify";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyClhcWeEa3QH92IhCYzjFitfcSCpx2WvGk",
-  authDomain: "final-year-project-f1705.firebaseapp.com",
-  projectId: "final-year-project-f1705",
-  storageBucket: "final-year-project-f1705.appspot.com",
-  messagingSenderId: "480741189252",
-  appId: "1:480741189252:web:929c96c53115618df644d1",
-  measurementId: "G-P266Z80NNW",
+  apiKey: "AIzaSyAApXyUsJWABWvrTnwfN0-Wh2ZqvqPtL2I",
+  authDomain: "fyp-24-13a41.firebaseapp.com",
+  projectId: "fyp-24-13a41",
+  storageBucket: "fyp-24-13a41.appspot.com",
+  messagingSenderId: "672699345862",
+  appId: "1:672699345862:web:b9b2d5389fb44b723fe0c7",
+  measurementId:"G-7X0QHVPKEK"
 };
 
 const firebaseApp = !getApps().length

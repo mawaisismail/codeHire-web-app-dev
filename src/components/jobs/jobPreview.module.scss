@@ -24,7 +24,7 @@
         width: 100%;
         height: 300px;
         position: relative;
-        background: url(/static/images/HeroSection.png) no-repeat center;
+        background: url('https://cff2.earth.com/uploads/2021/07/22174422/shutterstock_1462391174.jpg') no-repeat center;
         background-size: contain;
 
         &::before {
@@ -34,7 +34,7 @@
           right: -15px;
           width: 50px;
           height: 50px;
-          background: url(/static/images/card3.png) center no-repeat;
+          background: url('https://cff2.earth.com/uploads/2021/07/22174422/shutterstock_1462391174.jpg') center no-repeat;
           background-size: contain;
           z-index: 1;
         }

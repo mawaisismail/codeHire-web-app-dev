@@ -79,7 +79,7 @@ export const JobCard: FC<IJobProps> = ({
         </div>
       </div>
       <div className={styles.occupation}>
-        <p className={styles.salary}>${offer_salary ?? ""}/ month</p>
+        <p className={styles.salary}>${offer_salary ?? ""} Price</p>
         <p className={styles.other}>{experience ?? ""} Year</p>
         <p className={styles.other}>{position ?? ""}</p>
       </div>
@@ -108,7 +108,7 @@ export const JobCard: FC<IJobProps> = ({
             onConfirm={() => push(routes.user.login)}
           >
             <button className="disabled:bg-blue-400" disabled={hideApply}>
-              Apply Now
+              Buy Now
             </button>
           </GConfirm>
         )}
@@ -118,7 +118,7 @@ export const JobCard: FC<IJobProps> = ({
             disabled={hideApply}
             onClick={applyJob}
           >
-            Apply Now
+            Buy Now
           </button>
         )}
         {/*{asPath.includes("request") && (*/}
@@ -139,7 +139,7 @@ export const JobCard: FC<IJobProps> = ({
             )
           }
         >
-          View Job
+          View Details
         </button>
       </div>
     </div>

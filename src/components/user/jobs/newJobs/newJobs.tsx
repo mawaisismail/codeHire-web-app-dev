@@ -48,8 +48,8 @@ export const NewJobs = () => {
     <div className={styles.main}>
       <Container maxWidth={"lg"}>
         <GHeader
-          title={"New Opening Jobs"}
-          subtitle={"These are the jobs we think you might be interested in."}
+          title={"New Opening Ads"}
+          subtitle={"These are some ads we think you might be interested in."}
         />
         <div className={styles.main_content}>
           <Swiper

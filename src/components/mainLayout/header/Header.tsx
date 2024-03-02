@@ -25,6 +25,7 @@ import {
   GET_LOGIN_COMPANY,
 } from "../../../../constants/graphQL/company";
 import { UserAvatar } from "@/components/common/UserAvatar";
+import {GiKiwiBird} from "react-icons/gi";
 
 const userNavLinks = [
   {
@@ -33,7 +34,7 @@ const userNavLinks = [
     isPrivate: false,
   },
   {
-    name: "Jobs",
+    name: "Ads",
     link: routes.user.jobs,
     isPrivate: false,
   },
@@ -63,7 +64,7 @@ const userNavLinks = [
     isPrivate: true,
   },
   {
-    name: "Hired",
+    name: "Buys",
     link: routes.user.hired,
     isPrivate: true,
   },
@@ -80,7 +81,7 @@ const companyNavLinks = [
     isPrivate: false,
   },
   {
-    name: "Job",
+    name: "Ads",
     link: routes.company.jobs,
     isPrivate: true,
   },
@@ -95,18 +96,8 @@ const companyNavLinks = [
     isPrivate: true,
   },
   {
-    name: "Docs",
-    link: routes.company.docs,
-    isPrivate: true,
-  },
-  {
     name: "Request",
     link: routes.company.request,
-    isPrivate: true,
-  },
-  {
-    name: "Hired",
-    link: routes.company.hired,
     isPrivate: true,
   },
   {
@@ -183,6 +174,14 @@ export const Header = () => {
       <Container maxWidth="xl">
         <div className={styles.main_content}>
           <div
+              style={{
+                display:'flex',
+                justifyContent:'center',
+                alignItems:'center',
+                height:'70px',
+                gap:'10px',
+                fontSize:'20px',
+              }}
             onClick={() =>
               push(
                 asPath.includes("company")
@@ -190,8 +189,10 @@ export const Header = () => {
                   : routes.user.home
               )
             }
-            className={styles.logo}
-          />
+
+          >
+            A&B Mart<GiKiwiBird/>
+          </div>
           {!isMobile && (
             <>
               <div className={styles.links}>
@@ -260,8 +261,8 @@ export const Header = () => {
                       }
                     >
                       {asPath.includes("company")
-                        ? "Apply Jobs"
-                        : "Hire Developer"}
+                        ? "Buy Pets"
+                        : "Sold Pets"}
                     </button>
                     <button
                       onClick={() =>
